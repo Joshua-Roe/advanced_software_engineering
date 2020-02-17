@@ -17,7 +17,7 @@ class Data{
     
 }
 
-public class booking { 
+public class setup { 
 	public static void main(String[] args)throws Exception{ 
 
 		File bookingCSV = new File("../../data/bookingDetails.csv"); 
