@@ -74,7 +74,14 @@ public class GUI {
 			JOptionPane.showMessageDialog(frame, "Please Fill All Inputs");
 		return false;
 		}
-		//todo confirm flight bookings and baggage weight
+		//check valid baggage input
+		//get booking form hashmak using ref
+		//confirm surname
+		//set baggage and checkin
+		//get baggage limit
+		//compare
+		//output baggage dialog if nessicary
+		//confirm checkin dialog
 		JOptionPane.showMessageDialog(frame, "Check In Confirmed. \r\n {PLACEHOLDER}");
 		return true;
     }
@@ -84,5 +91,6 @@ class guiTest{
     public static void main(String[] args) {
     	GUI g = new GUI();
     }
+    //before exit generate report
 }
 	
