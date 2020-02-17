@@ -5,6 +5,7 @@
 ---
 
 #### Group Members:
+####TODOs:
 
 * Leo Kong
 * Joshua Roe
@@ -13,9 +14,7 @@
 * Marek Kujawa
 
 ---
----
 
-####TODOs:
 
 - [ ] At the start of the application, all `passengers` have bought a `ticket`. A `text file` should be provided which gives the `list of all bookings`, containing, for each passenger, details of the unique `booking reference code`, the name of the `passenger`, their `flight code`, and whether they have `checked in or not`.
 - [ ] Another `text file` should be provided that shows the details of each `flight`, including the `destination airport`, the `carrier`, and the `capacity of the flight` (giving the `maximum number of passengers`, the `maximum baggage weight`, and the `maximum baggage volume`).
