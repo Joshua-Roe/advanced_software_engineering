@@ -1,10 +1,10 @@
 ## F21AS: Advanced Sorftware Engineering
 
-#### Coursework 2020 - A simulation of a simple airport check-in system.
+### Coursework 2020 - A simulation of a simple airport check-in system.
 
 ---
 
-##### Group Members:
+#### Group Members:
 
 * Leo Kong
 * Joshua Roe
@@ -14,7 +14,7 @@
 
 ---
 
-##### TODOs (functionality):
+#### TODOs (functionality):
 
 - [ ] At the start of the application, all `passengers` have bought a `ticket`. A `text file` should be provided which gives the `list of all bookings`, containing, for each passenger, details of the unique `booking reference code`, the name of the `passenger`, their `flight code`, and whether they have `checked in or not`.
 - [ ] Another `text file` should be provided that shows the details of each `flight`, including the `destination airport`, the `carrier`, and the `capacity of the flight` (giving the `maximum number of passengers`, the `maximum baggage weight`, and the `maximum baggage volume`).
@@ -29,6 +29,16 @@
 
 [class_diagram]: https://github.com/Joshua-Roe/advanced_software_engineering/blob/master/images/class_diagram.PNG "Class Diagram 1"
 
-##### Tasks Distribution:
+#### Tasks Distribution:
 
-* Marek Kujawa: Implementation of Class Flights
+* Marek:
+    - [ ] README.MD creation and maintenance
+    - [ ] Implementation of Class Flight
+* Sean:
+    - [ ] Implementation of Class AllFlights
+* Josh:
+    - [ ] Implementation of GUI
+* Randy:
+    - [ ] Implementation of Class AllBookings
+* Leo:
+    - [ ] Implementation of Class Booking
