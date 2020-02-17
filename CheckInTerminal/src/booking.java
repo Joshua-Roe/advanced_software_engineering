@@ -8,8 +8,8 @@ import java.util.zip.CRC32;
 public class booking { 
 	public static void main(String[] args)throws Exception{ 
 
-		File bookingCSV = new File("../data/uk-500.csv"); 
-		File flightCSV = new File("../data/bookingDetails.csv");
+		File bookingCSV = new File("../data/bookingDetails.csv"); 
+		File flightCSV = new File("../data/flightDetails.csv");
 		//export.createNewFile();
 		
 		BufferedReader br = new BufferedReader(new FileReader(file)); 
