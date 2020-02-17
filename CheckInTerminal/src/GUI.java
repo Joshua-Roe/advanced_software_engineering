@@ -1,14 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-class gui {
+public class GUI {
 	static JFrame frame;
-    public static void main(String args[]) {
+    public GUI() {
 
         //create frame
         JFrame checkFrame = new JFrame("Check In");
         checkFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         checkFrame.setSize(700, 120);
+        checkFrame.setLocationRelativeTo(null);
         
         //Creating the panel at bottom and adding components
         JPanel namePanel = new JPanel(); // the panel is not visible in output
@@ -52,10 +53,12 @@ class gui {
         {
           public void actionPerformed(ActionEvent e)
           {
-            // display/center the jdialog when the button is pressed
-            JDialog d = new JDialog(frame, "Hello", true);
-            d.setLocationRelativeTo(frame);
-            d.setVisible(true);
+        	  if(confirm(nameText.getText(),refText.getText(),sizeText.getText(),weightText.getText())) {
+        		  nameText.setText("");
+        		  refText.setText("");
+        		  sizeText.setText("");
+        		  weightText.setText("");
+        	  }
           }
         });
         confPanel.add(confBtn);
@@ -66,4 +69,20 @@ class gui {
         checkFrame.getContentPane().add(BorderLayout.SOUTH, confPanel);
         checkFrame.setVisible(true);
     }
+    public boolean confirm(String name, String ref, String size, String weight) {
+		if(name.trim().length() == 0 || ref.trim().length() == 0 || size.trim().length() == 0 || weight.trim().length() == 0) {
+			JOptionPane.showMessageDialog(frame, "Please Fill All Inputs");
+		return false;
+		}
+		//todo confirm flight bookings and baggage weight
+		JOptionPane.showMessageDialog(frame, "Check In Confirmed. \r\n {PLACEHOLDER}");
+		return true;
+    }
+
 }
+class guiTest{
+    public static void main(String[] args) {
+    	GUI g = new GUI();
+    }
+}
+	
