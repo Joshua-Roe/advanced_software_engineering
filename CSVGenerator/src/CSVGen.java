@@ -17,8 +17,8 @@ public class CSVGen {
 							 "FR815", "EZY2686", "BE851", "EK024"}; 
 		Random rand = new Random();
 		int randomNum = 0;
-		File file = new File("/Users/leokong/Downloads/uk-500.csv"); 
-		File export = new File("/Users/leokong/Downloads/bookingDetails.csv");
+		File file = new File("../data/uk-500.csv"); 
+		File export = new File("../data/bookingDetails.csv");
 		//export.createNewFile();
 		
 		BufferedReader br = new BufferedReader(new FileReader(file)); 
