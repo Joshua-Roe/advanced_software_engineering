@@ -1,14 +1,21 @@
 ## F21AS: Advanced Sorftware Engineering
-#### Coursework 2020 - A simulation of a simple airport check-in system.
+
+### Coursework 2020 - A simulation of a simple airport check-in system.
+
 ---
-##### Group Members:
+
+#### Group Members:
+
 * Leo Kong
 * Joshua Roe
 * Sean Katagiri
 * Randy Adjepong
 * Marek Kujawa
+
 ---
-##### TODOs (functionality):
+
+#### TODOs:
+
 - [ ] At the start of the application, all `passengers` have bought a `ticket`. A `text file` should be provided which gives the `list of all bookings`, containing, for each passenger, details of the unique `booking reference code`, the name of the `passenger`, their `flight code`, and whether they have `checked in or not`.
 - [ ] Another `text file` should be provided that shows the details of each `flight`, including the `destination airport`, the `carrier`, and the `capacity of the flight` (giving the `maximum number of passengers`, the `maximum baggage weight`, and the `maximum baggage volume`).
 - [ ] These text files are read at the start of the application, and you can assume that they are correctly formatted e.g. the right number of commas in a csv file. You should check that the booking reference code is correct according to your rules.
@@ -20,7 +27,18 @@
 
 ![Class Diagram 1][class_diagram]
 
-[class_diagram]: https://github.com/Joshua-Roe/advanced_software_engineering/raw/master/src/common/images/class_diagram.PNG "Class Diagram 1"
+[class_diagram]: https://github.com/Joshua-Roe/advanced_software_engineering/blob/master/images/class_diagram.PNG "Class Diagram 1"
 
-##### Tasks Distribution:
-* Marek Kujawa: Implementation of Class Flights
+#### Tasks Distribution:
+
+* Marek:
+    - [ ] README.MD creation and maintenance
+    - [ ] Implementation of Class Flight
+* Sean:
+    - [ ] Implementation of Class AllFlights
+* Josh:
+    - [ ] Implementation of GUI
+* Randy:
+    - [ ] Implementation of Class AllBookings
+* Leo:
+    - [ ] Implementation of Class Booking
