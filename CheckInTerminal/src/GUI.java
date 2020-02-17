@@ -1,13 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 class gui {
+	static JFrame frame;
     public static void main(String args[]) {
 
         //create frame
         JFrame checkFrame = new JFrame("Check In");
         checkFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        checkFrame.setSize(400, 120);
-
+        checkFrame.setSize(700, 120);
+        
         //Creating the panel at bottom and adding components
         JPanel namePanel = new JPanel(); // the panel is not visible in output
         JLabel nameLabel = new JLabel("Surname");
@@ -21,23 +23,11 @@ class gui {
         refPanel.add(refLabel); // Components Added using Flow Layout
         refPanel.add(refText);
         
-        JPanel confPanel = new JPanel(); // the panel is not visible in output        
-        JButton confBtn= new JButton("Confirm");
-        confPanel.add(confBtn);
-        //Adding Components to the frame.
-        checkFrame.getContentPane().add(BorderLayout.NORTH, namePanel);
-        checkFrame.getContentPane().add(BorderLayout.CENTER, refPanel);
-        checkFrame.getContentPane().add(BorderLayout.SOUTH, confPanel);
-        checkFrame.setVisible(true);
+        JPanel bookingPanel = new JPanel(); // the panel is not visible in output
+        bookingPanel.setLayout(new GridLayout(0,1));
+        bookingPanel.add(namePanel);
+        bookingPanel.add(refPanel);
         
-        
-        
-        
-        //create frame
-        JFrame bagFrame = new JFrame("Baggage");
-        bagFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        bagFrame.setSize(400, 120);
-
         //Creating the panel at bottom and adding components
         JPanel sizePanel = new JPanel(); // the panel is not visible in output
         JLabel sizeLabel = new JLabel("Baggage Size");
@@ -51,13 +41,29 @@ class gui {
         weightPanel.add(weightLabel); // Components Added using Flow Layout
         weightPanel.add(weightText);
         
-        JPanel conf2Panel = new JPanel(); // the panel is not visible in output        
-        JButton conf2Btn= new JButton("Confirm");
-        conf2Panel.add(conf2Btn);
+        JPanel baggagePanel = new JPanel(); // the panel is not visible in output
+        baggagePanel.setLayout(new GridLayout(0,1));
+        baggagePanel.add(sizePanel);
+        baggagePanel.add(weightPanel);
+        
+        JPanel confPanel = new JPanel(); // the panel is not visible in output        
+        JButton confBtn= new JButton("Confirm");
+        confBtn.addActionListener(new ActionListener()
+        {
+          public void actionPerformed(ActionEvent e)
+          {
+            // display/center the jdialog when the button is pressed
+            JDialog d = new JDialog(frame, "Hello", true);
+            d.setLocationRelativeTo(frame);
+            d.setVisible(true);
+          }
+        });
+        confPanel.add(confBtn);
+
         //Adding Components to the frame.
-        bagFrame.getContentPane().add(BorderLayout.NORTH, sizePanel);
-        bagFrame.getContentPane().add(BorderLayout.CENTER, weightPanel);
-        bagFrame.getContentPane().add(BorderLayout.SOUTH, conf2Panel);
-        bagFrame.setVisible(true);
+        checkFrame.getContentPane().add(BorderLayout.WEST, bookingPanel);
+        checkFrame.getContentPane().add(BorderLayout.EAST, baggagePanel);
+        checkFrame.getContentPane().add(BorderLayout.SOUTH, confPanel);
+        checkFrame.setVisible(true);
     }
 }
