@@ -6,10 +6,6 @@
 
 #### Group Members:
 
-#### Group Members:
-
-#### TODOs:
-
 * Leo Kong
 * Joshua Roe
 * Sean Katagiri
