@@ -4,17 +4,21 @@ import java.util.HashMap;
 import java.util.zip.CRC32;
 //import java.io.File;
 
-class Data{
+class bookingData{
 	public String FirstName; 
     public String LastName;  
     public String flightNumber;
-    //public String aircraft;
-    public boolean checkedIn;
-    //public float maxSize;
-    //public float maxWeight;
-    //public float currentSzie;
-    //public float currentWeight;
-    
+    public boolean checkedIn;    
+}
+
+class flightData{
+	public String airline;
+	public String depart;
+	public String destination;
+	public String aircraft;
+	public int capacity;
+	public float maxSize;
+	public float maxWeight;
 }
 
 public class setup { 
@@ -22,48 +26,51 @@ public class setup {
 
 		File bookingCSV = new File("../../data/bookingDetails.csv"); 
 		File flightCSV = new File("../../data/flightDetails.csv");
-
-		//export.createNewFile();
 		
 		BufferedReader bookingBR = new BufferedReader(new FileReader(bookingCSV)); 
 		BufferedReader flightBR = new BufferedReader(new FileReader(flightCSV));
 		
-		HashMap<String, Data> booking = new HashMap<String, Data>();
-		  
+		HashMap<String, bookingData> bookingHash = new HashMap<String, bookingData>();
+		HashMap<String, flightData> flightHash = new HashMap<String, flightData>();
+		
 		String st; 
 		while ((st = bookingBR.readLine()) != null) {
 			String[] temp = st.split(",", 0);
-			//randomNum = rand.nextInt(((flightNO.length-1) - 0) + 1) + 0;
-			//temp[0] = temp[0].replace("\"", "");
-			//temp[1] = temp[1].replace("\"", "");
-			//String key = temp[0]+temp[1]+flightNO[randomNum];
-			//System.out.println(temp[0] + temp[1] + flightNO[randomNum]);
-			Data detailData = new Data();
-			detailData.FirstName = temp[1];
-			detailData.LastName = temp[2];
-			detailData.flightNumber = temp[3];
-			if (temp[4] == "N")
-				detailData.checkedIn = false;
-			else if (temp[4] == "Y")
-				detailData.checkedIn = true;
-			
-			booking.put(temp[0], detailData);
-			//System.out.println("input:"+detailData);
 
-			//CRC32 crc = new CRC32();
-	        //crc.update(key.getBytes());
-	        //long tempKey = crc.getValue();
-	        //bw.write(Long.toHexString(tempKey) + "," + temp[0] + "," + temp[1] + "," + flightNO[randomNum] + "," + "N");
-	        //bw.newLine();
-	        
-	        //System.out.println("CRC32:"+Long.toHexString(tempKey));
+			bookingData bookingDetail = new bookingData();
+			bookingDetail.FirstName = temp[1];
+			bookingDetail.LastName = temp[2];
+			bookingDetail.flightNumber = temp[3];
+			if (temp[4] == "N")
+				bookingDetail.checkedIn = false;
+			else if (temp[4] == "Y")
+				bookingDetail.checkedIn = true;
+			
+			bookingHash.put(temp[0], bookingDetail);
 			
 		}
+		
+		while ((st = flightBR.readLine()) != null) {
+			String[] temp = st.split(",", 0);
+
+			flightData flightDetail = new flightData();
+			flightDetail.airline = temp[1];
+			flightDetail.depart = temp[2];
+			flightDetail.destination = temp[3];
+			flightDetail.aircraft = temp[4];
+			flightDetail.capacity = Integer.parseInt(temp[5]);
+			flightDetail.maxSize = Float.parseFloat(temp[6]);
+			flightDetail.maxWeight = Float.parseFloat(temp[7]);
+			
+			flightHash.put(temp[0], flightDetail);
+		}
+		
 		bookingBR.close();
 		flightBR.close();
-		System.out.println("input:"+booking);
+		//System.out.println("input:"+ flightHash);
 		
-		
+		//flightData x = flightHash.get("LM365");
+		//System.out.println(x.destination);
 		//System.out.println(bookingREF);
 			//System.out.println(st); 
 		} 
