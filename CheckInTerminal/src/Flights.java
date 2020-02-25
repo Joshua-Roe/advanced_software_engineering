@@ -1,8 +1,5 @@
 
 import java.io.*;
-import java.util.Random;
-import java.util.HashMap;
-import java.util.zip.CRC32;
 /*
  * @author      Marek Kujawa
  * @version     %I%, %G%
