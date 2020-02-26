@@ -8,7 +8,7 @@ public class GUI {
         //create frame
         JFrame checkFrame = new JFrame("Check In");
         checkFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        checkFrame.setSize(700, 120);
+        checkFrame.setSize(700, 170);
         checkFrame.setLocationRelativeTo(null);
         
         //Creating the panel at bottom and adding components
