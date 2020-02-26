@@ -42,3 +42,5 @@
     - [ ] Implementation of Class AllBookings
 * Leo:
     - [ ] Implementation of Class Booking
+
+Test
