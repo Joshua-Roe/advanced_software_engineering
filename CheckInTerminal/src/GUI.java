@@ -81,15 +81,22 @@ public class GUI {
     if(booking.getLastNme() != name) {
       return false;
     }
-
+    if(booking.getCheckinStatus()) {
+      return false;
+    }
     //set baggage
+    booking.setBaggageInfo(weight,size);
     //get flight from booking
+    flightCode = booking.getFlightCode();
     //check baggage form flight
+    flight = AllFlights.getFlight(flightCode);
     //catch exception
 		//if e then get levy
     //output baggage dialog if e
     //increase passenger count
+    flight.addPassenger();
     //set check in bit
+    booking.setCheckinStatus(True);
 		//confirm checkin dialog
 		JOptionPane.showMessageDialog(frame, "Check In Confirmed. \r\n {PLACEHOLDER}");
 		return true;
