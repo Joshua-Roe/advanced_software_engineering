@@ -75,12 +75,21 @@ public class GUI {
 		return false;
 		}
 		//check valid baggage input
-		//get booking form hashmak using ref
-		//confirm surname
-		//set baggage and checkin
-		//get baggage limit
-		//compare
-		//output baggage dialog if nessicary
+    //get booking form hashmap using ref
+    booking = AllBookings.getBooking(ref);
+    //confirm surname
+    if(booking.getLastNme() != name) {
+      return false;
+    }
+
+    //set baggage
+    //get flight from booking
+    //check baggage form flight
+    //catch exception
+		//if e then get levy
+    //output baggage dialog if e
+    //increase passenger count
+    //set check in bit
 		//confirm checkin dialog
 		JOptionPane.showMessageDialog(frame, "Check In Confirmed. \r\n {PLACEHOLDER}");
 		return true;
