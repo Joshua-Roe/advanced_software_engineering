@@ -10,8 +10,8 @@ public class setup {
 
 	public setup() {
 		try {
-			File bookingCSV = new File("../data/bookingDetails.csv"); 
-			File flightCSV = new File("../data/flightDetails.csv");
+			File bookingCSV = new File("../../data/bookingDetails.csv"); 
+			File flightCSV = new File("../../data/flightDetails.csv");
 			
 			BufferedReader bookingBR = new BufferedReader(new FileReader(bookingCSV)); 
 			BufferedReader flightBR = new BufferedReader(new FileReader(flightCSV));
