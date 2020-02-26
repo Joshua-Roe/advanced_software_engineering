@@ -4,8 +4,8 @@ public class Booking{
     public String last_name;
     public String flight_number;
     public boolean checked_in_status;
-    public int baggage_weight;
-    public int baggage_volume;
+    public float baggage_weight;
+    public float baggage_volume;
 
     public Booking(String new_booking_reference, String new_first_name, String new_last_name, String new_flight_number) {
         booking_reference = new_booking_reference;
@@ -23,7 +23,7 @@ public class Booking{
     public String getLastName() {
         return last_name;
     }
-    public String getFlightNumber() {
+    public String getFlightCode() {
         return flight_number;
     }
     public boolean getCheckInStatus() {
@@ -32,9 +32,9 @@ public class Booking{
     public void setCheckInStatus(boolean new_check_in_status) {
         checked_in_status = new_check_in_status;
     }
-    public void setBaggageInfo(int new_baggage_weight, int new_baggage_volume) {
-        baggage_weight = new_baggage_weight;
-        baggage_volume = new_baggage_volume;
+    public void setBaggageInfo(float w, float v) {
+        baggage_weight = w;
+        baggage_volume = v;
     }
 }
 

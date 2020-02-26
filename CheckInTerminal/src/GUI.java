@@ -3,8 +3,12 @@ import java.awt.*;
 import java.awt.event.*;
 public class GUI {
 	static JFrame frame;
-    public GUI() {
-
+	private AllBookings bookings;
+	private AllFlights flights;
+	private float w,v;
+    public GUI(AllBookings bookings, AllFlights flights) {
+    	this.bookings = bookings;
+    	this.flights = flights;
         //create frame
         JFrame checkFrame = new JFrame("Check In");
         checkFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +57,7 @@ public class GUI {
         {
           public void actionPerformed(ActionEvent e)
           {
-        	  if(confirm(nameText.getText(),refText.getText(),sizeText.getText(),weightText.getText())) {
+        	  if(confirm(nameText.getText().trim(),refText.getText().trim(),sizeText.getText().trim(),weightText.getText().trim())) {
         		  nameText.setText("");
         		  refText.setText("");
         		  sizeText.setText("");
@@ -70,43 +74,42 @@ public class GUI {
         checkFrame.setVisible(true);
     }
     public boolean confirm(String name, String ref, String size, String weight) {
-		if(name.trim().length() == 0 || ref.trim().length() == 0 || size.trim().length() == 0 || weight.trim().length() == 0) {
+		if(name.length() == 0 || ref.length() == 0 || size.length() == 0 || weight.length() == 0) {
 			JOptionPane.showMessageDialog(frame, "Please Fill All Inputs");
 		return false;
+		
 		}
-		//check valid baggage input
-    //get booking form hashmap using ref
-    booking = AllBookings.getBooking(ref);
-    //confirm surname
-    if(booking.getLastNme() != name) {
-      return false;
-    }
-    if(booking.getCheckinStatus()) {
-      return false;
-    }
-    //set baggage
-    booking.setBaggageInfo(weight,size);
-    //get flight from booking
-    flightCode = booking.getFlightCode();
-    //check baggage form flight
-    flight = AllFlights.getFlight(flightCode);
-    //catch exception
-		//if e then get levy
-    //output baggage dialog if e
-    //increase passenger count
-    flight.addPassenger();
-    //set check in bit
-    booking.setCheckinStatus(True);
-		//confirm checkin dialog
-		JOptionPane.showMessageDialog(frame, "Check In Confirmed. \r\n {PLACEHOLDER}");
-		return true;
-    }
-
-}
-class guiTest{
-    public static void main(String[] args) {
-    	GUI g = new GUI();
-    }
-    //before exit generate report
+		//Check valid baggage info
+		try {
+			w = Float.parseFloat(weight);
+			v = Float.parseFloat(size);
+		}
+		catch(NumberFormatException e) {
+	    	JOptionPane.showMessageDialog(frame, "Please enter numbers without characters for baggage size and weight.");
+	    	return false;
+		}
+	    Booking booking = bookings.getBooking(ref);
+	    if(!booking.getLastName().equals(name)) {
+	    	JOptionPane.showMessageDialog(frame, "Booking details not found. Please check your inputs again.");
+	    	return false;
+	    }
+	    if(booking.getCheckInStatus()) {
+	    	JOptionPane.showMessageDialog(frame, "You are already checked in");
+	    	return false;
+	    }
+	    booking.setBaggageInfo(w,v);
+	    String flightCode = booking.getFlightCode();
+	    Flight flight = flights.getFlight(flightCode);
+	    try {
+	    	flight.checkBaggage(w, v);
+	    }
+	    catch(Flight.OverBaggageLimitException e) {
+	    	JOptionPane.showMessageDialog(frame, "Baggage limit exceeded. \r\nYou have been charged £" + flight.getBaggageLevy() + "0.");
+	    }
+	    flight.addPassenger();
+	    booking.setCheckInStatus(true);
+			JOptionPane.showMessageDialog(frame, "Check In Confirmed.");
+			return true;
+	    }
 }
 	
