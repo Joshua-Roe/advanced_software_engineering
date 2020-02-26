@@ -1,4 +1,4 @@
-import Flight.OverWeightLimitException;
+import Flight.OverBaggageLimitException;
 
 public class Flight {
 	private String flightCode;
@@ -11,6 +11,7 @@ public class Flight {
 	private float totalBaggageVolume;
 	private float totalExcessFees;
 	private int numberOfPassengers;
+	private static float excessFeeCharge = 15;
 	
 	public Flight(String fc, String dest, String carr, int maxP, float maxBagW, float maxBagV){
 		this.flightCode = fc;
@@ -60,22 +61,25 @@ public class Flight {
 		return this.numberOfPassengers;
 	}
 	
-	public class OverWeightLimitException extends RuntimeException{
-		public OverWeightLimitException(String errorMessage) {
-		super(errorMessage);
-		}
-	}
-	
-	public class OverVolumeLimitException extends RuntimeException{
-		public OverVolumeLimitException(String errorMessage) {
+	public class OverBaggageLimitException extends RuntimeException{
+		public OverBaggageLimitException(String errorMessage) {
 		super(errorMessage);
 		}
 	}
 	
 	public void checkBaggage(float weight, float volume) {
-		if(weight > this.maxBaggageWeight) {
-			throw new OverWeightLimitException("Baggage limit exceeded");
+		if(weight > this.maxBaggageWeight || volume > this.maxBaggageVolume) {
+			this.totalExcessFees += this.excessFeeCharge; 
+			throw new OverBaggageLimitException("Baggage limit exceeded");
+		}
+		else {
+			this.totalBaggageWeight += weight;
+			this.totalBaggageVolume += volume;
 		}
 		
+	}
+	
+	public float getCollectedFees() {
+		return this.totalExcessFees;
 	}
 }

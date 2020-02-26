@@ -1,11 +1,11 @@
 import java.util.HashMap;
 public class AllFlights {
-	int numOfFlights;
-	HashMap<String,String> flights;
+	private int numOfFlights;
+	private HashMap<String,Flight> flights;
 	
 	public AllFlights() {
 		this.numOfFlights = 0;
-		this.flights = new HashMap<String, String>();
+		this.flights = new HashMap<String, Flight>();
 	}
     /**
      * Adds a new <tt>Flight</tt> object with a given flight code to the flights <tt>HashMap</tt>. 
@@ -18,11 +18,11 @@ public class AllFlights {
      * @param value the <tt>Flight</tt> object to be added to the flights <tt>HashMap</tt>
      * @return 1 if <tt>Flight</tt> was successfully added to <tt>HashMap</tt>
      */
-	public int addFlight(String key, String value) {
+	public boolean addFlight(String key, Flight value) {
 		if(key.trim().length()==0) {
 			throw new IllegalStateException("Cannot have a blank key");
 		}
-		String output = flights.put(key, value);
+		Flight output = flights.put(key, value);
 		if(output != null) {
 			if(output == value) {
 				throw new IllegalStateException("Duplicate Entry found");
@@ -31,7 +31,8 @@ public class AllFlights {
 				throw new IllegalStateException("Key already contained an object: " + output);
 			}
 		}
-		return 1;
+		this.numOfFlights +=1;
+		return true;
 	}
 	
     /**
@@ -41,10 +42,17 @@ public class AllFlights {
      * @return the <tt>Flight</tt> object assigned to the flight code
      */
 	
-	public String getFlight(String key) {
+	public Flight getFlight(String key) {
 		if(key.trim().length()==0) {
 			throw new IllegalStateException("Cannot have a blank key");
 		}
 		return flights.get(key);
+	}
+	/**
+     * Returns the total number of flights contained in flights <tt>HashMap</tt>
+     * @return the total number of flights contained in flights <tt>HashMap</tt>
+     */
+	public int getTotalFlights() {
+		return this.numOfFlights;
 	}
 }
