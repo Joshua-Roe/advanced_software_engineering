@@ -10,8 +10,8 @@ public class setup {
 
 	public setup() {
 		try {
-			File bookingCSV = new File("../../data/bookingDetails.csv"); 
-			File flightCSV = new File("../../data/flightDetails.csv");
+			File bookingCSV = new File("../data/bookingDetails.csv"); 
+			File flightCSV = new File("../data/flightDetails.csv");
 			
 			BufferedReader bookingBR = new BufferedReader(new FileReader(bookingCSV)); 
 			BufferedReader flightBR = new BufferedReader(new FileReader(flightCSV));
@@ -28,8 +28,7 @@ public class setup {
 			
 			while ((st = flightBR.readLine()) != null) {
 				String[] temp = st.split(",", 0);
-
-				Flight flight = new Flight(temp[0], temp[3], temp[1], Integer.parseInt(temp[5]), Float.parseFloat(temp[6]), Float.parseFloat(temp[7]), 0);
+				Flight flight = new Flight(temp[0], temp[3], temp[1], Integer.parseInt(temp[5]), Float.parseFloat(temp[6]), Float.parseFloat(temp[7]), Float.parseFloat(temp[8]));
 				flights.addFlight(flight);
 			}
 			
@@ -49,4 +48,12 @@ public class setup {
 			System.out.println("IO exception experienced.");
 		}
 	} 
+	
+	public AllBookings getBookings() {
+		return bookings;
+	}
+	
+	public AllFlights getFlights() {
+		return flights;
+	}
 } 
