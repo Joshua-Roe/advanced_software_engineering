@@ -12,8 +12,6 @@ class FlightTest {
 		assertEquals(flight1.getCarrier(), "AirFrance");
 		assertEquals(flight1.getNumOfPassengers(), 0);
 		assertEquals(flight1.getMaxPassengers(), 200);
-		assertEquals(flight1.getMaxBaggageWeight(), 30);
-		assertEquals(flight1.getMaxBaggageVolume(), 50);
 		assertEquals(flight1.getBaggageLevy(), 15);
 	}
 	
