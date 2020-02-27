@@ -1,28 +1,28 @@
 BA2503,British Airways,Edinburgh,London Gatwick,A320,102,275,23,35
-EZY484,easyJet,Edinburgh,Belfast International,A320,180,0,0,35
-BE294,Flybe,Edinburgh,Manchester,DH8D,78,0,0,35
-EZY808,easyJet,Edinburgh,London Gatwick,A320,180,0,0,35
-FR5160,Ryanair,Edinburgh,Sofia,B738,78,0,0,35
-LM335,Loganair,Edinburgh,Wick,SF34,34,0,0,35
-FR6652,Ryanair,Edinburgh,Malaga,B738,189,0,0,35
-LM397,Loganair,Edinburgh,Kirkwall,SF34,34,0,0,35
-EJU3386,easyJet,Edinburgh,Venice,A320,180,0,0,35
-BE849,Flybe,Edinburgh,Birmingham,DH8D,78,0,0,35
-EZS6917,easyJet,Edinburgh,Basel,A320,180,0,0,35
-EZY6979,easyJet,Edinburgh,Copenhagen,A319,156,0,0,35
-EJU2684,easyJet,Edinburgh,Milan,A320,180,0,0,35
-LM347,Loganair,Edinburgh,Stornoway,SF34,34,0,0,35
-LM365,Loganair,Edinburgh,East Midlands,E145,50,0,0,35
-EZY012,easyJet,Edinburgh,London Luton,A320,180,0,0,35
-EZY236,easyJet,Edinburgh,London Stansted,A320,180,0,0,35
-BE2107,Flybe,Edinburgh,London Heathrow,DH8D,78,0,0,35
-EZY426,easyJet,Edinburgh,Bristol,A320,180,0,0,35
-FR1049,Ryanair,Edinburgh,Katowice,B738,78,0,0,35
-LM385,Loganair,Edinburgh,Loganair,E145,50,0,0,35
-FR5834,Ryanair,Edinburgh,Milan Bergamo,B738,78,0,0,35
-BA8857,British Airways,Edinburgh,Dublin,AT76,70,275,23,35
-EZY488,easyJet,Edinburgh,Belfast International,A320,180,0,0,35
-FR815,Ryanair,Edinburgh,Dublin,B738,78,0,0,35
-EZY2686,easyJet,Edinburgh,Milan Malpensa,A319,156,0,0,35
-BE851,Flybe,Edinburgh,Birmingham,DH8D,78,0,0,35
-EK024,Emirates,Edinburgh,Dubai,B77W,354,300,30,35
+BA8857,easyJet,Edinburgh,Belfast International,A320,180,0,0,35
+BE2107,Flybe,Edinburgh,Manchester,DH8D,78,0,0,35
+BE294,easyJet,Edinburgh,London Gatwick,A320,180,0,0,35
+BE849,Ryanair,Edinburgh,Sofia,B738,78,0,0,35
+BE851,Loganair,Edinburgh,Wick,SF34,34,0,0,35
+EJU2684,Ryanair,Edinburgh,Malaga,B738,189,0,0,35
+EJU3386,Loganair,Edinburgh,Kirkwall,SF34,34,0,0,35
+EK024,easyJet,Edinburgh,Venice,A320,180,0,0,35
+EZS6917,Flybe,Edinburgh,Birmingham,DH8D,78,0,0,35
+EZY012,easyJet,Edinburgh,Basel,A320,180,0,0,35
+EZY236,easyJet,Edinburgh,Copenhagen,A319,156,0,0,35
+EZY2686,easyJet,Edinburgh,Milan,A320,180,0,0,35
+EZY426,Loganair,Edinburgh,Stornoway,SF34,34,0,0,35
+EZY484,Loganair,Edinburgh,East Midlands,E145,50,0,0,35
+EZY488,easyJet,Edinburgh,London Luton,A320,180,0,0,35
+EZY6979,easyJet,Edinburgh,London Stansted,A320,180,0,0,35
+EZY808,Flybe,Edinburgh,London Heathrow,DH8D,78,0,0,35
+FR1049,easyJet,Edinburgh,Bristol,A320,180,0,0,35
+FR5160,Ryanair,Edinburgh,Katowice,B738,78,0,0,35
+FR5834,Loganair,Edinburgh,Loganair,E145,50,0,0,35
+FR6652,Ryanair,Edinburgh,Milan Bergamo,B738,78,0,0,35
+FR815,British Airways,Edinburgh,Dublin,AT76,70,275,23,35
+LM335,easyJet,Edinburgh,Belfast International,A320,180,0,0,35
+LM347,Ryanair,Edinburgh,Dublin,B738,78,0,0,35
+LM365,easyJet,Edinburgh,Milan Malpensa,A319,156,0,0,35
+LM385,Flybe,Edinburgh,Birmingham,DH8D,78,0,0,35
+LM397,Emirates,Edinburgh,Dubai,B77W,354,300,30,35
