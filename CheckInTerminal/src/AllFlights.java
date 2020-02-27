@@ -19,12 +19,11 @@ public class AllFlights {
 		this.flights = new HashMap<String, Flight>();
 	}
     /**
-     * Adds a new <tt>Flight</tt> object with a given flight code to the flights <tt>HashMap</tt>. 
+     * Adds a new <tt>Flight</tt> object to the flights <tt>HashMap</tt>. 
      * Throws <tt>IllegalStateException</tt> for new input element if an element with the same key
      * already exists in the <tt>HashMap</tt> or if given key is a blank.
      * 
-     * @param key the flight code String to assign to the <tt>Flight</tt> object
-     * @param value the <tt>Flight</tt> object to be added to the flights <tt>HashMap</tt>
+     * @param flight the <tt>Flight</tt> object to be added
      * @throws IllegalStateException if duplicate key is found in the <tt>HashMap</tt>, or if key is an empty String
      * @return true if <tt>Flight</tt> was successfully added to <tt>HashMap</tt>
      */
