@@ -109,7 +109,8 @@ public class GUI {
 		    	flight.checkBaggage(w, v);
 		    }
 		    catch(Flight.OverBaggageLimitException e) {
-		    	
+				JOptionPane.showMessageDialog(frame, "Baggage limit exceeded. Excess fee of " + flight.getBaggageLevy() + "0 GBP applied.");
+
 		    }
 		    flight.addPassenger();
 		    booking.setCheckInStatus(true);
