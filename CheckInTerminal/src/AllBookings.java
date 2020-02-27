@@ -1,3 +1,4 @@
+package CheckInTerminal;
 /**
  * @author ra124
  *
@@ -22,7 +23,7 @@ public class AllBookings {
 	//TODO: getBooking() & getNumOfBookings()
 	public Booking getBooking(String reference) {
 		if (reference.trim().length() == 0)
-			throw new IllegalStateException("error");
+			throw new IllegalStateException("Cannot enter empty booking reference");
 		
 		return bookings.get(reference);
 	} 
