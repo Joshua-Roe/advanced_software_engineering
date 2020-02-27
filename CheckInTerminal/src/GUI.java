@@ -94,7 +94,7 @@ public class GUI {
 			w = Float.parseFloat(weight);
 			v = Float.parseFloat(size);
 		    Booking booking = bookings.getBooking(ref);
-		    if(!booking.getLastName().equals(name)) {
+		    if(!booking.getLastName().toLowerCase().equals(name.toLowerCase())) {
 		    	JOptionPane.showMessageDialog(frame, "Booking details not found. Please check your inputs again.");
 		    	return false;
 		    }
