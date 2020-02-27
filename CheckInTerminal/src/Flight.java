@@ -1,3 +1,4 @@
+package CheckInTerminal;
 /**
  * <tt>Flight</tt> is an object used to store details for each flight.
  * Calculation of baggage limits being exceeded is done in this class.
@@ -112,13 +113,11 @@ public class Flight {
      * @throws OverBaggageLimitException if baggage weight or volume exceeds the limitation.
      */
 	public void checkBaggage(float weight, float volume) {
+		this.totalBaggageWeight += weight;
+		this.totalBaggageVolume += volume;
 		if(weight > this.maxBaggageWeight || volume > this.maxBaggageVolume) {
 			this.totalExcessFees += this.excessFeeCharge; 
 			throw new OverBaggageLimitException("Baggage limit exceeded");
-		}
-		else {
-			this.totalBaggageWeight += weight;
-			this.totalBaggageVolume += volume;
 		}
 	}
 	

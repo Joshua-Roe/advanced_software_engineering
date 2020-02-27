@@ -1,3 +1,4 @@
+package CheckInTerminal;
 import java.util.HashMap;
 /**
  * <tt>AllFlights</tt> holds <tt>Flight</tt> objects in a <tt>HashMap</tt>, while also keeping track of the
@@ -7,7 +8,7 @@ import java.util.HashMap;
  */
 public class AllFlights {
 	private int numOfFlights;
-	private HashMap<String,Flight> flights;
+	public HashMap<String,Flight> flights;
 	
 	/**
      * Constructs an empty <tt>HashMap</tt> with a String for its key and a <tt>Flight</tt> object for

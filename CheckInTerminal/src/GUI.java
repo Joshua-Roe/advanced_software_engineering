@@ -1,3 +1,4 @@
+package CheckInTerminal;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -53,6 +54,8 @@ public class GUI {
         
         JPanel confPanel = new JPanel(); // the panel is not visible in output        
         JButton confBtn= new JButton("Confirm");
+        JButton close = new JButton("Exit");
+
         confBtn.addActionListener(new ActionListener()
         {
           public void actionPerformed(ActionEvent e)
@@ -65,7 +68,14 @@ public class GUI {
         	  }
           }
         });
+        
+        close.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		System.exit(0);
+        	}
+        });
         confPanel.add(confBtn);
+        confPanel.add(close);
 
         //Adding Components to the frame.
         checkFrame.getContentPane().add(BorderLayout.WEST, bookingPanel);
@@ -83,33 +93,37 @@ public class GUI {
 		try {
 			w = Float.parseFloat(weight);
 			v = Float.parseFloat(size);
+		    Booking booking = bookings.getBooking(ref);
+		    if(!booking.getLastName().equals(name)) {
+		    	JOptionPane.showMessageDialog(frame, "Booking details not found. Please check your inputs again.");
+		    	return false;
+		    }
+		    if(booking.getCheckInStatus()) {
+		    	JOptionPane.showMessageDialog(frame, "You are already checked in.");
+		    	return false;
+		    }
+		    booking.setBaggageInfo(w,v);
+		    String flightCode = booking.getFlightCode();
+		    Flight flight = flights.getFlight(flightCode);
+		    try {
+		    	flight.checkBaggage(w, v);
+		    }
+		    catch(Flight.OverBaggageLimitException e) {
+		    	
+		    }
+		    flight.addPassenger();
+		    booking.setCheckInStatus(true);
+				JOptionPane.showMessageDialog(frame, "Check In Confirmed. Proceed to your gate.");
+				return true;
 		}
 		catch(NumberFormatException e) {
 	    	JOptionPane.showMessageDialog(frame, "Please enter numbers without characters for baggage size and weight.");
 	    	return false;
 		}
-	    Booking booking = bookings.getBooking(ref);
-	    if(!booking.getLastName().equals(name)) {
-	    	JOptionPane.showMessageDialog(frame, "Booking details not found. Please check your inputs again.");
-	    	return false;
-	    }
-	    if(booking.getCheckInStatus()) {
-	    	JOptionPane.showMessageDialog(frame, "You are already checked in");
-	    	return false;
-	    }
-	    booking.setBaggageInfo(w,v);
-	    String flightCode = booking.getFlightCode();
-	    Flight flight = flights.getFlight(flightCode);
-	    try {
-	    	flight.checkBaggage(w, v);
-	    }
-	    catch(Flight.OverBaggageLimitException e) {
-	    	JOptionPane.showMessageDialog(frame, "Baggage limit exceeded. \r\nYou have been charged £" + flight.getBaggageLevy() + "0.");
-	    }
-	    flight.addPassenger();
-	    booking.setCheckInStatus(true);
-			JOptionPane.showMessageDialog(frame, "Check In Confirmed.");
-			return true;
-	    }
+		catch(NullPointerException e) {
+			JOptionPane.showMessageDialog(frame, "Booking details not found. Please check your inputs again.");
+			return false;
+		}
+    }
 }
 	

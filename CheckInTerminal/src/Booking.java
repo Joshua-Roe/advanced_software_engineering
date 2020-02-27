@@ -1,3 +1,4 @@
+package CheckInTerminal;
 public class Booking{
     public String booking_reference;
 	public String first_name;
