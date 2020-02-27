@@ -1,3 +1,5 @@
+[class_diagram]: https://github.com/Joshua-Roe/advanced_software_engineering/blob/master/images/class_diagram.PNG "Class Diagram 1"
+[gui_v1]: https://github.com/Joshua-Roe/advanced_software_engineering/blob/master/images/gui_v1.jpg "GUI v.1"
 ## F21AS: Advanced Sorftware Engineering
 
 ### Coursework 2020 - A simulation of a simple airport check-in system.
@@ -18,6 +20,11 @@
 - Download repository as ZIP
 - Run bash script under CheckInTerminal/bin/flightCheckin.bash
 - Output report generated on exit will be found under CheckInTerminal/bin/output.txt
+---
+#### Screenshot of the Program:
+![GUI][gui_v1]
+
+---
 #### TODOs:
 
 - [x] At the start of the application, all `passengers` have bought a `ticket`. A `text file` should be provided which gives the `list of all bookings`, containing, for each passenger, details of the unique `booking reference code`, the name of the `passenger`, their `flight code`, and whether they have `checked in or not`.
@@ -30,8 +37,6 @@
 ---
 
 ![Class Diagram 1][class_diagram]
-
-[class_diagram]: https://github.com/Joshua-Roe/advanced_software_engineering/blob/master/images/class_diagram.PNG "Class Diagram 1"
 
 #### Tasks Distribution:
 
@@ -46,5 +51,3 @@
     - [x] Implementation of Class AllBookings
 * Leo:
     - [x] Implementation of Class Booking
-
-Test
