@@ -30,7 +30,9 @@ public class AllBookings {
      * @param booking the <tt>Booking</tt> object to be added
      * @throws IllegalStateException if duplicate key is found in the <tt>HashMap</tt>, or if key is an empty String
      * @return true if <tt>Booking</tt> was successfully added to <tt>HashMap</tt>
-     */oking(Booking booking) {
+     */
+
+	public boolean addBooking(Booking booking) {
 		bookings.put(booking.getReference(), booking);
 		numOfBookings +=1;
 		return true;
