@@ -41,7 +41,7 @@
 * Sean:
     - [x] Implementation of Class AllFlights
 * Josh:
-    - [x] Implementation of GUI
+    - [x] Implementation of Class GUI
 * Randy:
     - [x] Implementation of Class AllBookings
 * Leo:
