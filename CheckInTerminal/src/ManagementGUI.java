@@ -5,6 +5,18 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ManagementGUI {
+  class FlightComponent extends JPanel{
+    public FlightComponent(String title, int passengerCount, int passengerCapacity, int holdLevel) {
+      this.setBorder(createBorder(title)); //set border
+      this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); //set layout
+      JLabel checkedIn = new JLabel(passengerCount + " checked in of " + passengerCapacity);
+      this.add(checkedIn);
+      JLabel holdPercent = new JLabel("Hold is " + holdLevel + "% full");
+      this.add(holdPercent);
+    }
+    //TODO setPassengerCount
+    //TODO setHoldLevel
+  }
 	static JFrame frame;
     public ManagementGUI() {
         //create frame
@@ -36,7 +48,7 @@ public class ManagementGUI {
         //Column for Flights
         JPanel flightsContentPanel = new JPanel(); //content panel to be scrolled
         flightsContentPanel.setLayout(new BoxLayout(flightsContentPanel, BoxLayout.PAGE_AXIS)); //set layout
-        for (int i=0; i<20; i++) {flightsContentPanel.add(new JLabel("Test: "+ i));} //TEST to fill scroll panel
+        for (int i=0; i<20; i++) {flightsContentPanel.add(new FlightComponent("FlightName:"+i,i,i+10,i));} //TEST to fill scroll panel
         JScrollPane flightsScrollPane = new JScrollPane(flightsContentPanel);//scrollpane object
         JPanel flightsPanel = new JPanel(); //top level container panel for border
         flightsPanel.setBorder(createBorder("Flights")); //set border
