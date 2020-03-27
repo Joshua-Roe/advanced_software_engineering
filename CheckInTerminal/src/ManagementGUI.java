@@ -5,6 +5,21 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ManagementGUI {
+  class PassengerComponent extends JPanel{
+    public PassengerComponent(String flight, String passengerName, int bagWeight, String bagSize) {
+      this.setBorder(createBorder("")); //set border
+      this.setLayout(new GridLayout(0,4)); //set layout
+      JLabel flightText = new JLabel(flight, SwingConstants.CENTER);
+      this.add(flightText);
+      JLabel nameText = new JLabel(passengerName, SwingConstants.CENTER);
+      this.add(nameText);
+      JLabel weightText = new JLabel(bagWeight+"kg", SwingConstants.CENTER);
+      this.add(weightText);
+      JLabel sizeText = new JLabel(bagSize, SwingConstants.CENTER);
+      this.add(sizeText);
+    }
+    //TODO setContents
+  }
   class DeskComponent extends JPanel{
     public DeskComponent(String title, String passengerName, int bagWeight, int bagFee) {
       this.setBorder(createBorder(title)); //set border
@@ -45,7 +60,7 @@ public class ManagementGUI {
         //Column for Queue Patrons
         JPanel queueContentPanel = new JPanel(); //content panel to be scrolled
         queueContentPanel.setLayout(new BoxLayout(queueContentPanel, BoxLayout.PAGE_AXIS)); //set layout
-        for (int i=0; i<20; i++) {queueContentPanel.add(new JLabel("Test: "+ i));} //TEST to fill scroll panel
+        for (int i=0; i<20; i++) {queueContentPanel.add(new PassengerComponent("FLT"+i, "Passenger Name", i*2, i+"x"+(i+1)+"x"+(i+2)));} //TEST to fill scroll panel
         JScrollPane queueScrollPane = new JScrollPane(queueContentPanel);//scrollpane object
         JPanel queuePanel = new JPanel(); //top level container panel for border
         queuePanel.setBorder(createBorder("Queue Patrons")); //set border
