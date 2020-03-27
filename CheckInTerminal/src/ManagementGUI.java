@@ -3,6 +3,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
+
 public class ManagementGUI {
 	static JFrame frame;
     public ManagementGUI() {
@@ -12,21 +13,35 @@ public class ManagementGUI {
         checkFrame.setSize(700, 170);
         checkFrame.setLocationRelativeTo(null);
         
-        //Creating the panel at bottom and adding components
-        JPanel queuePanel = new JPanel(); // the panel is not visible in output
-        queuePanel.setBorder(createBorder("Queue Patrons"));
-        JLabel queueLabel = new JLabel("Queue Patrons");
-        queuePanel.add(queueLabel); // Components Added using Flow Layout
-        
-        JPanel desksPanel = new JPanel(); // the panel is not visible in output
-        desksPanel.setBorder(createBorder("Check In Desks"));
-        JLabel desksLabel = new JLabel("Check In Desks");
-        desksPanel.add(desksLabel); // Components Added using Flow Layout
+        //Column for Queue Patrons
+        JPanel queueContentPanel = new JPanel(); //content panel to be scrolled
+        queueContentPanel.setLayout(new BoxLayout(queueContentPanel, BoxLayout.PAGE_AXIS)); //set layout
+        for (int i=0; i<20; i++) {queueContentPanel.add(new JLabel("Test: "+ i));} //TEST to fill scroll panel
+        JScrollPane queueScrollPane = new JScrollPane(queueContentPanel);//scrollpane object
+        JPanel queuePanel = new JPanel(); //top level container panel for border
+        queuePanel.setBorder(createBorder("Queue Patrons")); //set border
+        queuePanel.setLayout(new BoxLayout(queuePanel, BoxLayout.PAGE_AXIS)); //set layout
+        queuePanel.add(BorderLayout.CENTER, queueScrollPane); //add scrollpane to bordered panel
 
-        JPanel flightsPanel = new JPanel(); // the panel is not visible in output
-        flightsPanel.setBorder(createBorder("Flights"));
-        JLabel flightsLabel = new JLabel("Flights");
-        flightsPanel.add(flightsLabel); // Components Added using Flow Layout
+        //Column for Check In Desks
+        JPanel desksContentPanel = new JPanel(); //content panel to be scrolled
+        desksContentPanel.setLayout(new BoxLayout(desksContentPanel, BoxLayout.PAGE_AXIS)); //set layout
+        for (int i=0; i<20; i++) {desksContentPanel.add(new JLabel("Test: "+ i));} //TEST to fill scroll panel
+        JScrollPane desksScrollPane = new JScrollPane(desksContentPanel);//scrollpane object
+        JPanel desksPanel = new JPanel(); //top level container panel for border
+        desksPanel.setBorder(createBorder("Check In Desks")); //set border
+        desksPanel.setLayout(new BoxLayout(desksPanel, BoxLayout.PAGE_AXIS)); //set layout
+        desksPanel.add(BorderLayout.CENTER, desksScrollPane); //add scrollpane to bordered panel
+
+        //Column for Flights
+        JPanel flightsContentPanel = new JPanel(); //content panel to be scrolled
+        flightsContentPanel.setLayout(new BoxLayout(flightsContentPanel, BoxLayout.PAGE_AXIS)); //set layout
+        for (int i=0; i<20; i++) {flightsContentPanel.add(new JLabel("Test: "+ i));} //TEST to fill scroll panel
+        JScrollPane flightsScrollPane = new JScrollPane(flightsContentPanel);//scrollpane object
+        JPanel flightsPanel = new JPanel(); //top level container panel for border
+        flightsPanel.setBorder(createBorder("Flights")); //set border
+        flightsPanel.setLayout(new BoxLayout(flightsPanel, BoxLayout.PAGE_AXIS)); //set layout
+        flightsPanel.add(BorderLayout.CENTER, flightsScrollPane); //add scrollpane to bordered panel
         
         JPanel mainPanel = new JPanel(); // the panel is not visible in output
         mainPanel.setLayout(new GridLayout(0,3));
