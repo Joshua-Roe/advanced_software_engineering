@@ -5,6 +5,24 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ManagementGUI {
+  class DeskComponent extends JPanel{
+    public DeskComponent(String title, String passengerName, int bagWeight, int bagFee) {
+      this.setBorder(createBorder(title)); //set border
+      this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); //set layout
+      JLabel bagDetails = new JLabel(passengerName + " is dropping off 1 bag of " + bagWeight + "kg");
+      this.add(bagDetails);
+      String feeText = "";
+      if(bagFee == 0){
+        feeText = "No baggage fee is due";
+      }
+      else{
+        feeText = "A bagagge fee of £" + bagFee + " is due";
+      }
+      JLabel feeDetails = new JLabel(feeText);
+      this.add(feeDetails);
+    }
+    //TODO setContents
+  }
   class FlightComponent extends JPanel{
     public FlightComponent(String title, int passengerCount, int passengerCapacity, int holdLevel) {
       this.setBorder(createBorder(title)); //set border
@@ -14,8 +32,7 @@ public class ManagementGUI {
       JLabel holdPercent = new JLabel("Hold is " + holdLevel + "% full");
       this.add(holdPercent);
     }
-    //TODO setPassengerCount
-    //TODO setHoldLevel
+    //TODO setContents
   }
 	static JFrame frame;
     public ManagementGUI() {
@@ -38,7 +55,8 @@ public class ManagementGUI {
         //Column for Check In Desks
         JPanel desksContentPanel = new JPanel(); //content panel to be scrolled
         desksContentPanel.setLayout(new BoxLayout(desksContentPanel, BoxLayout.PAGE_AXIS)); //set layout
-        for (int i=0; i<20; i++) {desksContentPanel.add(new JLabel("Test: "+ i));} //TEST to fill scroll panel
+        desksContentPanel.add(new DeskComponent("Desk 1", "Joshua Roe", 7, 12));
+        desksContentPanel.add(new DeskComponent("Desk 2", "Sean Katagiri", 4, 0));
         JScrollPane desksScrollPane = new JScrollPane(desksContentPanel);//scrollpane object
         JPanel desksPanel = new JPanel(); //top level container panel for border
         desksPanel.setBorder(createBorder("Check In Desks")); //set border
