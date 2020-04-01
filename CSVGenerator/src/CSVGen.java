@@ -1,6 +1,5 @@
 import java.io.*; 
 import java.util.Random;
-import java.util.HashMap;
 import java.util.zip.CRC32;
 //import java.io.File;
 
