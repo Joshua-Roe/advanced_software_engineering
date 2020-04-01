@@ -1,5 +1,6 @@
 package CheckInTerminal;
 import java.io.*;
+import java.util.Random;
 
 public class CSVReader { 
 	private AllFlights flights;
@@ -22,7 +23,15 @@ public class CSVReader {
 			String st; 
 			while ((st = bookingBR.readLine()) != null) {
 				String[] temp = st.split(",", 0);
-				Booking booking = new Booking(temp[0], temp[1], temp[2], temp[3]);
+
+				Random rand1 = new Random();
+				Random rand2 = new Random();
+				float min = 0;
+				float maxWeight = 60;
+				float maxVolume = 500;
+				float ranWeight = rand1.nextFloat() * (maxWeight - min) + min;;
+				float ranVolume = rand2.nextFloat() * (maxVolume - min) + min;;
+				Booking booking = new Booking(temp[0], temp[1], temp[2], temp[3], ranWeight, ranVolume);
 				bookings.addBooking(booking);
 			}
 			

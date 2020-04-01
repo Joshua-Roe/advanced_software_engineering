@@ -17,11 +17,15 @@ public class Booking{
      * @param new_last_name the last name of the booking.
      * @param new_flight_number the flight code for the flight for this booking.
      */
-    public Booking(String new_booking_reference, String new_first_name, String new_last_name, String new_flight_number) {
+    public Booking(String new_booking_reference, String new_first_name, String new_last_name, String new_flight_number, float new_baggage_weight, float new_baggage_volume) {
         booking_reference = new_booking_reference;
         first_name = new_first_name;
         last_name = new_last_name;
         flight_number = new_flight_number;
+
+        baggage_weight = new_baggage_weight;
+        baggage_volume = new_baggage_volume;
+
         checked_in_status = false;
     }
     
@@ -74,8 +78,8 @@ public class Booking{
      * @param v the volume of the baggage
      */
     public void setBaggageInfo(float w, float v) {
-        baggage_weight = w;
-        baggage_volume = v;
+        //baggage_weight = w;
+        //baggage_volume = v;
     }
 }
 
