@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class AllFlights {
 	private int numOfFlights;
-	public HashMap<String,Flight> flights;
+	private HashMap<String,Flight> flights;
 	
 	/**
      * Constructs an empty <tt>HashMap</tt> with a String for its key and a <tt>Flight</tt> object for
@@ -62,4 +62,11 @@ public class AllFlights {
 	public int getTotalFlights() {
 		return this.numOfFlights;
 	}
+	/**
+     * Returns the flights <tt>HashMap</tt> collection
+     * @return the flights <tt>HashMap</tt> collection
+     */
+	public HashMap<String, Flight> getAllFlights(){
+		return flights;
+   }
 }

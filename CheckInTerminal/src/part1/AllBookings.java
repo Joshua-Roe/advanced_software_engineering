@@ -59,5 +59,13 @@ public class AllBookings {
      */
 	public int getnumofBookings() {
 		return numOfBookings;
-	}
+     }
+     
+     /**
+     * Returns the bookings <tt>HashMap</tt> collection
+     * @return the bookings <tt>HashMap</tt> collection
+     */
+     public HashMap<String, Booking> getAllBookings(){
+          return bookings;
+     }
 }

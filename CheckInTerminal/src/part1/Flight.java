@@ -4,6 +4,7 @@ package part1;
  * <tt>Flight</tt> is an object used to store details for each flight.
  * Calculation of baggage limits being exceeded is done in this class.
  */
+@SuppressWarnings("serial")
 public class Flight {
 	private String flightCode;
 	private String destination;

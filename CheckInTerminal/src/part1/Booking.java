@@ -46,7 +46,13 @@ public class Booking{
     public String getLastName() {
         return last_name;
     }
-    
+
+    /**
+     * @return the last name.
+     */
+    public String getFullName() {
+        return first_name+" "+last_name;
+    }
     /**
      * @return the flight code.
      */
