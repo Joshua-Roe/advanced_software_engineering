@@ -17,22 +17,24 @@ public class CheckinCounter extends Thread implements Subject {
     }
 
     public void run() {
-        while (true) {
+        while (queue.size()>0) {
             serveCustomer();
         }
     }
 
-    public void serveCustomer(){
+    public synchronized void serveCustomer(){
+        // notify PassengerQueue for update queue list
+        //TODO Possibly better to notify GUI as an observer than the Passenger queue as an observer
+        notifyObservers();
         if(queue.size()>0){
             this.passenger = queue.dequeue();
-            System.out.println("Serving " + passenger.getFullName());
+            queue.updateQueue();
+            System.out.println("++Desk "+this.desk_number+" is now serving " + passenger.getFullName()+"++");
             try {
-                Thread.sleep(3000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 System.out.println("Interrupt Exception");
             }
-            // notify PassengerQueue for update queue list
-            notifyObservers();
         }
     }
     @Override
