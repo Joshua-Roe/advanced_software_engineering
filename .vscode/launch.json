@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ManagementGUI",
+            "request": "launch",
+            "mainClass": "ManagementGUI",
+            "projectName": "advanced_software_engineering_8b319239"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - FlightCheckIn",
+            "request": "launch",
+            "mainClass": "FlightCheckIn",
+            "projectName": "advanced_software_engineering_8b319239"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - FlightCheckIn",
             "request": "launch",
             "mainClass": "src.FlightCheckIn",
