@@ -1,3 +1,4 @@
+package CSVGen;
 import java.io.*; 
 import java.util.Random;
 import java.util.zip.CRC32;
