@@ -8,6 +8,48 @@
             "type": "java",
             "name": "CodeLens (Launch) - ManagementGUI",
             "request": "launch",
+            "mainClass": "part2.ManagementGUI",
+            "projectName": "advanced_software_engineering_8b319239"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ManagementGUI",
+            "request": "launch",
+            "mainClass": "part2.ManagementGUI",
+            "projectName": "CheckInTerminal"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ManagementGUI",
+            "request": "launch",
+            "mainClass": "ManagementGUI",
+            "projectName": "CheckInTerminal"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ManagementGUI",
+            "request": "launch",
+            "mainClass": "src.part2.ManagementGUI",
+            "projectName": "CheckInTerminal"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ManagementGUI",
+            "request": "launch",
+            "mainClass": "src.part2.ManagementGUI",
+            "projectName": "testing_project"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ManagementGUI",
+            "request": "launch",
+            "mainClass": "part2.ManagementGUI",
+            "projectName": "testing_project"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ManagementGUI",
+            "request": "launch",
             "mainClass": "ManagementGUI",
             "projectName": "advanced_software_engineering_8b319239"
         },
