@@ -9,7 +9,9 @@ public class Flight {
 	private String carrier;
 	private int maxPassengers;
 	private float maxBaggageWeight;
-	private float maxBaggageVolume;
+	private float maxBaggageL;
+	private float maxBaggageH;
+	private float maxBaggageW;
 	private float totalBaggageWeight;
 	private float totalBaggageVolume;
 	private float totalExcessFees;
@@ -26,13 +28,15 @@ public class Flight {
      * @param maxBagV the maximum available baggage volume per person.
      * @param excessFee the levy charged for baggage that exceed the baggage limitations. 
      */
-	public Flight(String fc, String dest, String carr, int maxP, float maxBagW, float maxBagV, float excessFee){
+	public Flight(String fc, String dest, String carr, int maxP, float maxBagL, float maxBagH, float maxBagW, float maxBagWeight, float excessFee){
 		this.flightCode = fc;
 		this.destination = dest;
 		this.carrier = carr;
 		this.maxPassengers = maxP;
-		this.maxBaggageWeight = maxBagW;
-		this.maxBaggageVolume = maxBagV;
+		this.maxBaggageWeight = maxBagWeight;
+		this.maxBaggageL = maxBagL;
+		this.maxBaggageH = maxBagH;
+		this.maxBaggageW = maxBagW;
 		this.totalBaggageWeight = 0;
 		this.totalBaggageVolume = 0;
 		this.numberOfPassengers = 0;
@@ -112,10 +116,10 @@ public class Flight {
      * @param volume the volume of the baggage being checked in.
      * @throws OverBaggageLimitException if baggage weight or volume exceeds the limitation.
      */
-	public void checkBaggage(float weight, float volume) {
+	public void checkBaggage(float weight, float l, float h, float w) {
 		this.totalBaggageWeight += weight;
-		this.totalBaggageVolume += volume;
-		if(weight > this.maxBaggageWeight || volume > this.maxBaggageVolume) {
+		this.totalBaggageVolume += (l*h*w);
+		if(weight > this.maxBaggageWeight || (l*h*w) > (this.maxBaggageL*this.maxBaggageH*this.maxBaggageW)) {
 			this.totalExcessFees += this.excessFeeCharge; 
 			throw new OverBaggageLimitException("Baggage limit exceeded");
 		}
