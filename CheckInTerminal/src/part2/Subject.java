@@ -2,6 +2,7 @@ package part2;
 
 import java.util.Observer;
 
+@SuppressWarnings("deprecation")
 public interface Subject {
     public void registerObserver(Observer obs);
     public void removeObserver(Observer obs);
