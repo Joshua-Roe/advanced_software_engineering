@@ -1,27 +1,33 @@
-CheckInTerminal.AllBookings@5fe5c6f
 Flight Code: LM365
-Number of checked-in passengers: 0 / 156
+Number of checked-in passengers: 0 / 50
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
 Flight Code: LM347
-Number of checked-in passengers: 0 / 78
+Number of checked-in passengers: 0 / 34
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
 Flight Code: EZY6979
-Number of checked-in passengers: 0 / 180
+Number of checked-in passengers: 0 / 156
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
 Flight Code: EJU2684
-Number of checked-in passengers: 0 / 189
+Number of checked-in passengers: 0 / 180
+Total baggage weight: 0.0
+Total baggage volume: 0.0
+Total excess fees collected: 0.0
+Over capacity?: N
+
+Flight Code: EZY236
+Number of checked-in passengers: 0 / 180
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
@@ -29,13 +35,6 @@ Over capacity?: N
 
 Flight Code: BE2107
 Number of checked-in passengers: 0 / 78
-Total baggage weight: 0.0
-Total baggage volume: 0.0
-Total excess fees collected: 0.0
-Over capacity?: N
-
-Flight Code: EZY236
-Number of checked-in passengers: 0 / 156
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
@@ -49,7 +48,7 @@ Total excess fees collected: 0.0
 Over capacity?: N
 
 Flight Code: FR815
-Number of checked-in passengers: 0 / 70
+Number of checked-in passengers: 0 / 78
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
@@ -70,63 +69,63 @@ Total excess fees collected: 0.0
 Over capacity?: N
 
 Flight Code: EZY2686
-Number of checked-in passengers: 0 / 180
+Number of checked-in passengers: 0 / 156
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
 Flight Code: LM385
-Number of checked-in passengers: 0 / 78
-Total baggage weight: 0.0
-Total baggage volume: 0.0
-Total excess fees collected: 0.0
-Over capacity?: N
-
-Flight Code: FR5834
 Number of checked-in passengers: 0 / 50
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
+Flight Code: FR5834
+Number of checked-in passengers: 0 / 78
+Total baggage weight: 0.0
+Total baggage volume: 0.0
+Total excess fees collected: 0.0
+Over capacity?: N
+
 Flight Code: LM397
-Number of checked-in passengers: 0 / 354
+Number of checked-in passengers: 0 / 34
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
 Flight Code: EK024
-Number of checked-in passengers: 0 / 180
+Number of checked-in passengers: 0 / 354
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
 Flight Code: LM335
-Number of checked-in passengers: 0 / 180
+Number of checked-in passengers: 0 / 34
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
 Flight Code: EZY808
-Number of checked-in passengers: 0 / 78
-Total baggage weight: 0.0
-Total baggage volume: 0.0
-Total excess fees collected: 0.0
-Over capacity?: N
-
-Flight Code: BE294
 Number of checked-in passengers: 0 / 180
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
-Flight Code: EZS6917
+Flight Code: BE294
 Number of checked-in passengers: 0 / 78
+Total baggage weight: 0.0
+Total baggage volume: 0.0
+Total excess fees collected: 0.0
+Over capacity?: N
+
+Flight Code: EZS6917
+Number of checked-in passengers: 0 / 180
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
@@ -146,50 +145,50 @@ Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
-Flight Code: BA8857
+Flight Code: EZY426
 Number of checked-in passengers: 0 / 180
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
-Flight Code: EZY426
-Number of checked-in passengers: 0 / 34
+Flight Code: BA8857
+Number of checked-in passengers: 0 / 70
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
 Flight Code: BE851
-Number of checked-in passengers: 0 / 34
-Total baggage weight: 0.0
-Total baggage volume: 0.0
-Total excess fees collected: 0.0
-Over capacity?: N
-
-Flight Code: EJU3386
-Number of checked-in passengers: 0 / 34
-Total baggage weight: 0.0
-Total baggage volume: 0.0
-Total excess fees collected: 0.0
-Over capacity?: N
-
-Flight Code: EZY484
-Number of checked-in passengers: 0 / 50
-Total baggage weight: 0.0
-Total baggage volume: 0.0
-Total excess fees collected: 0.0
-Over capacity?: N
-
-Flight Code: FR6652
 Number of checked-in passengers: 0 / 78
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
 Over capacity?: N
 
-Flight Code: FR1049
+Flight Code: EJU3386
 Number of checked-in passengers: 0 / 180
+Total baggage weight: 0.0
+Total baggage volume: 0.0
+Total excess fees collected: 0.0
+Over capacity?: N
+
+Flight Code: EZY484
+Number of checked-in passengers: 0 / 180
+Total baggage weight: 0.0
+Total baggage volume: 0.0
+Total excess fees collected: 0.0
+Over capacity?: N
+
+Flight Code: FR6652
+Number of checked-in passengers: 0 / 189
+Total baggage weight: 0.0
+Total baggage volume: 0.0
+Total excess fees collected: 0.0
+Over capacity?: N
+
+Flight Code: FR1049
+Number of checked-in passengers: 0 / 78
 Total baggage weight: 0.0
 Total baggage volume: 0.0
 Total excess fees collected: 0.0
