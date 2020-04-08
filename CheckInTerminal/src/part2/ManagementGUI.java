@@ -111,12 +111,35 @@ public class ManagementGUI implements Observer, ChangeListener {
     mainPanel.add(flightsPanel);
 
     // Column for Play/Pause
-    JPanel playControlPanel = new JPanel(); // content panel to be scrolled
-    JLabel playButton = new JLabel("I Am A PLAY BUTTON");
+    JPanel playControlPanel = new JPanel(); // panel for buttons
+    playControlPanel.setLayout(new GridLayout(0, 2)); // set layout
+    JButton playButton = new JButton("Play");
+    playButton.setActionCommand("play");
+    playButton.setEnabled(false);
     playControlPanel.add(playButton);
+    JButton pauseButton = new JButton("Pause");
+    pauseButton.setActionCommand("pause");
+    playControlPanel.add(pauseButton);
+    playButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        playButton.setEnabled(false);
+        pauseButton.setEnabled(true);
+        System.out.println("Play");//TODO call simPlay method
+      }
+    });
+    pauseButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        playButton.setEnabled(true);
+        pauseButton.setEnabled(false);
+        System.out.println("Pause");//TODO call simPause method
+      }
+    });
+
 
     // Column for speed Slider
-    JPanel speedControlPanel = new JPanel(); // content panel to be scrolled
+    JPanel speedControlPanel = new JPanel(); // panel for slider
     speedControlPanel.setLayout(new GridLayout(2, 0)); // set layout
     //speedControlPanel.setLayout(new BoxLayout(speedControlPanel, BoxLayout.PAGE_AXIS)); // set layout
     JLabel speedSliderLabel = new JLabel("Simulation Speed", SwingConstants.CENTER);
@@ -136,7 +159,7 @@ public class ManagementGUI implements Observer, ChangeListener {
     speedControlPanel.add(speedSlider);
 
     // Column for Sim Clock
-    JPanel clockControlPanel = new JPanel(); // content panel to be scrolled
+    JPanel clockControlPanel = new JPanel(); // panel for clock
     JLabel simTime = new JLabel("I Am A CLOCK");
     clockControlPanel.add(simTime);
 
