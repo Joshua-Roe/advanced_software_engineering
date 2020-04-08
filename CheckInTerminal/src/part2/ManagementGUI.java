@@ -3,12 +3,16 @@ package part2;
 import part1.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Hashtable;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ManagementGUI implements Observer {
+public class ManagementGUI implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
     public PassengerComponent(String flight, String passengerName, int bagWeight, String bagSize) {
       this.setBorder(createBorder("")); // set border
@@ -116,11 +120,18 @@ public class ManagementGUI implements Observer {
     speedControlPanel.setLayout(new BoxLayout(speedControlPanel, BoxLayout.PAGE_AXIS)); // set layout
     JLabel speedSliderLabel = new JLabel("Simulation Speed", SwingConstants.CENTER);
     speedControlPanel.add(speedSliderLabel);
-    JSlider speedSlider = new JSlider(1, 8, 1);
+    JSlider speedSlider = new JSlider(0, 3, 0);
     speedSlider.setMajorTickSpacing(1);
     speedSlider.setSnapToTicks(true);
     speedSlider.setPaintTicks(true);
+    Hashtable<Integer, JLabel> sliderLabels = new Hashtable<>();
+    sliderLabels.put(0, new JLabel("1x"));
+    sliderLabels.put(1, new JLabel("2x"));
+    sliderLabels.put(2, new JLabel("4x"));
+    sliderLabels.put(3, new JLabel("8x"));
+    speedSlider.setLabelTable(sliderLabels);
     speedSlider.setPaintLabels(true);
+    speedSlider.addChangeListener(this);
     speedControlPanel.add(speedSlider);
 
     // Column for Sim Clock
@@ -159,6 +170,20 @@ public class ManagementGUI implements Observer {
     else if(arg instanceof CheckinCounter) updateCounter(arg);
     else if(arg instanceof Flight) updateFlight(arg);
     // TODO else throw exception
+  }
+
+  /** Listen to the slider. */
+  public void stateChanged(ChangeEvent e) {
+    JSlider source = (JSlider)e.getSource();
+    if (!source.getValueIsAdjusting()) {
+        int sliderPos = (int)source.getValue();
+        int simSpeed = -1;
+        if (sliderPos == 0) simSpeed = 1;
+        else if (sliderPos == 1) simSpeed = 2;
+        else if (sliderPos == 2) simSpeed = 4;
+        else if (sliderPos == 3) simSpeed = 8;
+        System.out.println(simSpeed); //TODO call simspeed method
+    }
   }
 
   private void updateQueue(Object arg) {
