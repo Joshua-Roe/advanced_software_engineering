@@ -117,7 +117,8 @@ public class ManagementGUI implements Observer, ChangeListener {
 
     // Column for speed Slider
     JPanel speedControlPanel = new JPanel(); // content panel to be scrolled
-    speedControlPanel.setLayout(new BoxLayout(speedControlPanel, BoxLayout.PAGE_AXIS)); // set layout
+    speedControlPanel.setLayout(new GridLayout(2, 0)); // set layout
+    //speedControlPanel.setLayout(new BoxLayout(speedControlPanel, BoxLayout.PAGE_AXIS)); // set layout
     JLabel speedSliderLabel = new JLabel("Simulation Speed", SwingConstants.CENTER);
     speedControlPanel.add(speedSliderLabel);
     JSlider speedSlider = new JSlider(0, 3, 0);
