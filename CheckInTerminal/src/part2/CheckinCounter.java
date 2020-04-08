@@ -17,17 +17,27 @@ public class CheckinCounter extends Thread implements Subject {
     private List<Observer> registeredObservers = new LinkedList<Observer>();
     private AllFlights flights;
     private SimTime t;
+    private Timer timer;
 
-    public CheckinCounter(int number, AllFlights flights, SimTime t) {
+    public CheckinCounter(int number, AllFlights flights, SimTime t, Timer timer) {
         this.counter_number = number;
         this.flights = flights;
         this.t = t;
+        this.timer = timer;
     }
 
     public void run() {
-        while (queue.size()>0) {
-            serveCustomer();
+        synchronized(timer){
+            while (queue.size()>0) {
+                try {
+                    timer.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                serveCustomer();
+            }
         }
+        
     }
 
     public int getCounterNumber(){
@@ -52,12 +62,7 @@ public class CheckinCounter extends Thread implements Subject {
             queue.updateQueue();
             // flight.checkBaggage(passenger.baggage_weight, passenger.baggage_volume);
             passenger_flight.addPassenger();
-            System.out.println("++"+passenger.getFullName() + " checked into Flight number " + passenger_flight.getFlightCode()+"++");
-            try{
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                System.out.println("Interrupt Exception");
-            }
+            // System.out.println("++"+passenger.getFullName() + " checked into Flight number " + passenger_flight.getFlightCode()+"++");
             notifyObservers();
         }
     }

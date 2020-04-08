@@ -13,12 +13,14 @@ public class TestCounters {
         AllFlights flights = new AllFlights();
         Flight f1 = new Flight("AF1", "Edinburgh", "AirFrance", 200, 23, 30, 15);
         flights.addFlight(f1);
+        Boolean pause = false;
         SimTime t = new SimTime();
-        CheckinCounter c1 = new CheckinCounter(1,flights,t);
+        Timer timer = new Timer(t);
+        CheckinCounter c1 = new CheckinCounter(1,flights,t,timer);
         counters.add(c1);
-        // CheckinCounter c2 = new CheckinCounter(2,flights);
-        // counters.add(c2);
-        // CheckinCounter c3 = new CheckinCounter(3,flights);
+        CheckinCounter c2 = new CheckinCounter(2,flights,t,timer);
+        counters.add(c2);
+        // CheckinCounter c3 = new CheckinCounter(3,flights,t,timer);
         // counters.add(c3);
         Booking b1 = new Booking("123", "Sean", "Katagiri", "AF1");
         Booking b2 = new Booking("456", "Joshua", "Roe", "AF1");
@@ -40,16 +42,18 @@ public class TestCounters {
         bookings.addBooking(b8);
         bookings.addBooking(b9);
         bookings.addBooking(b10);
-        PassengerQueue pq = new PassengerQueue(bookings, counters);
+        PassengerQueue pq = new PassengerQueue(bookings, counters,timer);
         pq.updateQueue();
+        new TestGUI(timer, t);
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        timer.start();
         pq.start();
         c1.start();
-        // c2.start();
+        c2.start();
         // c3.start();
     }
 }
