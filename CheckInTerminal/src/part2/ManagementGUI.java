@@ -94,8 +94,31 @@ public class ManagementGUI {
         mainPanel.add(desksPanel);
         mainPanel.add(flightsPanel);
 
+
+        //Column for Play/Pause
+        JPanel playControlPanel = new JPanel(); //content panel to be scrolled
+        JLabel playButton = new JLabel("I Am A PLAY BUTTON");
+        playControlPanel.add(playButton);
+
+        //Column for speed Slider
+        JPanel speedControlPanel = new JPanel(); //content panel to be scrolled
+        JLabel speedSlider = new JLabel("I Am A SPEED SLIDER");
+        speedControlPanel.add(speedSlider);
+
+        //Column for Sim Clock
+        JPanel clockControlPanel = new JPanel(); //content panel to be scrolled
+        JLabel simTime = new JLabel("I Am A CLOCK");
+        clockControlPanel.add(simTime);
+
+        JPanel simControlPanel = new JPanel(); //panel for holding simulation controls
+        simControlPanel.setLayout(new GridLayout(0,3));
+        simControlPanel.add(playControlPanel);
+        simControlPanel.add(speedControlPanel);
+        simControlPanel.add(clockControlPanel);
+
         //Adding Components to the frame.
         checkFrame.getContentPane().add(BorderLayout.CENTER, mainPanel);
+        checkFrame.getContentPane().add(BorderLayout.SOUTH, simControlPanel);
         checkFrame.setVisible(true);
 
     }
