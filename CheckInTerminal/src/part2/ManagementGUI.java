@@ -113,7 +113,14 @@ public class ManagementGUI implements Observer {
 
     // Column for speed Slider
     JPanel speedControlPanel = new JPanel(); // content panel to be scrolled
-    JLabel speedSlider = new JLabel("I Am A SPEED SLIDER");
+    speedControlPanel.setLayout(new BoxLayout(speedControlPanel, BoxLayout.PAGE_AXIS)); // set layout
+    JLabel speedSliderLabel = new JLabel("Simulation Speed", SwingConstants.CENTER);
+    speedControlPanel.add(speedSliderLabel);
+    JSlider speedSlider = new JSlider(1, 8, 1);
+    speedSlider.setMajorTickSpacing(1);
+    speedSlider.setSnapToTicks(true);
+    speedSlider.setPaintTicks(true);
+    speedSlider.setPaintLabels(true);
     speedControlPanel.add(speedSlider);
 
     // Column for Sim Clock
