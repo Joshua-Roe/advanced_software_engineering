@@ -65,7 +65,7 @@ public class ManagementGUI implements Observer, ChangeListener {
     // create frame
     JFrame checkFrame = new JFrame("Management");
     checkFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    checkFrame.setSize(700, 170);
+    checkFrame.setSize(1400, 340);
     checkFrame.setLocationRelativeTo(null);
 
     // Column for Queue Patrons
