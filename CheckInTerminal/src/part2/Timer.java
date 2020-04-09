@@ -27,7 +27,9 @@ class Timer extends Thread{
             setTime(time + 1);
             try {
                 sleep(simTime.get());
-                while(simTime.getPause()){}
+                while(simTime.getPause()){
+                    Thread.sleep(10);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

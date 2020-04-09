@@ -231,7 +231,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
 
   public void updateClock(){
     int min = this.timer.getTime() % 60;
-    int hr = this.timer.getTime() / 60;
+    int hr = this.timer.getTime() / 60 % 24;
     this.minutes = (min<10) ? "0"+Integer.toString(min) : Integer.toString(min);
     this.hours = (hr<10) ? "0"+Integer.toString(hr) : Integer.toString(hr);
     this.clock.setText(this.hours+":"+this.minutes);
@@ -262,7 +262,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
           }
         }
     }
-    
 }
   public static void main(String[] args) {
     SimTime t = new SimTime();
