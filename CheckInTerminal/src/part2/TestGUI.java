@@ -62,4 +62,10 @@ public class TestGUI implements Observer{
         mainFrame.setMinimumSize(new Dimension(200,200));
 
     }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        // TODO Auto-generated method stub
+
+    }
 }

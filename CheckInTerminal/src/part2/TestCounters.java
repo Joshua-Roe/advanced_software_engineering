@@ -46,7 +46,7 @@ public class TestCounters {
         pq.updateQueue();
         new TestGUI(timer, t);
         try {
-            Thread.sleep(1);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
