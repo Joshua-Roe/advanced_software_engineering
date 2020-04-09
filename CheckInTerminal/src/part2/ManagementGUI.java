@@ -208,7 +208,8 @@ public class ManagementGUI implements Observer, ChangeListener {
   }
 
   private void updateQueue(Object arg) {
-    Queue<Booking> bookingQueue = arg.getQueue;
+    PassengerQueue passengerQueue = (PassengerQueue)arg;
+    Queue<Booking> bookingQueue = passengerQueue.getQueue();
     queueContentPanel.removeAll();
     for (Booking item: bookingQueue) {
       queueContentPanel.add(new PassengerComponent(item.getFlightCode(), item.getFullName(), 2, "3x4x5"));//TODO baggageWeight and baggageSize
@@ -216,11 +217,11 @@ public class ManagementGUI implements Observer, ChangeListener {
   }
 
   private void updateCounter(Object arg) {
-
+    CheckinCounter checkinCounter = (CheckinCounter)arg;
   }
 
   private void updateFlight(Object arg) {
-
+    Flight flight = (Flight)arg;
   }
 
   private void testFillGUI() {
