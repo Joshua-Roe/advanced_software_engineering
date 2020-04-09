@@ -11,6 +11,7 @@ import java.awt.event.*;
 import java.util.Hashtable;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Queue;
 
 public class ManagementGUI implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
@@ -181,9 +182,7 @@ public class ManagementGUI implements Observer, ChangeListener {
 
   public static void main(String[] args) {
     ManagementGUI g = new ManagementGUI();
-    g.updateQueue(1);
-    g.updateCounter(1);
-    g.updateFlight(1);
+    g.testFillGUI();
   }
 
   @Override
@@ -209,17 +208,30 @@ public class ManagementGUI implements Observer, ChangeListener {
   }
 
   private void updateQueue(Object arg) {
-    for (int i = 0; i < 20; i++) {
-      queueContentPanel.add(new PassengerComponent("FLT" + i, "Passenger Name", i * 2, i + "x" + (i + 1) + "x" + (i + 2)));
-    } // TEST to fill scroll panel
+    Queue<Booking> bookingQueue = arg.getQueue;
+    queueContentPanel.removeAll();
+    for (Booking item: bookingQueue) {
+      queueContentPanel.add(new PassengerComponent(item.getFlightCode(), item.getFullName(), 2, "3x4x5"));//TODO baggageWeight and baggageSize
+    }
   }
 
   private void updateCounter(Object arg) {
-    desksContentPanel.add(new DeskComponent("Desk 1", "Joshua Roe", 7, 12));
-    desksContentPanel.add(new DeskComponent("Desk 2", "Sean Katagiri", 4, 0));
+
   }
 
   private void updateFlight(Object arg) {
+
+  }
+
+  private void testFillGUI() {
+    for (int i = 0; i < 20; i++) {
+      queueContentPanel.add(new PassengerComponent("FLT" + i, "Passenger Name", i * 2, i + "x" + (i + 1) + "x" + (i + 2)));
+    } // TEST to fill scroll panel
+
+    desksContentPanel.add(new DeskComponent("Desk 1", "Joshua Roe", 7, 12));
+    desksContentPanel.add(new DeskComponent("Desk 2", "Sean Katagiri", 4, 0));
+    // TEST to fill scroll panel
+
     for (int i = 0; i < 20; i++) {
       flightsContentPanel.add(new FlightComponent("FlightName:" + i, i, i + 10, i));
     } // TEST to fill scroll panel
