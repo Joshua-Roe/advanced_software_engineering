@@ -60,6 +60,10 @@ public class ManagementGUI implements Observer, ChangeListener {
   }
 
   static JFrame frame;
+  private JPanel queueContentPanel;
+  private JPanel desksContentPanel;
+  private JPanel flightsContentPanel;
+
 
   public ManagementGUI() {
     // create frame
@@ -69,12 +73,8 @@ public class ManagementGUI implements Observer, ChangeListener {
     checkFrame.setLocationRelativeTo(null);
 
     // Column for Queue Patrons
-    JPanel queueContentPanel = new JPanel(); // content panel to be scrolled
+    queueContentPanel = new JPanel(); // content panel to be scrolled
     queueContentPanel.setLayout(new BoxLayout(queueContentPanel, BoxLayout.PAGE_AXIS)); // set layout
-    for (int i = 0; i < 20; i++) {
-      queueContentPanel
-          .add(new PassengerComponent("FLT" + i, "Passenger Name", i * 2, i + "x" + (i + 1) + "x" + (i + 2)));
-    } // TEST to fill scroll panel
     JScrollPane queueScrollPane = new JScrollPane(queueContentPanel);// scrollpane object
     JPanel queuePanel = new JPanel(); // top level container panel for border
     queuePanel.setBorder(createBorder("Queue Patrons")); // set border
@@ -82,10 +82,8 @@ public class ManagementGUI implements Observer, ChangeListener {
     queuePanel.add(BorderLayout.CENTER, queueScrollPane); // add scrollpane to bordered panel
 
     // Column for Check In Desks
-    JPanel desksContentPanel = new JPanel(); // content panel to be scrolled
+    desksContentPanel = new JPanel(); // content panel to be scrolled
     desksContentPanel.setLayout(new BoxLayout(desksContentPanel, BoxLayout.PAGE_AXIS)); // set layout
-    desksContentPanel.add(new DeskComponent("Desk 1", "Joshua Roe", 7, 12));
-    desksContentPanel.add(new DeskComponent("Desk 2", "Sean Katagiri", 4, 0));
     JScrollPane desksScrollPane = new JScrollPane(desksContentPanel);// scrollpane object
     JPanel desksPanel = new JPanel(); // top level container panel for border
     desksPanel.setBorder(createBorder("Check In Desks")); // set border
@@ -93,11 +91,8 @@ public class ManagementGUI implements Observer, ChangeListener {
     desksPanel.add(BorderLayout.CENTER, desksScrollPane); // add scrollpane to bordered panel
 
     // Column for Flights
-    JPanel flightsContentPanel = new JPanel(); // content panel to be scrolled
+    flightsContentPanel = new JPanel(); // content panel to be scrolled
     flightsContentPanel.setLayout(new BoxLayout(flightsContentPanel, BoxLayout.PAGE_AXIS)); // set layout
-    for (int i = 0; i < 20; i++) {
-      flightsContentPanel.add(new FlightComponent("FlightName:" + i, i, i + 10, i));
-    } // TEST to fill scroll panel
     JScrollPane flightsScrollPane = new JScrollPane(flightsContentPanel);// scrollpane object
     JPanel flightsPanel = new JPanel(); // top level container panel for border
     flightsPanel.setBorder(createBorder("Flights")); // set border
@@ -186,6 +181,9 @@ public class ManagementGUI implements Observer, ChangeListener {
 
   public static void main(String[] args) {
     ManagementGUI g = new ManagementGUI();
+    g.updateQueue(1);
+    g.updateCounter(1);
+    g.updateFlight(1);
   }
 
   @Override
@@ -211,12 +209,20 @@ public class ManagementGUI implements Observer, ChangeListener {
   }
 
   private void updateQueue(Object arg) {
+    for (int i = 0; i < 20; i++) {
+      queueContentPanel.add(new PassengerComponent("FLT" + i, "Passenger Name", i * 2, i + "x" + (i + 1) + "x" + (i + 2)));
+    } // TEST to fill scroll panel
   }
 
   private void updateCounter(Object arg) {
+    desksContentPanel.add(new DeskComponent("Desk 1", "Joshua Roe", 7, 12));
+    desksContentPanel.add(new DeskComponent("Desk 2", "Sean Katagiri", 4, 0));
   }
 
   private void updateFlight(Object arg) {
+    for (int i = 0; i < 20; i++) {
+      flightsContentPanel.add(new FlightComponent("FlightName:" + i, i, i + 10, i));
+    } // TEST to fill scroll panel
   }
 }
 	
