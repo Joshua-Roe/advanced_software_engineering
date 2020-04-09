@@ -167,6 +167,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     // Column for Sim Clock
     JPanel clockControlPanel = new JPanel(); // panel for clock
     this.clock = new JLabel("00:00");
+    this.clock.setFont(clock.getFont().deriveFont(32.0f));
     clockControlPanel.add(clock);
 
     JPanel simControlPanel = new JPanel(); // panel for holding simulation controls
