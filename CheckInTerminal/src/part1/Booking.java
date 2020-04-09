@@ -3,15 +3,15 @@ package part1;
  * <tt>Booking</tt> is an object used to store details for each booking.
  */
 public class Booking{
-    public String booking_reference;
-	public String first_name;
-    public String last_name;
-    public String flight_number;
-    public boolean checked_in_status;
-    public float baggage_weight;
-    public float baggage_L;
-    public float baggage_H;
-    public float baggage_W;
+    private String booking_reference;
+	private String first_name;
+    private String last_name;
+    private String flight_number;
+    private boolean checked_in_status;
+    private float baggage_weight;
+    private float baggage_L;
+    private float baggage_H;
+    private float baggage_W;
 	/**
      * Constructs a <tt>Booking</tt> object with given parameters as its booking details.
      * @param new_booking_reference the booking reference code.
