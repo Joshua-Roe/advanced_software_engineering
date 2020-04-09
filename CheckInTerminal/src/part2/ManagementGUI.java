@@ -15,8 +15,9 @@ import java.util.Queue;
 
 @SuppressWarnings("serial")
 
-public class ManagementGUI implements Observer, ChangeListener {
+public class ManagementGUI extends Thread implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
+
     public PassengerComponent(String flight, String passengerName, float bagWeight, String bagSize) {
       this.setBorder(createBorder("")); // set border
       this.setLayout(new GridLayout(0, 4)); // set layout
@@ -66,9 +67,16 @@ public class ManagementGUI implements Observer, ChangeListener {
   private JPanel queueContentPanel;
   private JPanel desksContentPanel;
   private JPanel flightsContentPanel;
+  private JLabel clock;
+  private Timer timer;
+  private SimTime t;
+  private String hours;
+  private String minutes;
+  
 
-
-  public ManagementGUI() {
+  public ManagementGUI(Timer timer, SimTime t) {
+    this.timer = timer;
+    this.t = t;
     // create frame
     JFrame checkFrame = new JFrame("Management");
     checkFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -123,7 +131,7 @@ public class ManagementGUI implements Observer, ChangeListener {
       public void actionPerformed(ActionEvent e) {
         playButton.setEnabled(false);
         pauseButton.setEnabled(true);
-        System.out.println("Play");//TODO call simPlay method
+        t.resumeSim();
       }
     });
     pauseButton.addActionListener(new ActionListener() {
@@ -131,7 +139,7 @@ public class ManagementGUI implements Observer, ChangeListener {
       public void actionPerformed(ActionEvent e) {
         playButton.setEnabled(true);
         pauseButton.setEnabled(false);
-        System.out.println("Pause");//TODO call simPause method
+        t.pauseSim();
       }
     });
 
@@ -158,8 +166,8 @@ public class ManagementGUI implements Observer, ChangeListener {
 
     // Column for Sim Clock
     JPanel clockControlPanel = new JPanel(); // panel for clock
-    JLabel simTime = new JLabel("I Am A CLOCK");
-    clockControlPanel.add(simTime);
+    this.clock = new JLabel("00:00");
+    clockControlPanel.add(clock);
 
     JPanel simControlPanel = new JPanel(); // panel for holding simulation controls
     simControlPanel.setLayout(new GridLayout(0, 3));
@@ -171,7 +179,6 @@ public class ManagementGUI implements Observer, ChangeListener {
     checkFrame.getContentPane().add(BorderLayout.CENTER, mainPanel);
     checkFrame.getContentPane().add(BorderLayout.SOUTH, simControlPanel);
     checkFrame.setVisible(true);
-
   }
 
   TitledBorder createBorder(String borderText) {
@@ -180,11 +187,6 @@ public class ManagementGUI implements Observer, ChangeListener {
     border.setTitleJustification(TitledBorder.CENTER);
     border.setTitlePosition(TitledBorder.DEFAULT_POSITION);
     return border;
-  }
-
-  public static void main(String[] args) {
-    ManagementGUI g = new ManagementGUI();
-    g.testFillGUI();
   }
 
   @Override
@@ -205,7 +207,7 @@ public class ManagementGUI implements Observer, ChangeListener {
         else if (sliderPos == 1) simSpeed = 2;
         else if (sliderPos == 2) simSpeed = 4;
         else if (sliderPos == 3) simSpeed = 8;
-        System.out.println(simSpeed); //TODO call simspeed method
+        t.set(simSpeed);
     }
   }
 
@@ -226,6 +228,14 @@ public class ManagementGUI implements Observer, ChangeListener {
     Flight flight = (Flight)arg;
   }
 
+  public void updateClock(){
+    int min = this.timer.getTime() % 60;
+    int hr = this.timer.getTime() / 60;
+    this.minutes = (min<10) ? "0"+Integer.toString(min) : Integer.toString(min);
+    this.hours = (hr<10) ? "0"+Integer.toString(hr) : Integer.toString(hr);
+    this.clock.setText(this.hours+":"+this.minutes);
+  }
+
   private void testFillGUI() {
     for (int i = 0; i < 20; i++) {
       queueContentPanel.add(new PassengerComponent("FLT" + i, "Passenger Name", i * 2, i + "x" + (i + 1) + "x" + (i + 2)));
@@ -238,6 +248,28 @@ public class ManagementGUI implements Observer, ChangeListener {
     for (int i = 0; i < 20; i++) {
       flightsContentPanel.add(new FlightComponent("FlightName:" + i, i, i + 10, i));
     } // TEST to fill scroll panel
+  }
+
+  public void run() {
+    synchronized(timer){
+        while (true) {
+          try {
+            timer.wait();
+            updateClock();
+          } catch (InterruptedException e) {
+              e.printStackTrace();
+          }
+        }
+    }
+    
+}
+  public static void main(String[] args) {
+    SimTime t = new SimTime();
+    Timer timer = new Timer(t);
+    ManagementGUI g = new ManagementGUI(timer,t);
+    g.testFillGUI();
+    timer.start();
+    g.start();
   }
 }
 	

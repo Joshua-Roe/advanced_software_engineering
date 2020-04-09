@@ -24,9 +24,7 @@ class Timer extends Thread{
 
     public void run(){
         while(true){
-            System.out.print(time + " ");
             setTime(time + 1);
-
             try {
                 sleep(simTime.get());
                 while(simTime.getPause()){}
