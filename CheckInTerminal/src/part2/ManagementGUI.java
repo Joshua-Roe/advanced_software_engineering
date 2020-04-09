@@ -13,6 +13,8 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 
+@SuppressWarnings("serial")
+
 public class ManagementGUI implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
     public PassengerComponent(String flight, String passengerName, float bagWeight, String bagSize) {
