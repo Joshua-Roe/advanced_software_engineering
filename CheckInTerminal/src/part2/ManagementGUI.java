@@ -15,7 +15,7 @@ import java.util.Queue;
 
 public class ManagementGUI implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
-    public PassengerComponent(String flight, String passengerName, int bagWeight, String bagSize) {
+    public PassengerComponent(String flight, String passengerName, float bagWeight, String bagSize) {
       this.setBorder(createBorder("")); // set border
       this.setLayout(new GridLayout(0, 4)); // set layout
       JLabel flightText = new JLabel(flight, SwingConstants.CENTER);
@@ -212,7 +212,7 @@ public class ManagementGUI implements Observer, ChangeListener {
     Queue<Booking> bookingQueue = passengerQueue.getQueue();
     queueContentPanel.removeAll();
     for (Booking item: bookingQueue) {
-      queueContentPanel.add(new PassengerComponent(item.getFlightCode(), item.getFullName(), 2, "3x4x5"));//TODO baggageWeight and baggageSize
+      queueContentPanel.add(new PassengerComponent(item.getFlightCode(), item.getFullName(), item.getBaggage_weight(), Float.toString(item.getBaggage_volume())));
     }
   }
 
