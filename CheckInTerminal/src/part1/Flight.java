@@ -136,4 +136,8 @@ public class Flight {
 	public float getCollectedFees() {
 		return this.totalExcessFees;
 	}
+
+	public float getPassengerCapacity() {
+		return this.numberOfPassengers/this.maxPassengers*100;
+	}
 }
