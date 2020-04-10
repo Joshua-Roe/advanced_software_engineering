@@ -7,13 +7,15 @@ import java.util.Observer;
 import part1.Booking;
 import part1.AllFlights;
 import part1.Flight;
+import part1.Flight.OverBaggageLimitException;
 
 @SuppressWarnings("deprecation")
 public class CheckinCounter extends Thread implements Subject {
     private int counter_number;
     private PassengerQueue queue;
     private Booking passenger;
-    private Flight passenger_flight;
+    private Flight passengerFlight;
+    private Float passengerExcessFee;
     private List<Observer> registeredObservers = new LinkedList<Observer>();
     private AllFlights flights;
     private SimTime t;
@@ -52,19 +54,24 @@ public class CheckinCounter extends Thread implements Subject {
     }
 
     public void setPassengerFlight(){
-        this.passenger_flight = flights.getFlight(passenger.getFlightCode());
+        this.passengerFlight = flights.getFlight(passenger.getFlightCode());
+    }
+
+    public Float getPassengerExcessFee(){
+        return this.passengerExcessFee;
     }
 
     public synchronized void serveCustomer(){
-        // notify PassengerQueue for update queue list
-        //TODO Possibly better to notify GUI as an observer than the Passenger queue as an observer
         if(queue.size()>0){
             this.passenger = queue.dequeue();
             setPassengerFlight();
-            // System.out.println("++Counter "+this.counter_number+" is now serving " + passenger.getFullName()+"++");
-            // flight.checkBaggage(passenger.baggage_weight, passenger.baggage_volume);
-            this.passenger_flight.addPassenger();
-            // System.out.println("++"+passenger.getFullName() + " checked into Flight number " + passenger_flight.getFlightCode()+"++");
+            try{
+                this.passengerFlight.checkBaggage(passenger.getBaggageWeight(), passenger.getBaggageLength(),passenger.getBaggageHeight(),passenger.getBaggageWidth());
+            }
+            catch(OverBaggageLimitException e){
+                this.passengerExcessFee = this.passengerFlight.getExcessFeeCharge();
+            }
+            this.passengerFlight.addPassenger();
             notifyObservers();
         }
     }
