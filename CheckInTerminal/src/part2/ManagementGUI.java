@@ -259,6 +259,8 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
 
   private void updateFlight(Object arg) {
     Flight flight = (Flight)arg;
+    allFlightComponents.get(flight.getFlightCode()).setcontents(flight);
+    //TODO flight takes off
   }
 
   public void updateClock(){
