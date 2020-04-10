@@ -42,7 +42,11 @@ public class CSVReader {
 			
 			while ((st = flightBR.readLine()) != null) {
 				String[] temp = st.split(",", 0);
-				Flight flight = new Flight(temp[0], temp[3], temp[1], Integer.parseInt(temp[5]), Float.parseFloat(temp[6]), Float.parseFloat(temp[7]), Float.parseFloat(temp[8]), Float.parseFloat(temp[9]), Float.parseFloat(temp[10]));
+				String[] tempTime = temp[11].split(":");
+				int h = Integer.parseInt(tempTime[0]);
+        		int m = Integer.parseInt(tempTime[1]);
+        		int time = h*60 + m;
+				Flight flight = new Flight(temp[0], temp[3], temp[1], Integer.parseInt(temp[5]), Float.parseFloat(temp[6]), Float.parseFloat(temp[7]), Float.parseFloat(temp[8]), Float.parseFloat(temp[9]), Float.parseFloat(temp[10]), time);
 				flights.addFlight(flight);
 			}
 			
