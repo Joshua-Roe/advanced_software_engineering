@@ -107,10 +107,10 @@ public class GUI {
 		    String flightCode = booking.getFlightCode();
 		    Flight flight = flights.getFlight(flightCode);
 		    try {
-		    	flight.checkBaggage(w, v);
+		    	flight.checkBaggageByVolume(w, v);
 		    }
 		    catch(Flight.OverBaggageLimitException e) {
-				JOptionPane.showMessageDialog(frame, "Baggage limit exceeded. Excess fee of " + flight.getBaggageLevy() + "0 GBP applied.");
+				JOptionPane.showMessageDialog(frame, "Baggage limit exceeded. Excess fee of " + flight.getExcessFeeCharge() + "0 GBP applied.");
 
 		    }
 		    flight.addPassenger();

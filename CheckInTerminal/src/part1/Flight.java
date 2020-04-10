@@ -195,13 +195,24 @@ public class Flight implements Subject {
             this.totalExcessFees += this.excessFeeCharge;
             throw new OverBaggageLimitException("Baggage limit exceeded");
         }
+	}
+	
+	public void checkBaggageByVolume(float weight, float baggageVolume) {//Legacy method for original GUI
+        this.totalBaggageWeight += weight;
+        this.totalBaggageVolume += baggageVolume;
+        if(weight > this.allowedBaggageWeight || baggageVolume > this.allowedBaggageVolume) {
+            this.totalExcessFees += this.excessFeeCharge;
+            throw new OverBaggageLimitException("Baggage limit exceeded");
+        }
     }
 
     public boolean getGateOpen(int currentTime) {
-        if (currentTime >= this.time)
+        if (currentTime >= this.departureTime)
             return false;
         else 
-            return true;
+			return true;
+	}
+
     @Override
     public void registerObserver(Observer obs) {
         registeredObservers.add(obs);

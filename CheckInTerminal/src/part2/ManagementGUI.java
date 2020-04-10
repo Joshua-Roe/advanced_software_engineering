@@ -17,7 +17,7 @@ import java.util.Observer;
 import java.util.Queue;
 
 
-@SuppressWarnings({"serial","deprecation"})
+@SuppressWarnings("serial")
 public class ManagementGUI extends Thread implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
 
@@ -50,7 +50,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       this.add(feeDetails);
     }
     public void setcontents(Booking currentBooking, int bagFee) {
-      bagDetails.setText(currentBooking.getFullName() + " is dropping off 1 bag of " + currentBooking.getBaggage_weight() + "kg");
+      bagDetails.setText(currentBooking.getFullName() + " is dropping off 1 bag of " + currentBooking.getBaggageWeight() + "kg");
       String feeText = "";
       if (bagFee == 0) {
         feeText = "No baggage fee is due";
@@ -75,7 +75,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       this.setcontents(currentFlight);
     }
     public void setcontents(Flight currentFlight) {
-      checkedIn.setText(currentFlight.getNumOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());
+      checkedIn.setText(currentFlight.getNumberOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());
       holdPercent.setText("Hold is " + 50 + "% full");//TODO getHoldPercentFull
     }
     //TODO flight takes off
@@ -246,7 +246,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     Queue<Booking> bookingQueue = passengerQueue.getQueue();
     queueContentPanel.removeAll();
     for (Booking item: bookingQueue) {
-      queueContentPanel.add(new PassengerComponent(item.getFlightCode(), item.getFullName(), item.getBaggage_weight(), Float.toString(item.getBaggage_volume())));
+      queueContentPanel.add(new PassengerComponent(item.getFlightCode(), item.getFullName(), item.getBaggageWeight(), "L"+item.getBaggageLength()+" W"+item.getBaggageWidth()+" H"+item.getBaggageHeight())); //eg L7.2 W4.4 H8.1
     }
     queueContentPanel.setVisible(false);// this forces update of the JPanel and its contents
     queueContentPanel.setVisible(true);
@@ -303,7 +303,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
 
     List<CheckinCounter> counters = new LinkedList<CheckinCounter>();
     AllFlights flights = new AllFlights();
-    Flight f1 = new Flight("AF1", "Edinburgh", "AirFrance", 200, 23, 30, 15);
+    Flight f1 = new Flight("AF1", "Edinburgh", "AirFrance", 200, 23, 90, 40, 20, 15, 120);
     flights.addFlight(f1);
     CheckinCounter c1 = new CheckinCounter(1,flights,t,timer);
     counters.add(c1);
