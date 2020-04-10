@@ -48,6 +48,7 @@ public class TestCounters {
         ManagementGUI gui = new ManagementGUI(timer,t,counters,flights.getAllFlights());
         
         pq.registerObserver(gui);
+        f1.registerObserver(gui);
 
         Iterator it = bookings.getAllBookings().entrySet().iterator();
         while (it.hasNext()) {
@@ -56,19 +57,10 @@ public class TestCounters {
             it.remove(); // avoids a ConcurrentModificationException
         }
 
-        Iterator it2 = flights.getAllFlights().entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            Flight f = (Flight) pair.getValue();
-            f.registerObserver(gui);
-            it2.remove(); // avoids a ConcurrentModificationException
-        }
-
         for(CheckinCounter c : counters){
             c.registerObserver(gui);
             c.setQueue(pq);
         }
-
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
