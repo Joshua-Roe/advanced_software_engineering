@@ -9,7 +9,7 @@ package part1;
  */
 public class Booking{
     private String bookingCode;
-	private String firstName;
+    private String firstName;
     private String lastName;
     private String flightCode;
     private float baggageWeight;
