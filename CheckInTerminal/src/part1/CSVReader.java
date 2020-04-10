@@ -9,8 +9,8 @@ public class CSVReader {
 	public CSVReader() {
 		try {
 		    String sep = File.separator;
-		    String bookingCSVpath = new File(".."+sep+"data"+sep+"bookingDetails.csv").getAbsolutePath();
-		    String flightCSVpath = new File(".."+sep+"data"+sep+"flightDetails.csv").getAbsolutePath();
+		    String bookingCSVpath = new File("CheckInTerminal"+sep+"data"+sep+"bookingDetails.csv").getAbsolutePath();
+		    String flightCSVpath = new File("CheckInTerminal"+sep+"data"+sep+"flightDetails.csv").getAbsolutePath();
 		   
 			File flightCSV = new File(flightCSVpath);
 			File bookingCSV = new File(bookingCSVpath);
@@ -34,8 +34,9 @@ public class CSVReader {
 				float maxW = 100;
 				float ranWeight = rand1.nextFloat() * (maxWeight - min) + min;
 				float ranL = rand2.nextFloat() * (maxLH - min) + min;
-				float ranH = rand2.nextFloat() * (maxLH - min) + min;
-				float ranW = rand2.nextFloat() * (maxW - min) + min;
+				float ranH = rand3.nextFloat() * (maxLH - min) + min;
+				float ranW = rand4.nextFloat() * (maxW - min) + min;
+				//Booking example = new Booking(bookingCode, firstName, lastName, flightCode, baggageWeight, baggageLength, baggageHeight, baggageWidth)
 				Booking booking = new Booking(temp[0], temp[1], temp[2], temp[3], ranWeight, ranL, ranH, ranW);
 				bookings.addBooking(booking);
 			}
@@ -45,7 +46,8 @@ public class CSVReader {
 				String[] tempTime = temp[11].split(":");
 				int h = Integer.parseInt(tempTime[0]);
         		int m = Integer.parseInt(tempTime[1]);
-        		int time = h*60 + m;
+				int time = h*60 + m;
+				//Flight example = new Flight(flightCode, destination, carrier, maxPassengers, allowedBaggageWeight, allowedBaggageLength, allowedBaggageHeight, allowedBaggageWidth, excessFeeCharge, time)
 				Flight flight = new Flight(temp[0], temp[3], temp[1], Integer.parseInt(temp[5]), Float.parseFloat(temp[6]), Float.parseFloat(temp[7]), Float.parseFloat(temp[8]), Float.parseFloat(temp[9]), Float.parseFloat(temp[10]), time);
 				flights.addFlight(flight);
 			}
