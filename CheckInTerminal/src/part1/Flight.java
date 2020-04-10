@@ -1,5 +1,11 @@
 package part1;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Observer;
+
+import part2.*;
+
 /**
  * The type Flight.
  *  <tt>Flight</tt> is an object used to store details for each flight.
@@ -11,8 +17,7 @@ package part1;
  */
 
 @SuppressWarnings("serial")
-
-public class Flight {
+public class Flight implements Subject {
     private String flightCode;              /* flight code (reference/number) */
     private String destination;             /* destination airport code */
     private String carrier;                 /* carrier airline code */
@@ -30,6 +35,7 @@ public class Flight {
     private int numberOfPassengers;         /* current total number of checked-in passengers */
     private float excessFeeCharge;          /* excess baggage fee (in USD) */
     private float departureTime;            /* departure time of the flight */
+    private List<Observer> registeredObservers = new LinkedList<Observer>();
 
     /**
      * Instantiates a new Flight object with given parameters as its Flight details.
@@ -196,5 +202,18 @@ public class Flight {
             return false;
         else 
             return true;
+    @Override
+    public void registerObserver(Observer obs) {
+        registeredObservers.add(obs);
+    }
+
+    @Override
+    public void removeObserver(Observer obs) {
+        registeredObservers.remove(obs);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for(Observer obs : registeredObservers) obs.update(null, this);
     }
 }

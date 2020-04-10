@@ -1,7 +1,9 @@
 package part2;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import part1.*;
 
@@ -9,12 +11,19 @@ public class TestCounters {
     // TODO: Remove once testing over
     public static void main(String[] args) {
         List<CheckinCounter> counters = new LinkedList<CheckinCounter>();
-        CheckinCounter c1 = new CheckinCounter(1);
-        counters.add(c1);
-        CheckinCounter c2 = new CheckinCounter(2);
+        AllBookings bookings = new AllBookings();
+        AllFlights flights = new AllFlights();
+        Flight f1 = new Flight("AF1", "Edinburgh", "AirFrance", 200, 23, 30, 15);
+        flights.addFlight(f1);
+        SimTime t = new SimTime();
+        Timer timer = new Timer(t);
+        CheckinCounter c1 = new CheckinCounter(1,flights,t,timer);
+        counters.add(c1); 
+        CheckinCounter c2 = new CheckinCounter(2,flights,t,timer);
         counters.add(c2);
-        CheckinCounter c3 = new CheckinCounter(3);
-        counters.add(c3);
+        // CheckinCounter c3 = new CheckinCounter(3,flights,t,timer);
+        // counters.add(c3);
+
         Booking b1 = new Booking("123", "Sean", "Katagiri", "AF1");
         Booking b2 = new Booking("456", "Joshua", "Roe", "AF1");
         Booking b3 = new Booking("789", "Leo", "Kong", "AF1");
@@ -25,7 +34,6 @@ public class TestCounters {
         Booking b8 = new Booking("555", "Poshua", "Roe", "AF1");
         Booking b9 = new Booking("666", "Tarek", "Kurjawa", "AF1");
         Booking b10 = new Booking("777", "Dandy", "Adjepong", "AF1");
-        AllBookings bookings = new AllBookings();
         bookings.addBooking(b1);
         bookings.addBooking(b2);
         bookings.addBooking(b3);
@@ -36,16 +44,33 @@ public class TestCounters {
         bookings.addBooking(b8);
         bookings.addBooking(b9);
         bookings.addBooking(b10);
-        PassengerQueue pq = new PassengerQueue(bookings, counters);
-        pq.updateQueue();
+        PassengerQueue pq = new PassengerQueue(timer);
+        ManagementGUI gui = new ManagementGUI(timer,t,counters,flights.getAllFlights());
+        
+        pq.registerObserver(gui);
+        f1.registerObserver(gui);
+
+        Iterator it = bookings.getAllBookings().entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            pq.enqueue((Booking)pair.getValue());
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+
+        for(CheckinCounter c : counters){
+            c.registerObserver(gui);
+            c.setQueue(pq);
+        }
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        timer.start();
+        gui.start();
         pq.start();
         c1.start();
         c2.start();
-        c3.start();
+        // c3.start();
     }
 }

@@ -8,59 +8,78 @@ import java.util.Queue;
 
 import part1.*;
 
-public class PassengerQueue extends Thread implements Observer {
+@SuppressWarnings("deprecation")
+public class PassengerQueue extends Thread implements Observer, Subject {
     // private float time;
-    public Queue<Booking> queue = new LinkedList<>();
+    private Queue<Booking> queue = new LinkedList<>();
+    private List<Observer> registeredObservers = new LinkedList<Observer>();
+    private Timer timer;
 
-    public PassengerQueue(AllBookings bookings, List<CheckinCounter> counters) {
+    public PassengerQueue(Timer timer) {
         // add all passengers to queue
         // TODO: possibly change to passengers are added to queue at given sim time, in
         // which case move to run()
-        queue.addAll(bookings.getAllBookings().values());
+        // queue.addAll(bookings.getAllBookings().values());
+        this.timer = timer;
 
-        // Add queue as an observer to all counters
-        for (CheckinCounter counter : counters)
-            counter.registerObserver(this);
+        // // Add queue as an observer to all counters
+        // for (CheckinCounter counter : counters)
+        //     counter.registerObserver(this);
     }
 
     public synchronized void enqueue(Booking booking) {
         queue.add(booking);
+        notifyObservers();
     }
 
     public synchronized Booking dequeue() {
-        return queue.remove();
+        Booking queueHead = queue.remove();
+        notifyObservers();
+        return queueHead;
     }
 
     public int size() {
         return queue.size();
     }
 
+    public synchronized Queue<Booking> getQueue() {
+        return this.queue;
+    }
+
     public void run() {
-
-        while (queue.size() > 0)
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+        synchronized(timer){
+            while (queue.size() > 0){
+                try {
+                    timer.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        System.out.println("End of queue reached");
+            System.out.println("End of queue reached");
+        }
+        
     }
 
-	@Override
-	public void update(Observable o, Object desk_number) {
-        //TODO replace this with GUI update
-        System.out.println("***Desk " + desk_number + " is now available***");
+    @Override
+    public void update(Observable o, Object counter) {
+        // TODO replace this with GUI update
+        CheckinCounter current_counter = (CheckinCounter) counter;
+        // System.out.println("***Counter " + current_counter.getCounterNumber() + " is now available***");
     }
-    
-    public synchronized void updateQueue(){
-        //TODO replace this with GUI update
-        // display list of passengers in queue
-        System.out.println("Number of passengers in qeueue: " + this.size());
-        System.out.println("----------------------------------");
-        for (Booking b : queue){
-            System.out.println(b.getFirstName() + " " + b.getLastName());
-        }
-        System.out.println("----------------------------------");
+
+    @Override
+    public void registerObserver(Observer obs) {
+        registeredObservers.add(obs);
+    }
+
+    @Override
+    public void removeObserver(Observer obs) {
+        registeredObservers.remove(obs);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer obs : registeredObservers)
+            obs.update(null, this);
     }
 }

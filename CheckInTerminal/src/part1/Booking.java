@@ -95,5 +95,23 @@ public class Booking{
         //baggage_weight = w;
         //baggage_volume = v;
     }
+
+    /**
+     * Gets baggage weight.
+     *
+     * @return the baggage weight
+     */
+    public float getBaggage_weight() {
+        return baggage_weight;
+    }
+
+    /**
+     * Gets baggage volume.
+     *
+     * @return the baggage volume
+     */
+    public float getBaggage_volume() {
+        return baggage_volume;
+    }
 }
 
