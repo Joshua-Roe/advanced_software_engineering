@@ -19,20 +19,14 @@ public class Main {
         counters.add(c1); 
         CheckinCounter c2 = new CheckinCounter(2,flights,t,timer);
         counters.add(c2);
-        // CheckinCounter c3 = new CheckinCounter(3,flights,t,timer);
-        // counters.add(c3);
+        CheckinCounter c3 = new CheckinCounter(3,flights,t,timer);
+        counters.add(c3);
         PassengerQueue pq = new PassengerQueue(timer);
         ManagementGUI gui = new ManagementGUI(timer,t,counters,flights.getAllFlights());
         
         pq.registerObserver(gui);
         flights.getAllFlights().forEach((key,value) -> value.registerObserver(gui));
-
-        Iterator it = bookings.getAllBookings().entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            pq.enqueue((Booking)pair.getValue());
-            it.remove(); // avoids a ConcurrentModificationException
-        }
+        bookings.getAllBookings().forEach((key,value) -> pq.getQueue().add(value));
 
         for(CheckinCounter c : counters){
             c.registerObserver(gui);
@@ -48,6 +42,6 @@ public class Main {
         pq.start();
         c1.start();
         c2.start();
-        // c3.start();
+        c3.start();
     }
 }

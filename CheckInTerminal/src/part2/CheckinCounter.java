@@ -63,7 +63,7 @@ public class CheckinCounter extends Thread implements Subject {
             setPassengerFlight();
             // System.out.println("++Counter "+this.counter_number+" is now serving " + passenger.getFullName()+"++");
             // flight.checkBaggage(passenger.baggage_weight, passenger.baggage_volume);
-            passenger_flight.addPassenger();
+            this.passenger_flight.addPassenger();
             // System.out.println("++"+passenger.getFullName() + " checked into Flight number " + passenger_flight.getFlightCode()+"++");
             notifyObservers();
         }
