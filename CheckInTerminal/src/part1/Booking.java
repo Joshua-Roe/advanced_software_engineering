@@ -1,7 +1,7 @@
 package part1;
 
 /**
- * The type Booking object used to store details for each booking..
+ * The type Booking object used to store details for each booking.
  *
  * @author Leo Kong
  * @author Marek Kujawa
