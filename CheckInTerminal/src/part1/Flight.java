@@ -29,6 +29,7 @@ public class Flight {
     private float totalExcessFees;          /* current total sum of baggage excess fees (in USD) */
     private int numberOfPassengers;         /* current total number of checked-in passengers */
     private float excessFeeCharge;          /* excess baggage fee (in USD) */
+    private float departureTime;            /* departure time of the flight */
 
     /**
      * Instantiates a new Flight object with given parameters as its Flight details.
@@ -42,8 +43,9 @@ public class Flight {
      * @param allowedBaggageHeight the allowed baggage height per person
      * @param allowedBaggageWidth  the allowed baggage width per person
      * @param excessFeeCharge      the excess fee charge
+     * @param time                 the time of departure
       */
-     public Flight(String flightCode, String destination, String carrier, int maxPassengers, float allowedBaggageWeight, float allowedBaggageLength, float allowedBaggageHeight, float allowedBaggageWidth, float excessFeeCharge) {
+     public Flight(String flightCode, String destination, String carrier, int maxPassengers, float allowedBaggageWeight, float allowedBaggageLength, float allowedBaggageHeight, float allowedBaggageWidth, float excessFeeCharge, int time) {
         this.flightCode = flightCode;
         this.destination = destination;
         this.carrier = carrier;
@@ -60,6 +62,7 @@ public class Flight {
         this.totalBaggageVolume = 0;
         this.totalExcessFees = 0;
         this.numberOfPassengers = 0;
+        this.departureTime = time;
     }
 
     /**
@@ -186,5 +189,12 @@ public class Flight {
             this.totalExcessFees += this.excessFeeCharge;
             throw new OverBaggageLimitException("Baggage limit exceeded");
         }
+    }
+
+    public boolean getGateOpen(int currentTime) {
+        if (currentTime >= this.time)
+            return false;
+        else 
+            return true;
     }
 }
