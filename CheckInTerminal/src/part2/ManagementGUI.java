@@ -49,7 +49,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       feeDetails = new JLabel("waiting for details");
       this.add(feeDetails);
     }
-    public void setcontents(Booking currentBooking, int bagFee) {
+    public void setcontents(Booking currentBooking, Float bagFee) {
       bagDetails.setText(currentBooking.getFullName() + " is dropping off 1 bag of " + currentBooking.getBaggageWeight() + "kg");
       String feeText = "";
       if (bagFee == 0) {
@@ -254,7 +254,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
 
   private void updateCounter(Object arg) {
     CheckinCounter checkinCounter = (CheckinCounter)arg;
-    allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking(), 10);// TODO implement getFee() in CheckinCounter or Booking class
+    allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking(), checkinCounter.getPassengerExcessFee());
   }
 
   private void updateFlight(Object arg) {
