@@ -9,6 +9,8 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Hashtable;
+import java.util.List;
+import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
@@ -34,21 +36,27 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   }
 
   class DeskComponent extends JPanel {
-    public DeskComponent(String title, String passengerName, int bagWeight, int bagFee) {
-      this.setBorder(createBorder(title)); // set border
+    JLabel bagDetails;
+    JLabel feeDetails;
+    public DeskComponent(int deskNumber) {
+      this.setBorder(createBorder("Desk "+ deskNumber)); // set border
       this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); // set layout
-      JLabel bagDetails = new JLabel(passengerName + " is dropping off 1 bag of " + bagWeight + "kg");
+      bagDetails = new JLabel("waiting for details");
       this.add(bagDetails);
+      feeDetails = new JLabel("waiting for details");
+      this.add(feeDetails);
+    }
+    public void setcontents(Booking currentBooking, int bagFee) {
+      bagDetails.setText(currentBooking.getFullName() + " is dropping off 1 bag of " + currentBooking.getBaggage_weight() + "kg");
       String feeText = "";
       if (bagFee == 0) {
         feeText = "No baggage fee is due";
       } else {
         feeText = "A bagagge fee of £" + bagFee + " is due";
       }
-      JLabel feeDetails = new JLabel(feeText);
-      this.add(feeDetails);
+      feeDetails.setText(feeText);
     }
-    // TODO setContents
+    //TODO close counter
   }
 
   class FlightComponent extends JPanel {
@@ -72,9 +80,13 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   private SimTime t;
   private String hours;
   private String minutes;
+  private DeskComponent[] allDesks;
   
 
-  public ManagementGUI(Timer timer, SimTime t) {
+  public ManagementGUI(Timer timer, SimTime t, List<CheckinCounter> allCounters) {
+    allDesks = new DeskComponent[allCounters.size()];
+    for(CheckinCounter item : allCounters) allDesks[item.getCounterNumber()-1] = new DeskComponent(item.getCounterNumber());
+    
     this.timer = timer;
     this.t = t;
     // create frame
@@ -223,6 +235,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
 
   private void updateCounter(Object arg) {
     CheckinCounter checkinCounter = (CheckinCounter)arg;
+    allDesks[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking(), 10);// TODO set bagFee
   }
 
   private void updateFlight(Object arg) {
@@ -242,8 +255,8 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       queueContentPanel.add(new PassengerComponent("FLT" + i, "Passenger Name", i * 2, i + "x" + (i + 1) + "x" + (i + 2)));
     } // TEST to fill scroll panel
 
-    desksContentPanel.add(new DeskComponent("Desk 1", "Joshua Roe", 7, 12));
-    desksContentPanel.add(new DeskComponent("Desk 2", "Sean Katagiri", 4, 0));
+    //desksContentPanel.add(new DeskComponent("Desk 1", "Joshua Roe", 7, 12));
+    //desksContentPanel.add(new DeskComponent("Desk 2", "Sean Katagiri", 4, 0));
     // TEST to fill scroll panel
 
     for (int i = 0; i < 20; i++) {
@@ -266,7 +279,18 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   public static void main(String[] args) {
     SimTime t = new SimTime();
     Timer timer = new Timer(t);
-    ManagementGUI g = new ManagementGUI(timer,t);
+
+    List<CheckinCounter> counters = new LinkedList<CheckinCounter>();
+    AllFlights flights = new AllFlights();
+    Flight f1 = new Flight("AF1", "Edinburgh", "AirFrance", 200, 23, 30, 15);
+    flights.addFlight(f1);
+    CheckinCounter c1 = new CheckinCounter(1,flights,t,timer);
+    counters.add(c1);
+    CheckinCounter c2 = new CheckinCounter(2,flights,t,timer);
+    counters.add(c2);
+    //updateCounter(c1);
+
+    ManagementGUI g = new ManagementGUI(timer,t,counters);
     g.testFillGUI();
     timer.start();
     g.start();
