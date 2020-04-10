@@ -32,6 +32,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       JLabel sizeText = new JLabel(bagSize, SwingConstants.CENTER);
       this.add(sizeText);
     //   this.setMaximumSize(new Dimension(2000,20));
+      this.setMaximumSize(new Dimension(Integer.MAX_VALUE,18));
     }
     // TODO setContents
   }
@@ -235,6 +236,8 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     for (Booking item: bookingQueue) {
       queueContentPanel.add(new PassengerComponent(item.getFlightCode(), item.getFullName(), item.getBaggage_weight(), Float.toString(item.getBaggage_volume())));
     }
+    queueContentPanel.setVisible(false);// this forces update of the JPanel and its contents
+    queueContentPanel.setVisible(true);
   }
 
   private void updateCounter(Object arg) {
