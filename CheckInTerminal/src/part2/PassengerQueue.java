@@ -9,22 +9,15 @@ import java.util.Queue;
 import part1.*;
 
 @SuppressWarnings("deprecation")
-public class PassengerQueue extends Thread implements Observer, Subject {
+public class PassengerQueue extends Thread implements Subject {
     // private float time;
     private Queue<Booking> queue = new LinkedList<>();
     private List<Observer> registeredObservers = new LinkedList<Observer>();
     private Timer timer;
 
     public PassengerQueue(Timer timer) {
-        // add all passengers to queue
         // TODO: possibly change to passengers are added to queue at given sim time, in
-        // which case move to run()
-        // queue.addAll(bookings.getAllBookings().values());
         this.timer = timer;
-
-        // // Add queue as an observer to all counters
-        // for (CheckinCounter counter : counters)
-        //     counter.registerObserver(this);
     }
 
     public synchronized void enqueue(Booking booking) {
@@ -57,14 +50,6 @@ public class PassengerQueue extends Thread implements Observer, Subject {
             }
             System.out.println("End of queue reached");
         }
-        
-    }
-
-    @Override
-    public void update(Observable o, Object counter) {
-        // TODO replace this with GUI update
-        CheckinCounter current_counter = (CheckinCounter) counter;
-        // System.out.println("***Counter " + current_counter.getCounterNumber() + " is now available***");
     }
 
     @Override

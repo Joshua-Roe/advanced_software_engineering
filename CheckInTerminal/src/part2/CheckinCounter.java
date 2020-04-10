@@ -15,7 +15,6 @@ public class CheckinCounter extends Thread implements Subject {
     private PassengerQueue queue;
     private Booking passenger;
     private Flight passengerFlight;
-    private Float passengerExcessFee;
     private List<Observer> registeredObservers = new LinkedList<Observer>();
     private AllFlights flights;
     private SimTime t;
@@ -58,7 +57,7 @@ public class CheckinCounter extends Thread implements Subject {
     }
 
     public Float getPassengerExcessFee(){
-        return this.passengerExcessFee;
+        return this.passenger.getExcessFeeCharged();
     }
 
     public synchronized void serveCustomer(){
@@ -69,7 +68,7 @@ public class CheckinCounter extends Thread implements Subject {
                 this.passengerFlight.checkBaggage(passenger.getBaggageWeight(), passenger.getBaggageLength(),passenger.getBaggageHeight(),passenger.getBaggageWidth());
             }
             catch(OverBaggageLimitException e){
-                this.passengerExcessFee = this.passengerFlight.getExcessFeeCharge();
+                this.passenger.setExcessFeeCharged(this.passengerFlight.getExcessFeeCharge());
             }
             this.passengerFlight.addPassenger();
             notifyObservers();

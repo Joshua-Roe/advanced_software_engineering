@@ -17,6 +17,7 @@ public class Booking{
     private float baggageHeight;
     private float baggageWidth;
     private boolean checkInStatus;
+    private float excessFeeCharged = 0;
 
     /**
      * Instantiates a new Booking object with given parameters as its Booking details.
@@ -94,6 +95,14 @@ public class Booking{
     public void setBaggageInfo(float w, float v) {
         //baggage_weight = w;
         //baggage_volume = v;
+    }
+
+    public void setExcessFeeCharged(Float fee){
+        this.excessFeeCharged = fee;
+    }
+
+    public Float getExcessFeeCharged(){
+        return this.excessFeeCharged;
     }
 }
 
