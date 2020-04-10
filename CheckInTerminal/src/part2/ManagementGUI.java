@@ -8,6 +8,7 @@ import javax.swing.event.ChangeListener;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.LinkedList;
@@ -62,15 +63,22 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   }
 
   class FlightComponent extends JPanel {
-    public FlightComponent(String title, int passengerCount, int passengerCapacity, int holdLevel) {
-      this.setBorder(createBorder(title)); // set border
+    JLabel checkedIn;
+    JLabel holdPercent;
+    public FlightComponent(Flight currentFlight) {
+      this.setBorder(createBorder(currentFlight.getFlightCode())); // set border
       this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); // set layout
-      JLabel checkedIn = new JLabel(passengerCount + " checked in of " + passengerCapacity);
+      checkedIn = new JLabel("waiting for details");
       this.add(checkedIn);
-      JLabel holdPercent = new JLabel("Hold is " + holdLevel + "% full");
+      holdPercent = new JLabel("waiting for details");
       this.add(holdPercent);
+      this.setcontents(currentFlight);
     }
-    // TODO setContents
+    public void setcontents(Flight currentFlight) {
+      checkedIn.setText(currentFlight.getNumOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());
+      holdPercent.setText("Hold is " + 50 + "% full");//TODO getHoldPercentFull
+    }
+    //TODO flight takes off
   }
 
   static JFrame frame;
@@ -82,10 +90,11 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   private SimTime t;
   private String hours;
   private String minutes;
-  private DeskComponent[] allDesks;
+  private DeskComponent[] allDeskComponents;
+  private HashMap<String,FlightComponent> allFlightComponents;
   
 
-  public ManagementGUI(Timer timer, SimTime t, List<CheckinCounter> allCounters) {
+  public ManagementGUI(Timer timer, SimTime t, List<CheckinCounter> allCounters, HashMap<String,Flight> allFlights) {
 
     this.timer = timer;
     this.t = t;
@@ -112,9 +121,9 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     desksPanel.setBorder(createBorder("Check In Desks")); // set border
     desksPanel.setLayout(new BoxLayout(desksPanel, BoxLayout.PAGE_AXIS)); // set layout
     desksPanel.add(BorderLayout.CENTER, desksScrollPane); // add scrollpane to bordered panel
-    allDesks = new DeskComponent[allCounters.size()];
-    for(CheckinCounter item : allCounters) allDesks[item.getCounterNumber()-1] = new DeskComponent(item.getCounterNumber());
-    for(DeskComponent desk : allDesks){
+    allDeskComponents = new DeskComponent[allCounters.size()];
+    for(CheckinCounter item : allCounters) allDeskComponents[item.getCounterNumber()-1] = new DeskComponent(item.getCounterNumber());
+    for(DeskComponent desk : allDeskComponents){
         desksContentPanel.add(desk);
     }
 
@@ -126,6 +135,9 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     flightsPanel.setBorder(createBorder("Flights")); // set border
     flightsPanel.setLayout(new BoxLayout(flightsPanel, BoxLayout.PAGE_AXIS)); // set layout
     flightsPanel.add(BorderLayout.CENTER, flightsScrollPane); // add scrollpane to bordered panel
+    allFlightComponents = new HashMap<String, FlightComponent>();
+    allFlights.forEach((key,value) -> allFlightComponents.put(key, new FlightComponent(value)));
+    allFlightComponents.forEach((key,value) -> flightsContentPanel.add(value));
 
     JPanel mainPanel = new JPanel(); // the panel is not visible in output
     mainPanel.setLayout(new GridLayout(0, 3));
@@ -242,7 +254,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
 
   private void updateCounter(Object arg) {
     CheckinCounter checkinCounter = (CheckinCounter)arg;
-    allDesks[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking(), 10);// TODO set bagFee
+    allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking(), 10);// TODO set bagFee
   }
 
   private void updateFlight(Object arg) {
@@ -266,9 +278,9 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     //desksContentPanel.add(new DeskComponent("Desk 2", "Sean Katagiri", 4, 0));
     // TEST to fill scroll panel
 
-    for (int i = 0; i < 20; i++) {
-      flightsContentPanel.add(new FlightComponent("FlightName:" + i, i, i + 10, i));
-    } // TEST to fill scroll panel
+    // for (int i = 0; i < 20; i++) {
+    //   flightsContentPanel.add(new FlightComponent("FlightName:" + i, i, i + 10, i));
+    // } // TEST to fill scroll panel
   }
 
   public void run() {
@@ -297,7 +309,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     counters.add(c2);
     //updateCounter(c1);
 
-    ManagementGUI g = new ManagementGUI(timer,t,counters);
+    ManagementGUI g = new ManagementGUI(timer,t,counters,flights.getAllFlights());
     g.testFillGUI();
     timer.start();
     g.start();

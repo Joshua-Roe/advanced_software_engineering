@@ -45,7 +45,7 @@ public class TestCounters {
         bookings.addBooking(b9);
         bookings.addBooking(b10);
         PassengerQueue pq = new PassengerQueue(timer);
-        ManagementGUI gui = new ManagementGUI(timer,t,counters);
+        ManagementGUI gui = new ManagementGUI(timer,t,counters,flights.getAllFlights());
         
         pq.registerObserver(gui);
 
