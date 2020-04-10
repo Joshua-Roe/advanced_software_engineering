@@ -71,9 +71,9 @@ public class Flight {
      * @return the flight destination.
      */
     public String getDestination() { return this.destination; }
-    
+
     /**
-     * @return the flight carrier.
+     * @return the flight carrier code.
      */
     public String getCarrier() { return this.carrier; }
     
@@ -91,16 +91,73 @@ public class Flight {
      * @return the total baggage volume on the flight.
      */
     public float getTotalBaggageVolume() { return this.totalBaggageVolume; }
-    
+
+    /**
+     * @return the allowed baggage weight per person.
+     */
+    public float getAllowedBaggageWeight() { return allowedBaggageWeight; }
+
+    /**
+     * @return the allowed baggage length per person.
+     */
+    public float getAllowedBaggageLength() { return allowedBaggageLength; }
+
+    /**
+     * @return the allowed baggage height per person.
+     */
+    public float getAllowedBaggageHeight() { return allowedBaggageHeight; }
+
+    /**
+     * @return the allowed baggage width per person.
+     */
+    public float getAllowedBaggageWidth() { return allowedBaggageWidth; }
+
+    /**
+     * @return the allowed baggage volume per person.
+     */
+    public float getAllowedBaggageVolume() { return allowedBaggageVolume; }
+
+    /**
+     * @return the max weight capacity of the baggage compartment for the whole aircraft
+     */
+    public float getMaxBaggageWeightCapacity() { return maxBaggageWeightCapacity; }
+
+    /**
+     * @return the max volume capacity of the baggage compartment for the whole aircraft
+     */
+    public float getMaxBaggageVolumeCapacity() { return maxBaggageVolumeCapacity; }
+
+    /**
+     * @return the total excess fees collected
+     */
+    public float getTotalExcessFees() { return totalExcessFees; }
+
+    /**
+     * @return the number of checked in passengers
+     */
+    public int getNumberOfPassengers() { return numberOfPassengers; }
+
+    /**
+     * @return the levy charge for baggage that exceeds restrictions.
+     */
+    public float getExcessFeeCharge() { return excessFeeCharge; }
+
+    /**
+     * @return the percent (1 = 100%) of the aircraft baggage compartment being filled. It checks both weight and volume and return the bigger one.
+     */
+    public float getBaggagePercent() {
+        return Math.max(this.totalBaggageWeight/this.maxBaggageWeightCapacity, this.totalBaggageVolume/this.maxBaggageVolumeCapacity);
+    }
+
+    /**
+     * @return the percentage of the aircraft passenger capacity being filled.
+     */
+    public float getPassengerCapacity() { return (float)this.numberOfPassengers/this.maxPassengers*100; }
+
     /**
      * Increments the number of checked in by 1.
      */
     public void addPassenger() { this.numberOfPassengers +=1; }
-    
-    /**
-     * @return the number of checked in passengers.
-     */
-    public int getNumOfPassengers() { return this.numberOfPassengers; }
 
     /**
      * Custom exception for baggage limit being exceeded
@@ -110,11 +167,11 @@ public class Flight {
             super(errorMessage);
         }
     }
-    
+
     /**
      * Checks baggage against baggage restrictions, and applies excess fee if limits are
      * exceeded.
-     * 
+     *
      * @param weight the weight of the baggage being checked in.
      * @param length the length of the baggage being checked in.
      * @param height the height of the baggage being checked in.
@@ -126,35 +183,8 @@ public class Flight {
         this.totalBaggageWeight += weight;
         this.totalBaggageVolume += baggageVolume;
         if(weight > this.allowedBaggageWeight || baggageVolume > this.allowedBaggageVolume) {
-            this.totalExcessFees += this.excessFeeCharge; 
+            this.totalExcessFees += this.excessFeeCharge;
             throw new OverBaggageLimitException("Baggage limit exceeded");
         }
-    }
-
-    /**
-     * @return the levy charge for baggage that exceeds restrictions.
-     */
-    public float getBaggageLevy() {
-        return this.excessFeeCharge;
-    }
-    
-    /**
-     * @return the total excess fees collected.
-     */
-    public float getCollectedFees() {
-        return this.totalExcessFees;
-    }
-
-    /**
-     * Gets aircraft baggage compartment level of being full. It checks both weight and volume and return the bigger one.
-     *
-     * @return the baggage percent in float
-     */
-    public float getBaggagePercent() {
-        return Math.max(this.totalBaggageWeight/this.maxBaggageWeightCapacity, this.totalBaggageVolume/this.maxBaggageVolumeCapacity);
-    }
-
-    public float getPassengerCapacity() {
-        return (float)this.numberOfPassengers/this.maxPassengers*100;
     }
 }
