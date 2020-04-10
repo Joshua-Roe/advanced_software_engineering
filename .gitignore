@@ -1,1 +1,19 @@
 bin/
+
+## IntelliJ ##
+/target
+/.idea
+out/
+.idea_modules/
+*.iws
+*.iml
+*.ipr
+
+## OSX ##
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
