@@ -107,7 +107,7 @@ public class Flight {
      */
     public class OverBaggageLimitException extends RuntimeException {
         public OverBaggageLimitException(String errorMessage) {
-        super(errorMessage);
+            super(errorMessage);
         }
     }
     
@@ -143,6 +143,15 @@ public class Flight {
      */
     public float getCollectedFees() {
         return this.totalExcessFees;
+    }
+
+    /**
+     * Gets aircraft baggage compartment level of being full. It checks both weight and volume and return the bigger one.
+     *
+     * @return the baggage percent in float
+     */
+    public float getBaggagePercent() {
+        return Math.max(this.totalBaggageWeight/this.maxBaggageWeightCapacity, this.totalBaggageVolume/this.maxBaggageVolumeCapacity);
     }
 
     public float getPassengerCapacity() {
