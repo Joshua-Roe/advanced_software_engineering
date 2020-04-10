@@ -25,8 +25,8 @@ public class TestCounters {
         // CheckinCounter c3 = new CheckinCounter(3,flights,t,timer);
         // counters.add(c3);
         //Booking example = new Booking(bookingCode, firstName, lastName, flightCode, baggageWeight, baggageLength, baggageHeight, baggageWidth)
-        Booking b1 = new Booking("123", "Sean", "Katagiri", "AF1", 10, 40, 10, 19);//TODO always shows baggage fee
-        Booking b2 = new Booking("456", "Joshua", "Roe", "AF1", 10, 40, 10, 19);//TODO doesn't update flight capacity
+        Booking b1 = new Booking("123", "Sean", "Katagiri", "AF1", 10, 40, 10, 19);
+        Booking b2 = new Booking("456", "Joshua", "Roe", "AF1", 10, 40, 10, 19);
         Booking b3 = new Booking("789", "Leo", "Kong", "AF1", 10, 40, 10, 19);
         Booking b4 = new Booking("111", "Marek", "Kurjawa", "AF1", 10, 40, 10, 19);
         Booking b5 = new Booking("222", "Randy", "Adjepong", "AF1", 10, 40, 10, 19);

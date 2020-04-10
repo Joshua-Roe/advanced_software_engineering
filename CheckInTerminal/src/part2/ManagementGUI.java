@@ -254,7 +254,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
 
   private void updateCounter(Object arg) {
     CheckinCounter checkinCounter = (CheckinCounter)arg;
-    allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking(), 10);// TODO set bagFee
+    allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking(), 10);// TODO implement getFee() in CheckinCounter or Booking class
   }
 
   private void updateFlight(Object arg) {

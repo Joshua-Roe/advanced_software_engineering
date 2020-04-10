@@ -166,7 +166,10 @@ public class Flight implements Subject {
     /**
      * Increments the number of checked in by 1.
      */
-    public void addPassenger() { this.numberOfPassengers +=1; }
+    public void addPassenger() {
+		this.notifyObservers();
+		this.numberOfPassengers +=1;
+	}
 
     /**
      * Custom exception for baggage limit being exceeded
