@@ -31,6 +31,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       this.add(weightText);
       JLabel sizeText = new JLabel(bagSize, SwingConstants.CENTER);
       this.add(sizeText);
+    //   this.setMaximumSize(new Dimension(2000,20));
     }
     // TODO setContents
   }
@@ -84,9 +85,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   
 
   public ManagementGUI(Timer timer, SimTime t, List<CheckinCounter> allCounters) {
-    allDesks = new DeskComponent[allCounters.size()];
-    for(CheckinCounter item : allCounters) allDesks[item.getCounterNumber()-1] = new DeskComponent(item.getCounterNumber());
-    
+
     this.timer = timer;
     this.t = t;
     // create frame
@@ -112,6 +111,11 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     desksPanel.setBorder(createBorder("Check In Desks")); // set border
     desksPanel.setLayout(new BoxLayout(desksPanel, BoxLayout.PAGE_AXIS)); // set layout
     desksPanel.add(BorderLayout.CENTER, desksScrollPane); // add scrollpane to bordered panel
+    allDesks = new DeskComponent[allCounters.size()];
+    for(CheckinCounter item : allCounters) allDesks[item.getCounterNumber()-1] = new DeskComponent(item.getCounterNumber());
+    for(DeskComponent desk : allDesks){
+        desksContentPanel.add(desk);
+    }
 
     // Column for Flights
     flightsContentPanel = new JPanel(); // content panel to be scrolled

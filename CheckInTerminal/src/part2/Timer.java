@@ -28,6 +28,7 @@ class Timer extends Thread{
             try {
                 sleep(simTime.get());
                 while(simTime.getPause()){
+                    //Works fine without sleep, required for RedHat JDK
                     Thread.sleep(10);
                 }
             } catch (InterruptedException e) {

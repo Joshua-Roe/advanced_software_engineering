@@ -37,7 +37,10 @@ public class CheckinCounter extends Thread implements Subject {
                 serveCustomer();
             }
         }
-        
+    }
+
+    public void setQueue(PassengerQueue queue){
+        this.queue = queue;
     }
 
     public int getCounterNumber(){
@@ -58,8 +61,7 @@ public class CheckinCounter extends Thread implements Subject {
         if(queue.size()>0){
             this.passenger = queue.dequeue();
             setPassengerFlight();
-            System.out.println("++Counter "+this.counter_number+" is now serving " + passenger.getFullName()+"++");
-            queue.updateQueue();
+            // System.out.println("++Counter "+this.counter_number+" is now serving " + passenger.getFullName()+"++");
             // flight.checkBaggage(passenger.baggage_weight, passenger.baggage_volume);
             passenger_flight.addPassenger();
             // System.out.println("++"+passenger.getFullName() + " checked into Flight number " + passenger_flight.getFlightCode()+"++");

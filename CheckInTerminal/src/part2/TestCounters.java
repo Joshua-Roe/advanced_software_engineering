@@ -1,7 +1,9 @@
 package part2;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import part1.*;
 
@@ -13,15 +15,15 @@ public class TestCounters {
         AllFlights flights = new AllFlights();
         Flight f1 = new Flight("AF1", "Edinburgh", "AirFrance", 200, 23, 30, 15);
         flights.addFlight(f1);
-        Boolean pause = false;
         SimTime t = new SimTime();
         Timer timer = new Timer(t);
         CheckinCounter c1 = new CheckinCounter(1,flights,t,timer);
-        counters.add(c1);
+        counters.add(c1); 
         CheckinCounter c2 = new CheckinCounter(2,flights,t,timer);
         counters.add(c2);
         // CheckinCounter c3 = new CheckinCounter(3,flights,t,timer);
         // counters.add(c3);
+
         Booking b1 = new Booking("123", "Sean", "Katagiri", "AF1");
         Booking b2 = new Booking("456", "Joshua", "Roe", "AF1");
         Booking b3 = new Booking("789", "Leo", "Kong", "AF1");
@@ -42,15 +44,29 @@ public class TestCounters {
         bookings.addBooking(b8);
         bookings.addBooking(b9);
         bookings.addBooking(b10);
-        PassengerQueue pq = new PassengerQueue(bookings, counters,timer);
-        pq.updateQueue();
-        new TestGUI(timer, t);
+        PassengerQueue pq = new PassengerQueue(timer);
+        ManagementGUI gui = new ManagementGUI(timer,t,counters);
+        
+        pq.registerObserver(gui);
+
+        Iterator it = bookings.getAllBookings().entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            pq.enqueue((Booking)pair.getValue());
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+
+        for(CheckinCounter c : counters){
+            c.registerObserver(gui);
+            c.setQueue(pq);
+        }
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         timer.start();
+        gui.start();
         pq.start();
         c1.start();
         c2.start();
