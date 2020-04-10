@@ -16,8 +16,8 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 
-@SuppressWarnings("serial")
 
+@SuppressWarnings({"serial","deprecation"})
 public class ManagementGUI extends Thread implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
 
