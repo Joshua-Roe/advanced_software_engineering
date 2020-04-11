@@ -155,7 +155,7 @@ public class Flight implements Subject {
      * @return the percent (1 = 100%) of the aircraft baggage compartment being filled. It checks both weight and volume and return the bigger one.
      */
     public float getBaggagePercent() {
-        return Math.max(this.totalBaggageWeight/this.maxBaggageWeightCapacity, this.totalBaggageVolume/this.maxBaggageVolumeCapacity);
+        return Math.max(100*this.totalBaggageWeight/this.maxBaggageWeightCapacity, 100*this.totalBaggageVolume/this.maxBaggageVolumeCapacity);
     }
 
     /**
@@ -167,8 +167,8 @@ public class Flight implements Subject {
      * Increments the number of checked in by 1.
      */
     public void addPassenger() {
-		this.notifyObservers();
 		this.numberOfPassengers +=1;
+		this.notifyObservers();
 	}
 
     /**
