@@ -64,6 +64,7 @@ public class CheckinCounter extends Thread implements Subject {
         if(queue.size()>0){
             this.passenger = queue.dequeue();
             setPassengerFlight();
+            //TODO: clear passenger details once queue has ended so GUI isnt stuck with last served passenger
             try{
                 this.passengerFlight.checkBaggage(passenger.getBaggageWeight(), passenger.getBaggageLength(),passenger.getBaggageHeight(),passenger.getBaggageWidth());
             }
@@ -71,6 +72,9 @@ public class CheckinCounter extends Thread implements Subject {
                 this.passenger.setExcessFeeCharged(this.passengerFlight.getExcessFeeCharge());
             }
             this.passengerFlight.addPassenger();
+            if(this.passengerFlight.getFlightCode().equals("BA2503")){
+                System.out.println("Checked one in, passenger number is now " + this.passengerFlight.getNumberOfPassengers());
+            }
             notifyObservers();
         }
     }
