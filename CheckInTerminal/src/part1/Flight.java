@@ -16,7 +16,7 @@ import part2.*;
  * @version %I%, %G%
  */
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial","deprecation"})
 public class Flight implements Subject {
     private String flightCode;              /* flight code (reference/number) */
     private String destination;             /* destination airport code */

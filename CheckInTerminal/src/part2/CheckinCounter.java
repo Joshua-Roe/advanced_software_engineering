@@ -19,12 +19,17 @@ public class CheckinCounter extends Thread implements Subject {
     private AllFlights flights;
     private SimTime t;
     private Timer timer;
+    private boolean open;
+
+    //Change this variable to change time to close counter
+    private int stopTime = 120;
 
     public CheckinCounter(int number, AllFlights flights, SimTime t, Timer timer) {
         this.counter_number = number;
         this.flights = flights;
         this.t = t;
         this.timer = timer;
+        this.open = true;
     }
 
     public void run() {
@@ -36,6 +41,7 @@ public class CheckinCounter extends Thread implements Subject {
                     e.printStackTrace();
                 }
                 serveCustomer();
+                if(timer.getTime() > this.stopTime) this.open = false;
             }
         }
     }
@@ -60,8 +66,12 @@ public class CheckinCounter extends Thread implements Subject {
         return this.passenger.getExcessFeeCharged();
     }
 
+    public boolean getIsOpen(){
+        return this.open;
+    }
+
     public synchronized void serveCustomer(){
-        if(queue.size()>0){
+        if(queue.size()>0 && this.open){
             this.passenger = queue.dequeue();
             setPassengerFlight();
             //TODO: clear passenger details once queue has ended so GUI isnt stuck with last served passenger
