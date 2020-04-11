@@ -77,7 +77,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     public void setcontents(Flight currentFlight) {
       checkedIn.setText(currentFlight.getNumberOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());
       holdPercent.setText("Hold is " + currentFlight.getBaggagePercent() + "% full");
-      
     }
     //TODO flight takes off
   }
