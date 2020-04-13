@@ -20,16 +20,25 @@ public class CheckinCounter extends Thread implements Subject {
     private SimTime t;
     private Timer timer;
     private boolean open;
+    private Loginfile log;
 
     //Change this variable to change time to close counter
     private int stopTime = 120;
 
-    public CheckinCounter(int number, AllFlights flights, SimTime t, Timer timer) {
+    public CheckinCounter(int number, AllFlights flights, SimTime t, Timer timer, Loginfile log) {
         this.counter_number = number;
         this.flights = flights;
         this.t = t;
         this.timer = timer;
+        this.log = log;
         this.open = true;
+    }
+
+    public void closeCounter(){
+        if (this.open){
+            this.open = false;
+            log.log("Checkin counter "+this.counter_number+" closed");
+        }
     }
 
     public void run() {
@@ -41,7 +50,9 @@ public class CheckinCounter extends Thread implements Subject {
                     e.printStackTrace();
                 }
                 serveCustomer();
-                if(timer.getTime() > this.stopTime) this.open = false;
+                if(timer.getTime() > this.stopTime){
+                    closeCounter();
+                } 
             }
         }
     }
@@ -82,9 +93,7 @@ public class CheckinCounter extends Thread implements Subject {
                 this.passenger.setExcessFeeCharged(this.passengerFlight.getExcessFeeCharge());
             }
             this.passengerFlight.addPassenger();
-            if(this.passengerFlight.getFlightCode().equals("BA2503")){
-                System.out.println("Checked one in, passenger number is now " + this.passengerFlight.getNumberOfPassengers());
-            }
+            log.log(this.passenger.getFullName()+" checked into flight "+this.passengerFlight.getFlightCode()+". Excess fee of £"+this.passenger.getExcessFeeCharged()+" charged.");
             notifyObservers();
         }
     }

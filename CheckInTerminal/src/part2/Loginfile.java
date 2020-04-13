@@ -6,12 +6,19 @@ import java.io.IOException;
 
 public class Loginfile {
     private  StringBuilder logfile;
+    private Timer timer;
 
-    public Loginfile(){
+    public Loginfile(Timer timer){
         logfile = new StringBuilder();
+        this.timer = timer;
         
     }
-    
+
+    public  void  log (String logstring ) {
+        logfile.append(this.timer.getTimeString() + ": " + logstring);
+        logfile.append(System.lineSeparator());
+    }
+
     public  void savefile() {
         try {
             FileWriter logonscore =new FileWriter(new File("out.txt"),false);
@@ -20,10 +27,5 @@ public class Loginfile {
         }
         catch(IOException e) {
         }
-    }
-
-    public  void  log (String logstring ) {
-        logfile.append(logstring);
-        logfile.append(System.lineSeparator());
     }
 }

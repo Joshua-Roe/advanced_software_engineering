@@ -13,13 +13,14 @@ public class Main {
         AllFlights flights = csvReader.getFlights();
         SimTime t = new SimTime();
         Timer timer = new Timer(t);
-        CheckinCounter c1 = new CheckinCounter(1,flights,t,timer);
+        Loginfile log = new Loginfile(timer);
+        CheckinCounter c1 = new CheckinCounter(1,flights,t,timer,log);
         counters.add(c1); 
-        CheckinCounter c2 = new CheckinCounter(2,flights,t,timer);
+        CheckinCounter c2 = new CheckinCounter(2,flights,t,timer,log);
         counters.add(c2);
-        CheckinCounter c3 = new CheckinCounter(3,flights,t,timer);
+        CheckinCounter c3 = new CheckinCounter(3,flights,t,timer,log);
         counters.add(c3);
-        PassengerQueue pq = new PassengerQueue(timer);
+        PassengerQueue pq = new PassengerQueue(timer,log);
         ManagementGUI gui = new ManagementGUI(timer,t,counters,flights.getAllFlights());
         
         pq.registerObserver(gui);
@@ -41,5 +42,10 @@ public class Main {
         c1.start();
         c2.start();
         c3.start();
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+	        public void run() {
+                log.savefile();
+	        }
+	    }, "Shutdown-thread"));
     }
 }

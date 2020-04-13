@@ -1,0 +1,723 @@
+[00:02]: Lelia Filion left the queue.
+[00:02]: Lelia Filion checked into flight BE851. Excess fee of £35.0 charged.
+[00:02]: Eloisa Faurote left the queue.
+[00:02]: Eloisa Faurote checked into flight BE2107. Excess fee of £35.0 charged.
+[00:02]: Charlette Brenning left the queue.
+[00:02]: Charlette Brenning checked into flight LM397. Excess fee of £35.0 charged.
+[00:03]: Timmy Lintner left the queue.
+[00:03]: Timmy Lintner checked into flight EZS6917. Excess fee of £35.0 charged.
+[00:03]: Dominic Washmuth left the queue.
+[00:03]: Dominic Washmuth checked into flight EZY2686. Excess fee of £35.0 charged.
+[00:03]: Almeta Keehner left the queue.
+[00:03]: Almeta Keehner checked into flight EZY6979. Excess fee of £35.0 charged.
+[00:04]: Jordan Handsaker left the queue.
+[00:04]: Jordan Handsaker checked into flight EZY012. Excess fee of £35.0 charged.
+[00:04]: Dewitt Julio left the queue.
+[00:04]: Dewitt Julio checked into flight BA2503. Excess fee of £35.0 charged.
+[00:04]: Elroy Piehler left the queue.
+[00:04]: Elroy Piehler checked into flight BE851. Excess fee of £35.0 charged.
+[00:05]: Elbert Drawe left the queue.
+[00:05]: Elbert Drawe checked into flight BE851. Excess fee of £35.0 charged.
+[00:05]: Gerald Drozdenko left the queue.
+[00:05]: Gerald Drozdenko checked into flight EZY2686. Excess fee of £35.0 charged.
+[00:05]: Jeannetta Coolidge left the queue.
+[00:05]: Jeannetta Coolidge checked into flight BE851. Excess fee of £35.0 charged.
+[00:06]: Dacia Swaisgood left the queue.
+[00:06]: Dacia Swaisgood checked into flight EZS6917. Excess fee of £35.0 charged.
+[00:06]: Precious Brabble left the queue.
+[00:06]: Precious Brabble checked into flight EZY6979. Excess fee of £35.0 charged.
+[00:06]: Tamesha Veigel left the queue.
+[00:06]: Tamesha Veigel checked into flight BA8857. Excess fee of £0.0 charged.
+[00:07]: Derrick Dolloff left the queue.
+[00:07]: Derrick Dolloff checked into flight LM397. Excess fee of £35.0 charged.
+[00:07]: Alyce Flamino left the queue.
+[00:07]: Alyce Flamino checked into flight EZY236. Excess fee of £35.0 charged.
+[00:07]: Douglass Fonnesbeck left the queue.
+[00:07]: Douglass Fonnesbeck checked into flight EZY488. Excess fee of £35.0 charged.
+[00:08]: Beula Lingo left the queue.
+[00:08]: Beula Lingo checked into flight FR5160. Excess fee of £35.0 charged.
+[00:08]: Desire Barresi left the queue.
+[00:08]: Desire Barresi checked into flight EJU3386. Excess fee of £35.0 charged.
+[00:08]: Odette Moussette left the queue.
+[00:08]: Odette Moussette checked into flight EJU2684. Excess fee of £35.0 charged.
+[00:09]: Celestina Pince left the queue.
+[00:09]: Celestina Pince checked into flight EJU2684. Excess fee of £35.0 charged.
+[00:09]: Evette Mazierski left the queue.
+[00:09]: Evette Mazierski checked into flight EZY488. Excess fee of £35.0 charged.
+[00:09]: Eva Joulwan left the queue.
+[00:09]: Eva Joulwan checked into flight BE851. Excess fee of £35.0 charged.
+[00:10]: Emiko Sayre left the queue.
+[00:10]: Emiko Sayre checked into flight EZY6979. Excess fee of £35.0 charged.
+[00:10]: Cristina Marola left the queue.
+[00:10]: Cristina Marola checked into flight EZY808. Excess fee of £35.0 charged.
+[00:10]: Marta Brace left the queue.
+[00:10]: Marta Brace checked into flight BE851. Excess fee of £35.0 charged.
+[00:11]: Selene Zeng left the queue.
+[00:11]: Selene Zeng checked into flight EZY484. Excess fee of £35.0 charged.
+[00:11]: Gene Bleile left the queue.
+[00:11]: Gene Bleile checked into flight EZS6917. Excess fee of £35.0 charged.
+[00:11]: Leana Stackpole left the queue.
+[00:11]: Leana Stackpole checked into flight FR815. Excess fee of £35.0 charged.
+[00:12]: Thad Puskarich left the queue.
+[00:12]: Thad Puskarich checked into flight EK024. Excess fee of £35.0 charged.
+[00:12]: Alverta Topete left the queue.
+[00:12]: Alverta Topete checked into flight EZY808. Excess fee of £35.0 charged.
+[00:12]: Pok Molaison left the queue.
+[00:12]: Pok Molaison checked into flight BA8857. Excess fee of £35.0 charged.
+[00:13]: Kenny Lin left the queue.
+[00:13]: Kenny Lin checked into flight EZY012. Excess fee of £35.0 charged.
+[00:13]: Elbert Fiorino left the queue.
+[00:13]: Elbert Fiorino checked into flight LM397. Excess fee of £35.0 charged.
+[00:13]: Leeann Flory left the queue.
+[00:13]: Leeann Flory checked into flight FR6652. Excess fee of £35.0 charged.
+[00:14]: Shaunna Rodamis left the queue.
+[00:14]: Shaunna Rodamis checked into flight EZY012. Excess fee of £35.0 charged.
+[00:14]: Lynna Breheny left the queue.
+[00:14]: Lynna Breheny checked into flight EZY488. Excess fee of £35.0 charged.
+[00:14]: Phillip Aloi left the queue.
+[00:14]: Phillip Aloi checked into flight EK024. Excess fee of £0.0 charged.
+[00:15]: Jacki Sterback left the queue.
+[00:15]: Jacki Sterback checked into flight EZY6979. Excess fee of £35.0 charged.
+[00:15]: Isabelle Kono left the queue.
+[00:15]: Isabelle Kono checked into flight LM397. Excess fee of £35.0 charged.
+[00:15]: Latosha Alexy left the queue.
+[00:15]: Latosha Alexy checked into flight BE2107. Excess fee of £35.0 charged.
+[00:16]: Carisa Degenhardt left the queue.
+[00:16]: Carisa Degenhardt checked into flight EZY012. Excess fee of £35.0 charged.
+[00:16]: Dong Oropeza left the queue.
+[00:16]: Dong Oropeza checked into flight FR6652. Excess fee of £35.0 charged.
+[00:16]: Anglea Tritten left the queue.
+[00:16]: Anglea Tritten checked into flight LM347. Excess fee of £35.0 charged.
+[00:17]: Carline Bulcao left the queue.
+[00:17]: Carline Bulcao checked into flight LM335. Excess fee of £35.0 charged.
+[00:17]: Pearly Ero left the queue.
+[00:17]: Pearly Ero checked into flight EZY236. Excess fee of £35.0 charged.
+[00:17]: Sherell Pomarico left the queue.
+[00:17]: Sherell Pomarico checked into flight EZY484. Excess fee of £35.0 charged.
+[00:18]: Corrinne Jaret left the queue.
+[00:18]: Corrinne Jaret checked into flight BA2503. Excess fee of £35.0 charged.
+[00:18]: Lura Manzella left the queue.
+[00:18]: Lura Manzella checked into flight BA2503. Excess fee of £0.0 charged.
+[00:18]: Margarita Orloski left the queue.
+[00:18]: Margarita Orloski checked into flight LM347. Excess fee of £35.0 charged.
+[00:19]: Sabina Prok left the queue.
+[00:19]: Sabina Prok checked into flight FR6652. Excess fee of £35.0 charged.
+[00:19]: Larue Ocacio left the queue.
+[00:19]: Larue Ocacio checked into flight FR6652. Excess fee of £35.0 charged.
+[00:19]: Ona Bowhall left the queue.
+[00:19]: Ona Bowhall checked into flight LM347. Excess fee of £35.0 charged.
+[00:20]: Goldie Sonkens left the queue.
+[00:20]: Goldie Sonkens checked into flight FR6652. Excess fee of £35.0 charged.
+[00:20]: Veronica Mcclodden left the queue.
+[00:20]: Veronica Mcclodden checked into flight FR5160. Excess fee of £35.0 charged.
+[00:20]: Antonio Heilig left the queue.
+[00:20]: Antonio Heilig checked into flight FR815. Excess fee of £35.0 charged.
+[00:21]: Marsha Tarry left the queue.
+[00:21]: Marsha Tarry checked into flight EZY488. Excess fee of £35.0 charged.
+[00:21]: Telma Maraia left the queue.
+[00:21]: Telma Maraia checked into flight EJU3386. Excess fee of £35.0 charged.
+[00:21]: Nina Yaklin left the queue.
+[00:21]: Nina Yaklin checked into flight FR1049. Excess fee of £35.0 charged.
+[00:22]: Tina Clapham left the queue.
+[00:22]: Tina Clapham checked into flight BE294. Excess fee of £35.0 charged.
+[00:22]: Ahmad Alsaqri left the queue.
+[00:22]: Ahmad Alsaqri checked into flight LM385. Excess fee of £35.0 charged.
+[00:22]: Elmira Ringlein left the queue.
+[00:22]: Elmira Ringlein checked into flight FR5834. Excess fee of £35.0 charged.
+[00:23]: Cruz Fanelli left the queue.
+[00:23]: Cruz Fanelli checked into flight EZY2686. Excess fee of £35.0 charged.
+[00:23]: Jaleesa Polintan left the queue.
+[00:23]: Jaleesa Polintan checked into flight EZS6917. Excess fee of £35.0 charged.
+[00:23]: Maryln Mortenson left the queue.
+[00:23]: Maryln Mortenson checked into flight FR1049. Excess fee of £35.0 charged.
+[00:24]: Cora Mossing left the queue.
+[00:24]: Cora Mossing checked into flight LM365. Excess fee of £35.0 charged.
+[00:24]: Janessa Noonon left the queue.
+[00:24]: Janessa Noonon checked into flight BE849. Excess fee of £35.0 charged.
+[00:24]: Lyda Cronholm left the queue.
+[00:24]: Lyda Cronholm checked into flight FR6652. Excess fee of £35.0 charged.
+[00:25]: Mila Figuera left the queue.
+[00:25]: Mila Figuera checked into flight EZY012. Excess fee of £35.0 charged.
+[00:25]: Lenny Gazzola left the queue.
+[00:25]: Lenny Gazzola checked into flight BE851. Excess fee of £35.0 charged.
+[00:25]: Maia Shadd left the queue.
+[00:25]: Maia Shadd checked into flight EZY236. Excess fee of £35.0 charged.
+[00:26]: Aracelis Donham left the queue.
+[00:26]: Aracelis Donham checked into flight FR815. Excess fee of £35.0 charged.
+[00:26]: Pansy Kopan left the queue.
+[00:26]: Pansy Kopan checked into flight LM335. Excess fee of £35.0 charged.
+[00:26]: Gilberto Feagins left the queue.
+[00:26]: Gilberto Feagins checked into flight EZY426. Excess fee of £35.0 charged.
+[00:27]: Niesha Bruch left the queue.
+[00:27]: Niesha Bruch checked into flight BA2503. Excess fee of £0.0 charged.
+[00:27]: Emily Pogorelc left the queue.
+[00:27]: Emily Pogorelc checked into flight EJU3386. Excess fee of £35.0 charged.
+[00:27]: Tamekia Flotow left the queue.
+[00:27]: Tamekia Flotow checked into flight EZS6917. Excess fee of £35.0 charged.
+[00:28]: Margurite Loperfido left the queue.
+[00:28]: Margurite Loperfido checked into flight BA8857. Excess fee of £35.0 charged.
+[00:28]: Anisha Shulick left the queue.
+[00:28]: Anisha Shulick checked into flight BE851. Excess fee of £35.0 charged.
+[00:28]: Kip Turziano left the queue.
+[00:28]: Kip Turziano checked into flight BE294. Excess fee of £35.0 charged.
+[00:29]: Chan Loftin left the queue.
+[00:29]: Chan Loftin checked into flight EZY236. Excess fee of £35.0 charged.
+[00:29]: Adolph Cunningham left the queue.
+[00:29]: Adolph Cunningham checked into flight EZY426. Excess fee of £35.0 charged.
+[00:29]: Mignon Luger left the queue.
+[00:29]: Mignon Luger checked into flight EZY488. Excess fee of £35.0 charged.
+[00:30]: Olen Ailey left the queue.
+[00:30]: Olen Ailey checked into flight EZY488. Excess fee of £35.0 charged.
+[00:30]: Ronna Mittler left the queue.
+[00:30]: Ronna Mittler checked into flight FR5834. Excess fee of £35.0 charged.
+[00:30]: Kina Saltman left the queue.
+[00:30]: Kina Saltman checked into flight EZY6979. Excess fee of £35.0 charged.
+[00:31]: Lovetta Study left the queue.
+[00:31]: Lovetta Study checked into flight LM347. Excess fee of £35.0 charged.
+[00:31]: Lino Sutulovich left the queue.
+[00:31]: Lino Sutulovich checked into flight EK024. Excess fee of £0.0 charged.
+[00:31]: Amina Goulbourne left the queue.
+[00:31]: Amina Goulbourne checked into flight EZY6979. Excess fee of £35.0 charged.
+[00:32]: Rosalia Ziv left the queue.
+[00:32]: Rosalia Ziv checked into flight FR6652. Excess fee of £35.0 charged.
+[00:32]: Ashley Jessie left the queue.
+[00:32]: Ashley Jessie checked into flight EK024. Excess fee of £0.0 charged.
+[00:32]: Tatum Parks left the queue.
+[00:32]: Tatum Parks checked into flight FR6652. Excess fee of £35.0 charged.
+[00:33]: Patrick Teisberg left the queue.
+[00:33]: Patrick Teisberg checked into flight FR5160. Excess fee of £35.0 charged.
+[00:33]: Elenore Gomoran left the queue.
+[00:33]: Elenore Gomoran checked into flight FR6652. Excess fee of £35.0 charged.
+[00:33]: Edgar Kanne left the queue.
+[00:33]: Edgar Kanne checked into flight BA2503. Excess fee of £35.0 charged.
+[00:34]: Erasmo Rhea left the queue.
+[00:34]: Erasmo Rhea checked into flight LM385. Excess fee of £35.0 charged.
+[00:34]: Carolynn Atkison left the queue.
+[00:34]: Carolynn Atkison checked into flight EZY6979. Excess fee of £35.0 charged.
+[00:34]: Pilar Seelig left the queue.
+[00:34]: Pilar Seelig checked into flight FR5834. Excess fee of £35.0 charged.
+[00:35]: Zachary Freeburger left the queue.
+[00:35]: Zachary Freeburger checked into flight LM397. Excess fee of £35.0 charged.
+[00:35]: Erasmo Gath left the queue.
+[00:35]: Erasmo Gath checked into flight FR6652. Excess fee of £35.0 charged.
+[00:35]: Vicente Rawicki left the queue.
+[00:35]: Vicente Rawicki checked into flight BE294. Excess fee of £35.0 charged.
+[00:36]: Leigha Semenza left the queue.
+[00:36]: Leigha Semenza checked into flight EZY236. Excess fee of £35.0 charged.
+[00:36]: Charlesetta Erm left the queue.
+[00:36]: Charlesetta Erm checked into flight BA2503. Excess fee of £35.0 charged.
+[00:36]: Christoper Sheneman left the queue.
+[00:36]: Christoper Sheneman checked into flight EZY2686. Excess fee of £35.0 charged.
+[00:37]: Theron Merriam left the queue.
+[00:37]: Theron Merriam checked into flight FR5834. Excess fee of £35.0 charged.
+[00:37]: Yuette Klapec left the queue.
+[00:37]: Yuette Klapec checked into flight BA2503. Excess fee of £0.0 charged.
+[00:37]: Wade Sovel left the queue.
+[00:37]: Wade Sovel checked into flight EJU2684. Excess fee of £35.0 charged.
+[00:38]: Roxanne Hedegore left the queue.
+[00:38]: Roxanne Hedegore checked into flight EZY484. Excess fee of £35.0 charged.
+[00:38]: Billy Selma left the queue.
+[00:38]: Billy Selma checked into flight FR5160. Excess fee of £35.0 charged.
+[00:38]: Chantay Jirsa left the queue.
+[00:38]: Chantay Jirsa checked into flight FR5160. Excess fee of £35.0 charged.
+[00:39]: Clarinda Pelayo left the queue.
+[00:39]: Clarinda Pelayo checked into flight EZY488. Excess fee of £35.0 charged.
+[00:39]: Sean Schurman left the queue.
+[00:39]: Sean Schurman checked into flight EJU2684. Excess fee of £35.0 charged.
+[00:39]: Salley Rieger left the queue.
+[00:39]: Salley Rieger checked into flight EJU3386. Excess fee of £35.0 charged.
+[00:40]: Galen Wendorf left the queue.
+[00:40]: Galen Wendorf checked into flight EK024. Excess fee of £0.0 charged.
+[00:40]: Sol Cowser left the queue.
+[00:40]: Sol Cowser checked into flight BE849. Excess fee of £35.0 charged.
+[00:40]: Charlie Isita left the queue.
+[00:40]: Charlie Isita checked into flight EZY484. Excess fee of £35.0 charged.
+[00:41]: Edwin Logghe left the queue.
+[00:41]: Edwin Logghe checked into flight EZY236. Excess fee of £35.0 charged.
+[00:41]: Tonja Driesenga left the queue.
+[00:41]: Tonja Driesenga checked into flight EZY426. Excess fee of £35.0 charged.
+[00:41]: Talia Marthe left the queue.
+[00:41]: Talia Marthe checked into flight LM335. Excess fee of £35.0 charged.
+[00:42]: Emilio Withers left the queue.
+[00:42]: Emilio Withers checked into flight LM347. Excess fee of £35.0 charged.
+[00:42]: Margarett Bairo left the queue.
+[00:42]: Margarett Bairo checked into flight BE849. Excess fee of £35.0 charged.
+[00:42]: Celia Reisling left the queue.
+[00:42]: Celia Reisling checked into flight FR5160. Excess fee of £35.0 charged.
+[00:43]: Rusty Adelsperger left the queue.
+[00:43]: Rusty Adelsperger checked into flight LM347. Excess fee of £35.0 charged.
+[00:43]: Destiny Madlem left the queue.
+[00:43]: Destiny Madlem checked into flight FR5834. Excess fee of £35.0 charged.
+[00:43]: Malika Hanton left the queue.
+[00:43]: Malika Hanton checked into flight BE849. Excess fee of £35.0 charged.
+[00:44]: Leota Fletchen left the queue.
+[00:44]: Leota Fletchen checked into flight BE851. Excess fee of £35.0 charged.
+[00:44]: Lilli Cureau left the queue.
+[00:44]: Lilli Cureau checked into flight EZY484. Excess fee of £35.0 charged.
+[00:44]: Cathern Ungar left the queue.
+[00:44]: Cathern Ungar checked into flight BE851. Excess fee of £35.0 charged.
+[00:45]: Mohammad Poitra left the queue.
+[00:45]: Mohammad Poitra checked into flight FR5160. Excess fee of £35.0 charged.
+[00:45]: Juan Vanwyhe left the queue.
+[00:45]: Juan Vanwyhe checked into flight BE851. Excess fee of £35.0 charged.
+[00:45]: Angelica Poisso left the queue.
+[00:45]: Angelica Poisso checked into flight FR6652. Excess fee of £35.0 charged.
+[00:46]: Rueben Gastellum left the queue.
+[00:46]: Rueben Gastellum checked into flight BA2503. Excess fee of £0.0 charged.
+[00:46]: Annett Bunselmeyer left the queue.
+[00:46]: Annett Bunselmeyer checked into flight BE294. Excess fee of £35.0 charged.
+[00:46]: Queen Leader left the queue.
+[00:46]: Queen Leader checked into flight EZY426. Excess fee of £35.0 charged.
+[00:47]: Rosendo Ratel left the queue.
+[00:47]: Rosendo Ratel checked into flight EZS6917. Excess fee of £35.0 charged.
+[00:47]: Janet Steimer left the queue.
+[00:47]: Janet Steimer checked into flight FR6652. Excess fee of £35.0 charged.
+[00:47]: Julie Sakshaug left the queue.
+[00:47]: Julie Sakshaug checked into flight EJU3386. Excess fee of £35.0 charged.
+[00:48]: Giuseppe Rohaley left the queue.
+[00:48]: Giuseppe Rohaley checked into flight BE849. Excess fee of £35.0 charged.
+[00:48]: Naomi Lavezzo left the queue.
+[00:48]: Naomi Lavezzo checked into flight EZS6917. Excess fee of £35.0 charged.
+[00:48]: Arlean Calaf left the queue.
+[00:48]: Arlean Calaf checked into flight FR815. Excess fee of £35.0 charged.
+[00:49]: Ciara Cobbley left the queue.
+[00:49]: Ciara Cobbley checked into flight BA8857. Excess fee of £0.0 charged.
+[00:49]: Letha Akey left the queue.
+[00:49]: Letha Akey checked into flight EJU2684. Excess fee of £35.0 charged.
+[00:49]: Luther Alsman left the queue.
+[00:49]: Luther Alsman checked into flight EJU2684. Excess fee of £35.0 charged.
+[00:50]: Tiara Schlichter left the queue.
+[00:50]: Tiara Schlichter checked into flight EZS6917. Excess fee of £35.0 charged.
+[00:50]: Celestina Keeny left the queue.
+[00:50]: Celestina Keeny checked into flight LM397. Excess fee of £35.0 charged.
+[00:50]: Hubert Mias left the queue.
+[00:50]: Hubert Mias checked into flight EJU3386. Excess fee of £35.0 charged.
+[00:51]: Brianne Matsumura left the queue.
+[00:51]: Brianne Matsumura checked into flight FR5160. Excess fee of £35.0 charged.
+[00:51]: Elinore Fulda left the queue.
+[00:51]: Elinore Fulda checked into flight BE2107. Excess fee of £35.0 charged.
+[00:51]: Lanie Smalarz left the queue.
+[00:51]: Lanie Smalarz checked into flight EZS6917. Excess fee of £35.0 charged.
+[00:52]: Lisandra Stueber left the queue.
+[00:52]: Lisandra Stueber checked into flight FR6652. Excess fee of £35.0 charged.
+[00:52]: Leanora Respicio left the queue.
+[00:52]: Leanora Respicio checked into flight EZY484. Excess fee of £35.0 charged.
+[00:52]: Marisha Wilcoxon left the queue.
+[00:52]: Marisha Wilcoxon checked into flight EJU3386. Excess fee of £35.0 charged.
+[00:53]: Felice Gone left the queue.
+[00:53]: Felice Gone checked into flight LM347. Excess fee of £35.0 charged.
+[00:53]: Svetlana Tauras left the queue.
+[00:53]: Svetlana Tauras checked into flight BA8857. Excess fee of £35.0 charged.
+[00:53]: Mike Torner left the queue.
+[00:53]: Mike Torner checked into flight BE2107. Excess fee of £35.0 charged.
+[00:54]: Mendy Wassmann left the queue.
+[00:54]: Mendy Wassmann checked into flight EZY2686. Excess fee of £35.0 charged.
+[00:54]: Peter Gutierres left the queue.
+[00:54]: Peter Gutierres checked into flight BA8857. Excess fee of £0.0 charged.
+[00:54]: Nada Arey left the queue.
+[00:54]: Nada Arey checked into flight EZY236. Excess fee of £35.0 charged.
+[00:55]: Ashanti Donn left the queue.
+[00:55]: Ashanti Donn checked into flight EZY012. Excess fee of £35.0 charged.
+[00:55]: Kayleigh Bendle left the queue.
+[00:55]: Kayleigh Bendle checked into flight FR6652. Excess fee of £35.0 charged.
+[00:55]: Eric Rampy left the queue.
+[00:55]: Eric Rampy checked into flight BA2503. Excess fee of £0.0 charged.
+[00:56]: Alethea Mould left the queue.
+[00:56]: Alethea Mould checked into flight BA8857. Excess fee of £35.0 charged.
+[00:56]: Alesia Katie left the queue.
+[00:56]: Alesia Katie checked into flight LM397. Excess fee of £35.0 charged.
+[00:56]: Katie Choinski left the queue.
+[00:56]: Katie Choinski checked into flight EZY012. Excess fee of £35.0 charged.
+[00:57]: Quiana Scarsella left the queue.
+[00:57]: Quiana Scarsella checked into flight LM365. Excess fee of £35.0 charged.
+[00:57]: Beth Barbone left the queue.
+[00:57]: Beth Barbone checked into flight EJU2684. Excess fee of £35.0 charged.
+[00:57]: Abraham Cratch left the queue.
+[00:57]: Abraham Cratch checked into flight BE849. Excess fee of £35.0 charged.
+[00:58]: Francisca Shuhi left the queue.
+[00:58]: Francisca Shuhi checked into flight EJU3386. Excess fee of £35.0 charged.
+[00:58]: Martin Fonua left the queue.
+[00:58]: Martin Fonua checked into flight EZY236. Excess fee of £35.0 charged.
+[00:58]: Melina Orizabal left the queue.
+[00:58]: Melina Orizabal checked into flight BE294. Excess fee of £35.0 charged.
+[00:59]: Eve Hoffstot left the queue.
+[00:59]: Eve Hoffstot checked into flight EZY484. Excess fee of £35.0 charged.
+[00:59]: Kanisha Difiora left the queue.
+[00:59]: Kanisha Difiora checked into flight EZS6917. Excess fee of £35.0 charged.
+[00:59]: Marlon Tromblay left the queue.
+[00:59]: Marlon Tromblay checked into flight LM365. Excess fee of £35.0 charged.
+[01:00]: Dustin Klingaman left the queue.
+[01:00]: Dustin Klingaman checked into flight BE849. Excess fee of £35.0 charged.
+[01:00]: Mira Alpheaus left the queue.
+[01:00]: Mira Alpheaus checked into flight BE851. Excess fee of £35.0 charged.
+[01:00]: Rory Neufville left the queue.
+[01:00]: Rory Neufville checked into flight BE294. Excess fee of £35.0 charged.
+[01:01]: Milly Savidge left the queue.
+[01:01]: Milly Savidge checked into flight BA8857. Excess fee of £35.0 charged.
+[01:01]: Vernell Connley left the queue.
+[01:01]: Vernell Connley checked into flight EJU3386. Excess fee of £35.0 charged.
+[01:01]: Kerrie Makuch left the queue.
+[01:01]: Kerrie Makuch checked into flight EZY808. Excess fee of £35.0 charged.
+[01:02]: Santos Signore left the queue.
+[01:02]: Santos Signore checked into flight EZY236. Excess fee of £35.0 charged.
+[01:02]: Nathan Outhouse left the queue.
+[01:02]: Nathan Outhouse checked into flight EJU3386. Excess fee of £35.0 charged.
+[01:02]: Tamra Yu left the queue.
+[01:02]: Tamra Yu checked into flight FR815. Excess fee of £35.0 charged.
+[01:03]: Sherron Knodel left the queue.
+[01:03]: Sherron Knodel checked into flight LM365. Excess fee of £35.0 charged.
+[01:03]: Shawana Cantua left the queue.
+[01:03]: Shawana Cantua checked into flight BE2107. Excess fee of £35.0 charged.
+[01:03]: Leonie Devereux left the queue.
+[01:03]: Leonie Devereux checked into flight EZY488. Excess fee of £35.0 charged.
+[01:04]: Vannessa Land left the queue.
+[01:04]: Vannessa Land checked into flight EZY808. Excess fee of £35.0 charged.
+[01:04]: Alton Rampy left the queue.
+[01:04]: Alton Rampy checked into flight FR5160. Excess fee of £35.0 charged.
+[01:04]: Fallon Kerfoot left the queue.
+[01:04]: Fallon Kerfoot checked into flight EZY6979. Excess fee of £35.0 charged.
+[01:05]: Erasmo Talentino left the queue.
+[01:05]: Erasmo Talentino checked into flight EZY2686. Excess fee of £35.0 charged.
+[01:05]: Keneth Stpierrie left the queue.
+[01:05]: Keneth Stpierrie checked into flight FR5160. Excess fee of £35.0 charged.
+[01:05]: Mi Richan left the queue.
+[01:05]: Mi Richan checked into flight LM397. Excess fee of £35.0 charged.
+[01:06]: Lyndia Moonshower left the queue.
+[01:06]: Lyndia Moonshower checked into flight BE849. Excess fee of £35.0 charged.
+[01:06]: Gail Carris left the queue.
+[01:06]: Gail Carris checked into flight FR6652. Excess fee of £35.0 charged.
+[01:06]: Ronnie Brigman left the queue.
+[01:06]: Ronnie Brigman checked into flight LM397. Excess fee of £35.0 charged.
+[01:07]: Fernanda Writer left the queue.
+[01:07]: Fernanda Writer checked into flight BA2503. Excess fee of £0.0 charged.
+[01:07]: King Vanacore left the queue.
+[01:07]: King Vanacore checked into flight EZY426. Excess fee of £35.0 charged.
+[01:07]: Gabriele Geschke left the queue.
+[01:07]: Gabriele Geschke checked into flight EZY012. Excess fee of £35.0 charged.
+[01:08]: Aleshia Tomkiewicz left the queue.
+[01:08]: Aleshia Tomkiewicz checked into flight BA2503. Excess fee of £0.0 charged.
+[01:08]: Casey Dondero left the queue.
+[01:08]: Casey Dondero checked into flight EJU2684. Excess fee of £35.0 charged.
+[01:08]: Charisse Spinello left the queue.
+[01:08]: Charisse Spinello checked into flight BA2503. Excess fee of £0.0 charged.
+[01:09]: Teresita Gesell left the queue.
+[01:09]: Teresita Gesell checked into flight LM347. Excess fee of £35.0 charged.
+[01:09]: Melvin Setter left the queue.
+[01:09]: Melvin Setter checked into flight FR1049. Excess fee of £35.0 charged.
+[01:09]: Kiera Bassil left the queue.
+[01:09]: Kiera Bassil checked into flight BE849. Excess fee of £35.0 charged.
+[01:10]: Emilio Guitierrez left the queue.
+[01:10]: Emilio Guitierrez checked into flight EZY426. Excess fee of £35.0 charged.
+[01:10]: France Andrade left the queue.
+[01:10]: France Andrade checked into flight BA2503. Excess fee of £35.0 charged.
+[01:10]: Reynalda Vanhooser left the queue.
+[01:10]: Reynalda Vanhooser checked into flight EJU3386. Excess fee of £35.0 charged.
+[01:11]: Evelynn Frede left the queue.
+[01:11]: Evelynn Frede checked into flight FR815. Excess fee of £35.0 charged.
+[01:11]: Magdalene Cocherell left the queue.
+[01:11]: Magdalene Cocherell checked into flight FR6652. Excess fee of £35.0 charged.
+[01:11]: Bettina Kham left the queue.
+[01:11]: Bettina Kham checked into flight BE851. Excess fee of £35.0 charged.
+[01:12]: Brande Cutlip left the queue.
+[01:12]: Brande Cutlip checked into flight EZY808. Excess fee of £35.0 charged.
+[01:12]: Lashunda Argiro left the queue.
+[01:12]: Lashunda Argiro checked into flight FR5834. Excess fee of £35.0 charged.
+[01:12]: Rosita Ausdemore left the queue.
+[01:12]: Rosita Ausdemore checked into flight LM397. Excess fee of £35.0 charged.
+[01:13]: Alyssa Ansbro left the queue.
+[01:13]: Alyssa Ansbro checked into flight BE2107. Excess fee of £35.0 charged.
+[01:13]: Rodrigo Hawkin left the queue.
+[01:13]: Rodrigo Hawkin checked into flight EJU2684. Excess fee of £35.0 charged.
+[01:13]: Margret Alcazar left the queue.
+[01:13]: Margret Alcazar checked into flight EZY6979. Excess fee of £35.0 charged.
+[01:14]: Domonique Sandlin left the queue.
+[01:14]: Domonique Sandlin checked into flight BE294. Excess fee of £35.0 charged.
+[01:14]: Cheryll Yurich left the queue.
+[01:14]: Cheryll Yurich checked into flight EK024. Excess fee of £35.0 charged.
+[01:14]: Dong Kopczynski left the queue.
+[01:14]: Dong Kopczynski checked into flight BE849. Excess fee of £35.0 charged.
+[01:15]: Ulysses Mcwalters left the queue.
+[01:15]: Ulysses Mcwalters checked into flight BA2503. Excess fee of £35.0 charged.
+[01:15]: Ashley Tropp left the queue.
+[01:15]: Ashley Tropp checked into flight FR5834. Excess fee of £35.0 charged.
+[01:15]: Shayne Mordhorst left the queue.
+[01:15]: Shayne Mordhorst checked into flight FR5834. Excess fee of £35.0 charged.
+[01:16]: Joana Reinecke left the queue.
+[01:16]: Joana Reinecke checked into flight EK024. Excess fee of £0.0 charged.
+[01:16]: Eugene Pelzer left the queue.
+[01:16]: Eugene Pelzer checked into flight FR5160. Excess fee of £35.0 charged.
+[01:16]: Brynn Capra left the queue.
+[01:16]: Brynn Capra checked into flight FR6652. Excess fee of £35.0 charged.
+[01:17]: Stevie Stifflemire left the queue.
+[01:17]: Stevie Stifflemire checked into flight BE849. Excess fee of £35.0 charged.
+[01:17]: Gilberto Erixon left the queue.
+[01:17]: Gilberto Erixon checked into flight EK024. Excess fee of £35.0 charged.
+[01:17]: Vernice Sperazza left the queue.
+[01:17]: Vernice Sperazza checked into flight BE294. Excess fee of £35.0 charged.
+[01:18]: Cornell Mccrossin left the queue.
+[01:18]: Cornell Mccrossin checked into flight EZY808. Excess fee of £35.0 charged.
+[01:18]: Crista Viengxay left the queue.
+[01:18]: Crista Viengxay checked into flight EK024. Excess fee of £0.0 charged.
+[01:18]: Cherelle Sorrel left the queue.
+[01:18]: Cherelle Sorrel checked into flight LM335. Excess fee of £35.0 charged.
+[01:19]: Rashida Vera left the queue.
+[01:19]: Rashida Vera checked into flight LM365. Excess fee of £35.0 charged.
+[01:19]: Terry Gauthier left the queue.
+[01:19]: Terry Gauthier checked into flight BE2107. Excess fee of £35.0 charged.
+[01:19]: Olene Skubis left the queue.
+[01:19]: Olene Skubis checked into flight EZY808. Excess fee of £35.0 charged.
+[01:20]: Chantell Besong left the queue.
+[01:20]: Chantell Besong checked into flight EZY236. Excess fee of £35.0 charged.
+[01:20]: Octavio Salvadore left the queue.
+[01:20]: Octavio Salvadore checked into flight BA8857. Excess fee of £0.0 charged.
+[01:20]: Karma Quarto left the queue.
+[01:20]: Karma Quarto checked into flight BA8857. Excess fee of £0.0 charged.
+[01:21]: Shanda Lunger left the queue.
+[01:21]: Shanda Lunger checked into flight LM347. Excess fee of £35.0 charged.
+[01:21]: Tu Rivet left the queue.
+[01:21]: Tu Rivet checked into flight EZY488. Excess fee of £35.0 charged.
+[01:21]: Lamar Suite left the queue.
+[01:21]: Lamar Suite checked into flight EZY236. Excess fee of £35.0 charged.
+[01:22]: Remedios Arlinghaus left the queue.
+[01:22]: Remedios Arlinghaus checked into flight EZY6979. Excess fee of £35.0 charged.
+[01:22]: Elsa Delisle left the queue.
+[01:22]: Elsa Delisle checked into flight BE2107. Excess fee of £35.0 charged.
+[01:22]: Frankie Marruffo left the queue.
+[01:22]: Frankie Marruffo checked into flight EJU2684. Excess fee of £35.0 charged.
+[01:23]: Paola Dease left the queue.
+[01:23]: Paola Dease checked into flight EJU2684. Excess fee of £35.0 charged.
+[01:23]: Aretha Bowling left the queue.
+[01:23]: Aretha Bowling checked into flight EZY012. Excess fee of £35.0 charged.
+[01:23]: Eleni Vanscoik left the queue.
+[01:23]: Eleni Vanscoik checked into flight EZY6979. Excess fee of £35.0 charged.
+[01:24]: Pearlie Flori left the queue.
+[01:24]: Pearlie Flori checked into flight FR1049. Excess fee of £35.0 charged.
+[01:24]: Orville Zuehl left the queue.
+[01:24]: Orville Zuehl checked into flight EZY012. Excess fee of £35.0 charged.
+[01:24]: Augustine Growcock left the queue.
+[01:24]: Augustine Growcock checked into flight BA8857. Excess fee of £35.0 charged.
+[01:25]: Graham Stanwick left the queue.
+[01:25]: Graham Stanwick checked into flight BE2107. Excess fee of £35.0 charged.
+[01:25]: Rebbecca Rufenacht left the queue.
+[01:25]: Rebbecca Rufenacht checked into flight EZY426. Excess fee of £35.0 charged.
+[01:25]: Joaquin Hysom left the queue.
+[01:25]: Joaquin Hysom checked into flight EZY808. Excess fee of £35.0 charged.
+[01:26]: Sunshine Senechal left the queue.
+[01:26]: Sunshine Senechal checked into flight FR6652. Excess fee of £35.0 charged.
+[01:26]: Man Homer left the queue.
+[01:26]: Man Homer checked into flight FR815. Excess fee of £35.0 charged.
+[01:26]: Deja Conatser left the queue.
+[01:26]: Deja Conatser checked into flight EJU2684. Excess fee of £35.0 charged.
+[01:27]: Madalyn Dubberly left the queue.
+[01:27]: Madalyn Dubberly checked into flight EZY012. Excess fee of £35.0 charged.
+[01:27]: Floyd Tivis left the queue.
+[01:27]: Floyd Tivis checked into flight EZY236. Excess fee of £35.0 charged.
+[01:27]: Chana Perera left the queue.
+[01:27]: Chana Perera checked into flight FR815. Excess fee of £35.0 charged.
+[01:28]: Rodolfo Scavuzzo left the queue.
+[01:28]: Rodolfo Scavuzzo checked into flight EZY2686. Excess fee of £35.0 charged.
+[01:28]: Tomoko Renno left the queue.
+[01:28]: Tomoko Renno checked into flight EZY2686. Excess fee of £35.0 charged.
+[01:28]: Kristine Klipfel left the queue.
+[01:28]: Kristine Klipfel checked into flight EJU2684. Excess fee of £35.0 charged.
+[01:29]: Louann Smethers left the queue.
+[01:29]: Louann Smethers checked into flight BE849. Excess fee of £35.0 charged.
+[01:29]: Alaine Raterman left the queue.
+[01:29]: Alaine Raterman checked into flight FR1049. Excess fee of £35.0 charged.
+[01:29]: Gilbert Langarica left the queue.
+[01:29]: Gilbert Langarica checked into flight EK024. Excess fee of £0.0 charged.
+[01:30]: Bonita Sandblom left the queue.
+[01:30]: Bonita Sandblom checked into flight EZY2686. Excess fee of £35.0 charged.
+[01:30]: Wendell Rubano left the queue.
+[01:30]: Wendell Rubano checked into flight BE849. Excess fee of £35.0 charged.
+[01:30]: Carolann Gross left the queue.
+[01:30]: Carolann Gross checked into flight LM347. Excess fee of £35.0 charged.
+[01:31]: Marylyn Shonerd left the queue.
+[01:31]: Marylyn Shonerd checked into flight FR1049. Excess fee of £35.0 charged.
+[01:31]: Dino Meinert left the queue.
+[01:31]: Dino Meinert checked into flight FR5160. Excess fee of £35.0 charged.
+[01:31]: Dortha Yaccarino left the queue.
+[01:31]: Dortha Yaccarino checked into flight LM365. Excess fee of £35.0 charged.
+[01:32]: Tanja Milne left the queue.
+[01:32]: Tanja Milne checked into flight EZY488. Excess fee of £35.0 charged.
+[01:32]: Carmen Gillham left the queue.
+[01:32]: Carmen Gillham checked into flight EZY808. Excess fee of £35.0 charged.
+[01:32]: Noel Sarra left the queue.
+[01:32]: Noel Sarra checked into flight FR5160. Excess fee of £35.0 charged.
+[01:33]: Eleonora Ventry left the queue.
+[01:33]: Eleonora Ventry checked into flight EZY2686. Excess fee of £35.0 charged.
+[01:33]: Dwight Belyea left the queue.
+[01:33]: Dwight Belyea checked into flight EZY808. Excess fee of £35.0 charged.
+[01:33]: Pedro Aschoff left the queue.
+[01:33]: Pedro Aschoff checked into flight BE294. Excess fee of £35.0 charged.
+[01:34]: Whitney Tishler left the queue.
+[01:34]: Whitney Tishler checked into flight EJU2684. Excess fee of £35.0 charged.
+[01:34]: Margot Peay left the queue.
+[01:34]: Margot Peay checked into flight EZY2686. Excess fee of £35.0 charged.
+[01:34]: Remona Heier left the queue.
+[01:34]: Remona Heier checked into flight FR6652. Excess fee of £35.0 charged.
+[01:35]: Jacob Kippel left the queue.
+[01:35]: Jacob Kippel checked into flight FR1049. Excess fee of £35.0 charged.
+[01:35]: German Zelaya left the queue.
+[01:35]: German Zelaya checked into flight BA8857. Excess fee of £35.0 charged.
+[01:35]: Velda Mancilla left the queue.
+[01:35]: Velda Mancilla checked into flight BE851. Excess fee of £35.0 charged.
+[01:36]: Janna Przybyl left the queue.
+[01:36]: Janna Przybyl checked into flight EZY6979. Excess fee of £35.0 charged.
+[01:36]: Launa Torez left the queue.
+[01:36]: Launa Torez checked into flight EZY808. Excess fee of £35.0 charged.
+[01:36]: Ty Feeback left the queue.
+[01:36]: Ty Feeback checked into flight EZY426. Excess fee of £35.0 charged.
+[01:37]: Eliz Strimple left the queue.
+[01:37]: Eliz Strimple checked into flight EZY484. Excess fee of £35.0 charged.
+[01:37]: Laquita Hisaw left the queue.
+[01:37]: Laquita Hisaw checked into flight BA2503. Excess fee of £0.0 charged.
+[01:37]: Lisbeth Creecy left the queue.
+[01:37]: Lisbeth Creecy checked into flight BE2107. Excess fee of £35.0 charged.
+[01:38]: Diego Augle left the queue.
+[01:38]: Diego Augle checked into flight LM365. Excess fee of £35.0 charged.
+[01:38]: Nikita Walka left the queue.
+[01:38]: Nikita Walka checked into flight LM385. Excess fee of £35.0 charged.
+[01:38]: Alise Packebush left the queue.
+[01:38]: Alise Packebush checked into flight EZY2686. Excess fee of £35.0 charged.
+[01:39]: Shaquana Featherston left the queue.
+[01:39]: Shaquana Featherston checked into flight EZY426. Excess fee of £35.0 charged.
+[01:39]: Laura Gumaer left the queue.
+[01:39]: Laura Gumaer checked into flight EZY484. Excess fee of £35.0 charged.
+[01:39]: Kenda Koza left the queue.
+[01:39]: Kenda Koza checked into flight EZY484. Excess fee of £35.0 charged.
+[01:40]: Kaycee Carsten left the queue.
+[01:40]: Kaycee Carsten checked into flight FR1049. Excess fee of £35.0 charged.
+[01:40]: Mozell Westad left the queue.
+[01:40]: Mozell Westad checked into flight FR5160. Excess fee of £35.0 charged.
+[01:40]: Shelia Plues left the queue.
+[01:40]: Shelia Plues checked into flight FR815. Excess fee of £35.0 charged.
+[01:41]: Tess Sitra left the queue.
+[01:41]: Tess Sitra checked into flight BA8857. Excess fee of £35.0 charged.
+[01:41]: Kattie Ozane left the queue.
+[01:41]: Kattie Ozane checked into flight EZY236. Excess fee of £35.0 charged.
+[01:41]: Hyun Erdman left the queue.
+[01:41]: Hyun Erdman checked into flight EZY236. Excess fee of £35.0 charged.
+[01:42]: Tyisha Veness left the queue.
+[01:42]: Tyisha Veness checked into flight BA2503. Excess fee of £35.0 charged.
+[01:42]: Micheline Mathieson left the queue.
+[01:42]: Micheline Mathieson checked into flight EJU3386. Excess fee of £35.0 charged.
+[01:42]: Glory Ona left the queue.
+[01:42]: Glory Ona checked into flight EZY808. Excess fee of £35.0 charged.
+[01:43]: Adelle Schantini left the queue.
+[01:43]: Adelle Schantini checked into flight EZY488. Excess fee of £35.0 charged.
+[01:43]: Stefania Weatherwax left the queue.
+[01:43]: Stefania Weatherwax checked into flight FR5160. Excess fee of £35.0 charged.
+[01:43]: Paul Farrin left the queue.
+[01:43]: Paul Farrin checked into flight LM347. Excess fee of £35.0 charged.
+[01:44]: Luke Crete left the queue.
+[01:44]: Luke Crete checked into flight EJU3386. Excess fee of £35.0 charged.
+[01:44]: Filiberto Fredrikson left the queue.
+[01:44]: Filiberto Fredrikson checked into flight FR815. Excess fee of £35.0 charged.
+[01:44]: Lanie Smarsh left the queue.
+[01:44]: Lanie Smarsh checked into flight EZY488. Excess fee of £35.0 charged.
+[01:45]: Vivan Jenious left the queue.
+[01:45]: Vivan Jenious checked into flight EZY426. Excess fee of £35.0 charged.
+[01:45]: Eileen Montecalvo left the queue.
+[01:45]: Eileen Montecalvo checked into flight EK024. Excess fee of £0.0 charged.
+[01:45]: Heidy Hallford left the queue.
+[01:45]: Heidy Hallford checked into flight FR1049. Excess fee of £35.0 charged.
+[01:46]: Reid Euresti left the queue.
+[01:46]: Reid Euresti checked into flight LM397. Excess fee of £35.0 charged.
+[01:46]: Aleisha Lemm left the queue.
+[01:46]: Aleisha Lemm checked into flight EZS6917. Excess fee of £35.0 charged.
+[01:46]: Ayesha Moeder left the queue.
+[01:46]: Ayesha Moeder checked into flight EZS6917. Excess fee of £35.0 charged.
+[01:47]: Nakita Rodrigues left the queue.
+[01:47]: Nakita Rodrigues checked into flight EZY236. Excess fee of £35.0 charged.
+[01:47]: Janella Altobell left the queue.
+[01:47]: Janella Altobell checked into flight EJU3386. Excess fee of £35.0 charged.
+[01:47]: Jacquelyne Reibman left the queue.
+[01:47]: Jacquelyne Reibman checked into flight LM397. Excess fee of £35.0 charged.
+[01:48]: Tony Diazdeleon left the queue.
+[01:48]: Tony Diazdeleon checked into flight LM385. Excess fee of £35.0 charged.
+[01:48]: Dallas Miyashiro left the queue.
+[01:48]: Dallas Miyashiro checked into flight EZY426. Excess fee of £35.0 charged.
+[01:48]: Vallie Yafaie left the queue.
+[01:48]: Vallie Yafaie checked into flight LM385. Excess fee of £35.0 charged.
+[01:49]: Verda Chiphe left the queue.
+[01:49]: Verda Chiphe checked into flight FR5834. Excess fee of £35.0 charged.
+[01:49]: Vesta Havely left the queue.
+[01:49]: Vesta Havely checked into flight FR5834. Excess fee of £35.0 charged.
+[01:49]: Daryl Hilcher left the queue.
+[01:49]: Daryl Hilcher checked into flight EZY2686. Excess fee of £35.0 charged.
+[01:50]: Nettie Aldaco left the queue.
+[01:50]: Nettie Aldaco checked into flight LM335. Excess fee of £35.0 charged.
+[01:50]: Bronwyn Bridgford left the queue.
+[01:50]: Bronwyn Bridgford checked into flight FR5160. Excess fee of £35.0 charged.
+[01:50]: Yun Paletta left the queue.
+[01:50]: Yun Paletta checked into flight BE849. Excess fee of £35.0 charged.
+[01:51]: Allene Burau left the queue.
+[01:51]: Allene Burau checked into flight EJU3386. Excess fee of £35.0 charged.
+[01:51]: Vashti Sugai left the queue.
+[01:51]: Vashti Sugai checked into flight EZY012. Excess fee of £35.0 charged.
+[01:51]: Reuben Mccorrison left the queue.
+[01:51]: Reuben Mccorrison checked into flight EZY488. Excess fee of £35.0 charged.
+[01:52]: Veronique Nuckolls left the queue.
+[01:52]: Veronique Nuckolls checked into flight EZY484. Excess fee of £35.0 charged.
+[01:52]: Michell Throssell left the queue.
+[01:52]: Michell Throssell checked into flight BA2503. Excess fee of £0.0 charged.
+[01:52]: Leonard Kufner left the queue.
+[01:52]: Leonard Kufner checked into flight BA8857. Excess fee of £0.0 charged.
+[01:53]: Berry Scandalis left the queue.
+[01:53]: Berry Scandalis checked into flight FR1049. Excess fee of £35.0 charged.
+[01:53]: Marshall Kozikowski left the queue.
+[01:53]: Marshall Kozikowski checked into flight EK024. Excess fee of £0.0 charged.
+[01:53]: Anika Marse left the queue.
+[01:53]: Anika Marse checked into flight EZY808. Excess fee of £35.0 charged.
+[01:54]: Martha Teplica left the queue.
+[01:54]: Martha Teplica checked into flight BA8857. Excess fee of £0.0 charged.
+[01:54]: Audrie Danaher left the queue.
+[01:54]: Audrie Danaher checked into flight EZY012. Excess fee of £35.0 charged.
+[01:54]: Cherrie Nitschke left the queue.
+[01:54]: Cherrie Nitschke checked into flight EZY236. Excess fee of £35.0 charged.
+[01:55]: Pura Manciel left the queue.
+[01:55]: Pura Manciel checked into flight LM397. Excess fee of £35.0 charged.
+[01:55]: Marg Grasmick left the queue.
+[01:55]: Marg Grasmick checked into flight BA2503. Excess fee of £0.0 charged.
+[01:55]: Brynn Elkan left the queue.
+[01:55]: Brynn Elkan checked into flight BE851. Excess fee of £35.0 charged.
+[01:56]: Elizabeth Pata left the queue.
+[01:56]: Elizabeth Pata checked into flight EZY236. Excess fee of £35.0 charged.
+[01:56]: Evangelina Gius left the queue.
+[01:56]: Evangelina Gius checked into flight LM365. Excess fee of £35.0 charged.
+[01:56]: Lennie Asley left the queue.
+[01:56]: Lennie Asley checked into flight FR815. Excess fee of £35.0 charged.
+[01:57]: Bobbie Guillereault left the queue.
+[01:57]: Bobbie Guillereault checked into flight EK024. Excess fee of £35.0 charged.
+[01:57]: Deangelo Rardon left the queue.
+[01:57]: Deangelo Rardon checked into flight EZY484. Excess fee of £35.0 charged.
+[01:57]: Jeff Brossoit left the queue.
+[01:57]: Jeff Brossoit checked into flight FR5160. Excess fee of £35.0 charged.
+[01:58]: Wilda Brigham left the queue.
+[01:58]: Wilda Brigham checked into flight EZY6979. Excess fee of £35.0 charged.
+[01:58]: Justine Salta left the queue.
+[01:58]: Justine Salta checked into flight BE849. Excess fee of £35.0 charged.
+[01:58]: Antonio Villamarin left the queue.
+[01:58]: Antonio Villamarin checked into flight EZY484. Excess fee of £35.0 charged.
+[01:59]: Sena Langenbach left the queue.
+[01:59]: Sena Langenbach checked into flight BE2107. Excess fee of £35.0 charged.
+[01:59]: Jamika Conoly left the queue.
+[01:59]: Jamika Conoly checked into flight LM385. Excess fee of £35.0 charged.
+[01:59]: Brittani Thurm left the queue.
+[01:59]: Brittani Thurm checked into flight BE851. Excess fee of £35.0 charged.
+[02:00]: Rosalind Stamps left the queue.
+[02:00]: Rosalind Stamps checked into flight EJU3386. Excess fee of £35.0 charged.
+[02:00]: In Muns left the queue.
+[02:00]: In Muns checked into flight EZY6979. Excess fee of £35.0 charged.
+[02:00]: Sueann Mandril left the queue.
+[02:00]: Sueann Mandril checked into flight LM335. Excess fee of £35.0 charged.
+[02:01]: Hobert Panfilov left the queue.
+[02:01]: Hobert Panfilov checked into flight EJU2684. Excess fee of £35.0 charged.
+[02:01]: Checkin counter 1 closed
+[02:01]: Emogene Ritthaler left the queue.
+[02:01]: Emogene Ritthaler checked into flight FR5834. Excess fee of £35.0 charged.
+[02:01]: Checkin counter 2 closed
+[02:01]: Ivan Aronov left the queue.
+[02:01]: Ivan Aronov checked into flight LM365. Excess fee of £35.0 charged.
+[02:01]: Checkin counter 3 closed

@@ -13,19 +13,23 @@ public class PassengerQueue extends Thread implements Subject {
     private Queue<Booking> queue = new LinkedList<>();
     private List<Observer> registeredObservers = new LinkedList<Observer>();
     private Timer timer;
+    private Loginfile log;
 
-    public PassengerQueue(Timer timer) {
+    public PassengerQueue(Timer timer, Loginfile log) {
         // TODO: possibly change to passengers are added to queue at given sim time, in
         this.timer = timer;
+        this.log = log;
     }
 
     public synchronized void enqueue(Booking booking) {
         queue.add(booking);
+        log.log(booking.getFullName()+" joined the queue.");
         notifyObservers();
     }
 
     public synchronized Booking dequeue() {
         Booking queueHead = queue.remove();
+        log.log(queueHead.getFullName()+" left the queue.");
         notifyObservers();
         return queueHead;
     }

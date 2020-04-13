@@ -195,7 +195,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
 
     // Column for Sim Clock
     JPanel clockControlPanel = new JPanel(); // panel for clock
-    this.clock = new JLabel("00:00");
+    this.clock = new JLabel("[00:00]");
     this.clock.setFont(clock.getFont().deriveFont(32.0f));
     clockControlPanel.add(clock);
 
@@ -264,11 +264,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   }
 
   public void updateClock(){
-    int min = this.timer.getTime() % 60;
-    int hr = this.timer.getTime() / 60 % 24;
-    this.minutes = (min<10) ? "0"+Integer.toString(min) : Integer.toString(min);
-    this.hours = (hr<10) ? "0"+Integer.toString(hr) : Integer.toString(hr);
-    this.clock.setText(this.hours+":"+this.minutes);
+    this.clock.setText(this.timer.getTimeString());
   }
 
   private void testFillGUI() {
@@ -300,14 +296,15 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   public static void main(String[] args) {
     SimTime t = new SimTime();
     Timer timer = new Timer(t);
+    Loginfile log = new Loginfile(timer);
 
     List<CheckinCounter> counters = new LinkedList<CheckinCounter>();
     AllFlights flights = new AllFlights();
     Flight f1 = new Flight("AF1", "Edinburgh", "AirFrance", 200, 23, 90, 40, 20, 15, 120);
     flights.addFlight(f1);
-    CheckinCounter c1 = new CheckinCounter(1,flights,t,timer);
+    CheckinCounter c1 = new CheckinCounter(1,flights,t,timer, log);
     counters.add(c1);
-    CheckinCounter c2 = new CheckinCounter(2,flights,t,timer);
+    CheckinCounter c2 = new CheckinCounter(2,flights,t,timer, log);
     counters.add(c2);
     //updateCounter(c1);
 

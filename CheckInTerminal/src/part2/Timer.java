@@ -44,13 +44,30 @@ class Timer extends Thread{
             } catch (InterruptedException e) {  }
         }
 
-        return time;
+        return this.time;
     }
+
+    public synchronized String getTimeString(){
+        while(setting){
+            try {
+                wait(); //This will only be run on the off-chance that setTime is being run at the same time.
+            } catch (InterruptedException e) {  }
+        }
+
+        int min = this.time % 60;
+        int hr = this.time / 60 % 24;
+        String minutes = (min<10) ? "0"+Integer.toString(min) : Integer.toString(min);
+        String hours = (hr<10) ? "0"+Integer.toString(hr) : Integer.toString(hr);
+        String timeString = "["+hours+":"+minutes+"]";
+        return timeString;
+    }
+
     public synchronized void setTime(int t){
         setting = true;
         this.time = t;
         setting = false;
         notifyAll();
     }
+
 
 }
