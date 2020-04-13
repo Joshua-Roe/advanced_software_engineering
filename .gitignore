@@ -1,5 +1,5 @@
 bin/
-
+out.txt
 ## IntelliJ ##
 /target
 /.idea
@@ -17,3 +17,4 @@ out/
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+out.txt
