@@ -38,6 +38,7 @@ public class CheckinCounter extends Thread implements Subject {
         if (this.open){
             this.open = false;
             log.log("Checkin counter "+this.counter_number+" closed");
+            notifyObservers();
         }
     }
 
