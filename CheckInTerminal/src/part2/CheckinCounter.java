@@ -94,7 +94,7 @@ public class CheckinCounter extends Thread implements Subject {
                 this.passenger.setExcessFeeCharged(this.passengerFlight.getExcessFeeCharge());
             }
             this.passengerFlight.addPassenger();
-            log.log(this.passenger.getFullName()+" checked into flight "+this.passengerFlight.getFlightCode()+". Excess fee of £"+this.passenger.getExcessFeeCharged()+" charged.");
+            log.log("[Counter "+this.counter_number+"] "+this.passenger.getFullName()+" checked into flight "+this.passengerFlight.getFlightCode()+". Excess fee of £"+this.passenger.getExcessFeeCharged()+" charged.");
             notifyObservers();
         }
     }
