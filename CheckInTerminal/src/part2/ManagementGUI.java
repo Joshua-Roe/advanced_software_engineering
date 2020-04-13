@@ -48,8 +48,10 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       this.add(bagDetails);
       feeDetails = new JLabel("waiting for details");
       this.add(feeDetails);
+      this.closeCounter();
     }
     public void setcontents(Booking currentBooking, Float bagFee) {
+      this.setEnabled(true);
       bagDetails.setText(currentBooking.getFullName() + " is dropping off 1 bag of " + currentBooking.getBaggageWeight() + "kg");
       String feeText = "";
       if (bagFee == 0) {
@@ -58,6 +60,11 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
         feeText = "A bagagge fee of £" + bagFee + " is due";
       }
       feeDetails.setText(feeText);
+    }
+    public void closeCounter() {
+      this.setEnabled(false);
+      bagDetails.setText("Counter Closed");
+      feeDetails.setText("");
     }
     //TODO close counter
   }
@@ -254,7 +261,10 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
 
   private void updateCounter(Object arg) {
     CheckinCounter checkinCounter = (CheckinCounter)arg;
-    allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking(), checkinCounter.getPassengerExcessFee());
+    if (checkinCounter.getIsOpen()){
+      allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking(), checkinCounter.getPassengerExcessFee());
+    }
+    else {allDeskComponents[checkinCounter.getCounterNumber()-1].closeCounter();}
   }
 
   private void updateFlight(Object arg) {
