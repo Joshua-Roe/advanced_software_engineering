@@ -13,23 +13,21 @@ public class PassengerQueue extends Thread implements Subject {
     private Queue<Booking> queue = new LinkedList<>();
     private List<Observer> registeredObservers = new LinkedList<Observer>();
     private Timer timer;
-    private Loginfile log;
 
-    public PassengerQueue(Timer timer, Loginfile log) {
+    public PassengerQueue(Timer timer) {
         // TODO: possibly change to passengers are added to queue at given sim time, in
         this.timer = timer;
-        this.log = log;
     }
 
     public synchronized void enqueue(Booking booking) {
         queue.add(booking);
-        log.log(booking.getFullName()+" joined the queue.");
+        logMessage(booking.getFullName()+" joined the queue.");
         notifyObservers();
     }
 
     public synchronized Booking dequeue() {
         Booking queueHead = queue.remove();
-        log.log(queueHead.getFullName()+" left the queue.");
+        logMessage(queueHead.getFullName()+" left the queue.");
         notifyObservers();
         return queueHead;
     }
@@ -42,6 +40,10 @@ public class PassengerQueue extends Thread implements Subject {
         return this.queue;
     }
 
+    private synchronized void logMessage(String message){
+        Log l = Log.INSTANCE;
+        l.log(this.timer.getTimeString()+" "+message);
+    }
     public void run() {
         synchronized(timer){
             while (queue.size() > 0){

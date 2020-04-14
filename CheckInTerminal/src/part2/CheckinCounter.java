@@ -20,24 +20,22 @@ public class CheckinCounter extends Thread implements Subject {
     private SimTime t;
     private Timer timer;
     private boolean open;
-    private Loginfile log;
 
     //Change this variable to change time to close counter
     private int stopTime = 120;
 
-    public CheckinCounter(int number, AllFlights flights, SimTime t, Timer timer, Loginfile log) {
+    public CheckinCounter(int number, AllFlights flights, SimTime t, Timer timer) {
         this.counter_number = number;
         this.flights = flights;
         this.t = t;
         this.timer = timer;
-        this.log = log;
         this.open = true;
     }
 
     public void closeCounter(){
         if (this.open){
             this.open = false;
-            log.log("Checkin counter "+this.counter_number+" closed");
+            logMessage("Checkin counter "+this.counter_number+" closed");
             notifyObservers();
         }
     }
@@ -82,6 +80,11 @@ public class CheckinCounter extends Thread implements Subject {
         return this.open;
     }
 
+    private synchronized void logMessage(String message){
+        Log l = Log.INSTANCE;
+        l.log(this.timer.getTimeString()+" "+message);
+    }
+
     public synchronized void serveCustomer(){
         if(queue.size()>0 && this.open){
             this.passenger = queue.dequeue();
@@ -94,7 +97,7 @@ public class CheckinCounter extends Thread implements Subject {
                 this.passenger.setExcessFeeCharged(this.passengerFlight.getExcessFeeCharge());
             }
             this.passengerFlight.addPassenger();
-            log.log("[Counter "+this.counter_number+"] "+this.passenger.getFullName()+" checked into flight "+this.passengerFlight.getFlightCode()+". Excess fee of £"+this.passenger.getExcessFeeCharged()+" charged.");
+            logMessage("[Counter "+this.counter_number+"] "+this.passenger.getFullName()+" checked into flight "+this.passengerFlight.getFlightCode()+". Excess fee of £"+this.passenger.getExcessFeeCharged()+" charged.");
             notifyObservers();
         }
     }

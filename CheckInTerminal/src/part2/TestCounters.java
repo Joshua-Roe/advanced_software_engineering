@@ -18,10 +18,9 @@ public class TestCounters {
         flights.addFlight(f1);
         SimTime t = new SimTime();
         Timer timer = new Timer(t);
-        Loginfile log = new Loginfile(timer);
-        CheckinCounter c1 = new CheckinCounter(1,flights,t,timer, log);
+        CheckinCounter c1 = new CheckinCounter(1,flights,t,timer);
         counters.add(c1); 
-        CheckinCounter c2 = new CheckinCounter(2,flights,t,timer, log);
+        CheckinCounter c2 = new CheckinCounter(2,flights,t,timer);
         counters.add(c2);
         // CheckinCounter c3 = new CheckinCounter(3,flights,t,timer);
         // counters.add(c3);
@@ -46,7 +45,7 @@ public class TestCounters {
         bookings.addBooking(b8);
         bookings.addBooking(b9);
         bookings.addBooking(b10);
-        PassengerQueue pq = new PassengerQueue(timer, log);
+        PassengerQueue pq = new PassengerQueue(timer);
         ManagementGUI gui = new ManagementGUI(timer,t,counters,flights.getAllFlights());
         
         pq.registerObserver(gui);

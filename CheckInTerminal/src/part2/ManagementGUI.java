@@ -306,15 +306,14 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   public static void main(String[] args) {
     SimTime t = new SimTime();
     Timer timer = new Timer(t);
-    Loginfile log = new Loginfile(timer);
 
     List<CheckinCounter> counters = new LinkedList<CheckinCounter>();
     AllFlights flights = new AllFlights();
     Flight f1 = new Flight("AF1", "Edinburgh", "AirFrance", 200, 23, 90, 40, 20, 15, 120);
     flights.addFlight(f1);
-    CheckinCounter c1 = new CheckinCounter(1,flights,t,timer, log);
+    CheckinCounter c1 = new CheckinCounter(1,flights,t,timer);
     counters.add(c1);
-    CheckinCounter c2 = new CheckinCounter(2,flights,t,timer, log);
+    CheckinCounter c2 = new CheckinCounter(2,flights,t,timer);
     counters.add(c2);
     //updateCounter(c1);
 
