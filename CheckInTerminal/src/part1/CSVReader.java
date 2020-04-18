@@ -1,7 +1,10 @@
 package part1;
 
+import java.awt.Dimension;
 import java.io.*;
 import java.util.Random;
+
+import javax.swing.*;
 
 public class CSVReader { 
 	private AllFlights flights;
@@ -60,7 +63,7 @@ public class CSVReader {
 			flightBR.close();
 		}
 		catch(FileNotFoundException e) {
-			System.out.println("File not found. " + e);
+			generatePopUp();
 		}
 		catch(IOException e) {
 			System.out.println("IO exception experienced.");
@@ -73,5 +76,12 @@ public class CSVReader {
 	
 	public AllFlights getFlights() {
 		return flights;
+	}
+
+	public void generatePopUp(){
+		JFrame f = new JFrame();
+		JOptionPane.showMessageDialog(f, "Data folder not found, ensure it is in its original directory.", 
+				"Alert", JOptionPane.WARNING_MESSAGE);
+		System.exit(404);
 	}
 } 
