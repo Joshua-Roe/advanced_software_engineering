@@ -90,14 +90,21 @@ public class CheckinCounter extends Thread implements Subject {
             this.passenger = queue.dequeue();
             setPassengerFlight();
             //TODO: clear passenger details once queue has ended so GUI isnt stuck with last served passenger
-            try{
-                this.passengerFlight.checkBaggage(passenger.getBaggageWeight(), passenger.getBaggageLength(),passenger.getBaggageHeight(),passenger.getBaggageWidth());
+            if(this.passengerFlight.checkGateOpen(timer.getTime())){
+                try{
+                    this.passengerFlight.checkBaggage(passenger.getBaggageWeight(), passenger.getBaggageLength(),passenger.getBaggageHeight(),passenger.getBaggageWidth());
+                }
+                catch(OverBaggageLimitException e){
+                    this.passenger.setExcessFeeCharged(this.passengerFlight.getExcessFeeCharge());
+                }
+                this.passengerFlight.addPassenger();
+                logMessage("[Counter "+this.counter_number+"] "+this.passenger.getFullName()+" checked into flight "+this.passengerFlight.getFlightCode()+". Excess fee of £"+this.passenger.getExcessFeeCharged()+" charged.");
             }
-            catch(OverBaggageLimitException e){
-                this.passenger.setExcessFeeCharged(this.passengerFlight.getExcessFeeCharge());
+            else{
+                this.passenger.missFlight();
+                this.queue.enqueue(this.passenger);
+                logMessage("[Counter "+this.counter_number+"] "+this.passengerFlight.getFlightCode()+" has already departed, "+this.passenger.getFullName()+" has missed their flight and has joiend the queue at the end.");
             }
-            this.passengerFlight.addPassenger();
-            logMessage("[Counter "+this.counter_number+"] "+this.passenger.getFullName()+" checked into flight "+this.passengerFlight.getFlightCode()+". Excess fee of £"+this.passenger.getExcessFeeCharged()+" charged.");
             notifyObservers();
         }
     }

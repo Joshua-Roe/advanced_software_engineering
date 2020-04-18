@@ -35,6 +35,7 @@ public class Flight implements Subject {
     private int numberOfPassengers;         /* current total number of checked-in passengers */
     private float excessFeeCharge;          /* excess baggage fee (in USD) */
     private float departureTime;            /* departure time of the flight */
+    private boolean gateOpen;
     private List<Observer> registeredObservers = new LinkedList<Observer>();
 
     /**
@@ -69,6 +70,7 @@ public class Flight implements Subject {
         this.totalExcessFees = 0;
         this.numberOfPassengers = 0;
         this.departureTime = time;
+        this.gateOpen = true;
     }
 
     /**
@@ -209,12 +211,17 @@ public class Flight implements Subject {
         }
     }
 
-    public boolean getGateOpen(int currentTime) {
-        if (currentTime >= this.departureTime)
-            return false;
-        else 
-			return true;
-	}
+    public boolean checkGateOpen(int currentTime) {
+        if (currentTime >= this.departureTime && this.gateOpen){
+            notifyObservers();
+            this.gateOpen = false;
+        }
+        return this.gateOpen;
+    }
+    
+    public boolean getGateOpen(){
+        return this.gateOpen;
+    }
 
     @Override
     public void registerObserver(Observer obs) {

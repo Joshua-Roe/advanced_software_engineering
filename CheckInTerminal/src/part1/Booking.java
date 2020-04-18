@@ -18,6 +18,7 @@ public class Booking{
     private float baggageWidth;
     private boolean checkInStatus;
     private float excessFeeCharged = 0;
+    private boolean missedFlight;
 
     /**
      * Instantiates a new Booking object with given parameters as its Booking details.
@@ -41,6 +42,7 @@ public class Booking{
         this.baggageHeight = baggageHeight;
         this.baggageWidth = baggageWidth;
         this.checkInStatus = false;
+        this.missedFlight = false;
     }
 
     /**
@@ -103,6 +105,14 @@ public class Booking{
 
     public Float getExcessFeeCharged(){
         return this.excessFeeCharged;
+    }
+
+    public boolean getMissedFlight(){
+        return this.missedFlight;
+    }
+
+    public void missFlight(){
+        this.missedFlight = true;
     }
 }
 
