@@ -69,8 +69,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
           }
         }
       });
-      this.closeCounter();
-      this.setMinimumSize(new Dimension(200,200));
       
     }
     public void setcontents(Booking currentBooking) {
@@ -253,7 +251,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     // Adding Components to the frame.
     checkFrame.getContentPane().add(BorderLayout.CENTER, mainPanel);
     checkFrame.getContentPane().add(BorderLayout.SOUTH, simControlPanel);
-    checkFrame.setMinimumSize(new Dimension(100,700));
+    // checkFrame.setMinimumSize(new Dimension(100,400));
     checkFrame.setVisible(true);
     
   }
