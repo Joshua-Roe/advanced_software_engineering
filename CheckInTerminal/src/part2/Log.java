@@ -23,7 +23,7 @@ public enum Log {
 
     public  void savefile() {
         try {
-            FileWriter logonscore =new FileWriter(new File("out.txt"),false);
+            FileWriter logonscore =new FileWriter(new File("last_simulation_log.txt"),false);
             logonscore.write(logfile.toString());
             logonscore.close();
         }

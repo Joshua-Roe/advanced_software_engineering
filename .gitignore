@@ -1,5 +1,6 @@
 bin/
 out.txt
+
 ## IntelliJ ##
 /target
 /.idea
@@ -18,4 +19,5 @@ out/
 .Spotlight-V100
 .Trashes
 out.txt
+last_simulation_log.txt
 /out.txt
