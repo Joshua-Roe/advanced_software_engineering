@@ -145,6 +145,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     queueContentPanel = new JPanel(); // content panel to be scrolled
     queueContentPanel.setLayout(new BoxLayout(queueContentPanel, BoxLayout.PAGE_AXIS)); // set layout
     JScrollPane queueScrollPane = new JScrollPane(queueContentPanel);// scrollpane object
+    queueScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
     JPanel queuePanel = new JPanel(); // top level container panel for border
     queuePanel.setBorder(createBorder("Queue Patrons")); // set border
     queuePanel.setLayout(new BoxLayout(queuePanel, BoxLayout.PAGE_AXIS)); // set layout
@@ -154,6 +155,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     desksContentPanel = new JPanel(); // content panel to be scrolled
     desksContentPanel.setLayout(new GridLayout(allCounters.size(),0)); // set layout
     JScrollPane desksScrollPane = new JScrollPane(desksContentPanel);// scrollpane object
+    desksScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
     JPanel desksPanel = new JPanel(); // top level container panel for border
     desksPanel.setBorder(createBorder("Check In Desks")); // set border
     desksPanel.setLayout(new BoxLayout(desksPanel, BoxLayout.PAGE_AXIS)); // set layout
@@ -168,6 +170,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     flightsContentPanel = new JPanel(); // content panel to be scrolled
     flightsContentPanel.setLayout(new GridLayout(allFlights.size(),0)); // set layout
     JScrollPane flightsScrollPane = new JScrollPane(flightsContentPanel);// scrollpane object
+    flightsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
     JPanel flightsPanel = new JPanel(); // top level container panel for border
     flightsPanel.setBorder(createBorder("Flights")); // set border
     flightsPanel.setLayout(new BoxLayout(flightsPanel, BoxLayout.PAGE_AXIS)); // set layout
