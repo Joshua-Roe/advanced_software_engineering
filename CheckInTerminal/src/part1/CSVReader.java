@@ -1,16 +1,19 @@
 package part1;
+
+import java.awt.Dimension;
 import java.io.*;
 import java.util.Random;
+
+import javax.swing.*;
 
 public class CSVReader { 
 	private AllFlights flights;
 	private AllBookings bookings;
-
 	public CSVReader() {
 		try {
 		    String sep = File.separator;
-		    String bookingCSVpath = new File("CheckInTerminal"+sep+"data"+sep+"bookingDetails.csv").getAbsolutePath();
-		    String flightCSVpath = new File("CheckInTerminal"+sep+"data"+sep+"flightDetails.csv").getAbsolutePath();
+		    String bookingCSVpath = new File("data"+sep+"bookingDetails.csv").getAbsolutePath();
+		    String flightCSVpath = new File("data"+sep+"flightDetails.csv").getAbsolutePath();
 		   
 			File flightCSV = new File(flightCSVpath);
 			File bookingCSV = new File(bookingCSVpath);
@@ -33,9 +36,13 @@ public class CSVReader {
 				float maxLH = 150;
 				float maxW = 100;
 				float ranWeight = rand1.nextFloat() * (maxWeight - min) + min;
+				ranWeight = Math.round(ranWeight*10.0f)/10.0f;
 				float ranL = rand2.nextFloat() * (maxLH - min) + min;
+				ranL = Math.round(ranL*10.0f)/10.0f;
 				float ranH = rand3.nextFloat() * (maxLH - min) + min;
+				ranH = Math.round(ranH*10.0f)/10.0f;
 				float ranW = rand4.nextFloat() * (maxW - min) + min;
+				ranW = Math.round(ranW*10.0f)/10.0f;
 				//Booking example = new Booking(bookingCode, firstName, lastName, flightCode, baggageWeight, baggageLength, baggageHeight, baggageWidth)
 				Booking booking = new Booking(temp[0], temp[1], temp[2], temp[3], ranWeight, ranL, ranH, ranW);
 				bookings.addBooking(booking);
@@ -56,7 +63,7 @@ public class CSVReader {
 			flightBR.close();
 		}
 		catch(FileNotFoundException e) {
-			System.out.println("File not found. " + e);
+			generatePopUp();
 		}
 		catch(IOException e) {
 			System.out.println("IO exception experienced.");
@@ -69,5 +76,12 @@ public class CSVReader {
 	
 	public AllFlights getFlights() {
 		return flights;
+	}
+
+	public void generatePopUp(){
+		JFrame f = new JFrame();
+		JOptionPane.showMessageDialog(f, "Data folder not found, ensure it is in its original directory.", 
+				"Alert", JOptionPane.WARNING_MESSAGE);
+		System.exit(404);
 	}
 } 

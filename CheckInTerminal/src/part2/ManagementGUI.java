@@ -30,36 +30,64 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       this.add(nameText);
       JLabel weightText = new JLabel(currentBooking.getBaggageWeight() + "kg", SwingConstants.CENTER);//create label for baggage weight
       this.add(weightText);
-      JLabel sizeText = new JLabel("L"+currentBooking.getBaggageLength()+" W"+currentBooking.getBaggageWidth()+" H"+currentBooking.getBaggageHeight(), SwingConstants.CENTER); //label for baggage size eg L7.2 W4.4 H8.1
+      JLabel sizeText = new JLabel("L:"+currentBooking.getBaggageLength()+" W:"+currentBooking.getBaggageWidth()+" H:"+currentBooking.getBaggageHeight(), SwingConstants.CENTER); //label for baggage size eg L7.2 W4.4 H8.1
       this.add(sizeText);
-    //   this.setMaximumSize(new Dimension(2000,20));
       this.setMaximumSize(new Dimension(Integer.MAX_VALUE,18));//limit size to one row in scrollpanel
       this.setToolTipText("<html>" + "Name: " + currentBooking.getFullName() +"<br>" + "Booking Reference: " + currentBooking.getReference().toUpperCase() + "</html>");
+      if(currentBooking.getMissedFlight()){
+        flightText.setForeground(Color.red);
+        this.setToolTipText("<html>" + "Name: " + currentBooking.getFullName() +"<br>" + "Booking Reference: " + currentBooking.getReference().toUpperCase() +"<br>" + "MISSED FLIGHT"+ "</html>");
+        this.setEnabled(false);
+      }
     }
   }
 
   class DeskComponent extends JPanel {
     JLabel bagDetails;
     JLabel feeDetails;
-    public DeskComponent(int deskNumber) {
+    CheckinCounter counter;
+    public DeskComponent(int deskNumber, CheckinCounter counter) {
+      this.counter = counter;
       this.setBorder(createBorder("Desk "+ deskNumber)); // set border
       this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); // set layout
       bagDetails = new JLabel("waiting for details"); //create placeholder label and add to component
       this.add(bagDetails);
       feeDetails = new JLabel("waiting for details"); //create placeholder label and add to component
       this.add(feeDetails);
-      this.closeCounter();
+      JButton counterButton = new JButton("Close counter");
+      this.add(counterButton);
+      counterButton.addActionListener(new ActionListener() {
+        @Override
+        public synchronized void actionPerformed(ActionEvent e) {
+          counter.closeCounter();
+          if(counter.getIsOpen()){
+            counterButton.setText("Close Counter");
+          }
+          else{
+            closeCounter();
+            counterButton.setText("Open Counter");
+          }
+        }
+      });
+      
     }
-    public void setcontents(Booking currentBooking, Float bagFee) {
+    public void setcontents(Booking currentBooking) {
       this.setEnabled(true);// enable desk if it was previously closed
-      bagDetails.setText(currentBooking.getFullName() + " is dropping off 1 bag of " + currentBooking.getBaggageWeight() + "kg");//set text for passenger details
-      String feeText = "";
-      if (bagFee == 0) {//create string representation of luggage charge
-        feeText = "No baggage fee is due";
-      } else {
-        feeText = "A bagagge fee of £" + bagFee + " is due";
+      if(currentBooking != null){
+        bagDetails.setText(currentBooking.getFullName() + " is dropping off 1 bag of " + currentBooking.getBaggageWeight() + "kg");//set text for passenger details
+        String feeText = "";
+        Float bagFee = currentBooking.getExcessFeeCharged();
+        if (bagFee == 0) {//create string representation of luggage charge
+          feeText = "No baggage fee is due";
+        } else {
+          feeText = "A bagagge fee of \u00a3" + bagFee + " is due";
+        }
+        feeDetails.setText(feeText);
       }
-      feeDetails.setText(feeText);
+      else{
+        bagDetails.setText("Currently not serving a customer");
+        feeDetails.setText("");
+      }
     }
     public void closeCounter() {
       this.setEnabled(false);//close desk and gray gui element
@@ -79,13 +107,17 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       holdPercent = new JLabel("waiting for details");//create placeholder label and add to component
       this.add(holdPercent);
       this.setcontents(currentFlight);//populate labels
-      this.setToolTipText("<html>" + "Flight: " + currentFlight.getFlightCode() +"<br>" + "Carrier: " + currentFlight.getCarrier() +"<br>" + "Destination: " + currentFlight.getDestination() + "</html>");// set text for cursor hover
+      this.setToolTipText("<html>" + "Flight: " + currentFlight.getFlightCode() +"<br>" + "Carrier: " + currentFlight.getCarrier() +"<br>" + "Destination: " + currentFlight.getDestination() +"<br>"+"Total fees collected: "+currentFlight.getTotalExcessFees()+ "</html>");// set text for cursor hover
     }
     public void setcontents(Flight currentFlight) {
       checkedIn.setText(currentFlight.getNumberOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());//set text for passenger info
       holdPercent.setText("Hold is " + currentFlight.getBaggagePercent() + "% full");//set text for luggage info
+      this.setToolTipText("<html>" + "Flight: " + currentFlight.getFlightCode() +"<br>" + "Carrier: " + currentFlight.getCarrier() +"<br>" + "Destination: " + currentFlight.getDestination() +"<br>"+"Total fees collected: \u00a3"+currentFlight.getTotalExcessFees()+ "</html>");// set text for cursor hover
+      if(!currentFlight.getGateOpen()){
+        this.setBorder(createBorder(currentFlight.getFlightCode() + " DEPARTED")); // set border text when flight has departed
+        this.setEnabled(false);//disable component
     }
-    //TODO flight takes off
+    }
   }
 
   static JFrame frame;
@@ -95,8 +127,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   private JLabel clock;
   private Timer timer;
   private SimTime t;
-  private String hours;
-  private String minutes;
   private DeskComponent[] allDeskComponents;
   private HashMap<String,FlightComponent> allFlightComponents;
   
@@ -115,6 +145,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     queueContentPanel = new JPanel(); // content panel to be scrolled
     queueContentPanel.setLayout(new BoxLayout(queueContentPanel, BoxLayout.PAGE_AXIS)); // set layout
     JScrollPane queueScrollPane = new JScrollPane(queueContentPanel);// scrollpane object
+    queueScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
     JPanel queuePanel = new JPanel(); // top level container panel for border
     queuePanel.setBorder(createBorder("Queue Patrons")); // set border
     queuePanel.setLayout(new BoxLayout(queuePanel, BoxLayout.PAGE_AXIS)); // set layout
@@ -122,22 +153,24 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
 
     // Column for Check In Desks
     desksContentPanel = new JPanel(); // content panel to be scrolled
-    desksContentPanel.setLayout(new BoxLayout(desksContentPanel, BoxLayout.PAGE_AXIS)); // set layout
+    desksContentPanel.setLayout(new GridLayout(allCounters.size(),0)); // set layout
     JScrollPane desksScrollPane = new JScrollPane(desksContentPanel);// scrollpane object
+    desksScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
     JPanel desksPanel = new JPanel(); // top level container panel for border
     desksPanel.setBorder(createBorder("Check In Desks")); // set border
     desksPanel.setLayout(new BoxLayout(desksPanel, BoxLayout.PAGE_AXIS)); // set layout
     desksPanel.add(BorderLayout.CENTER, desksScrollPane); // add scrollpane to bordered panel
     allDeskComponents = new DeskComponent[allCounters.size()];
-    for(CheckinCounter item : allCounters) allDeskComponents[item.getCounterNumber()-1] = new DeskComponent(item.getCounterNumber());
+    for(CheckinCounter item : allCounters) allDeskComponents[item.getCounterNumber()-1] = new DeskComponent(item.getCounterNumber(),item);
     for(DeskComponent desk : allDeskComponents){
         desksContentPanel.add(desk);
     }
 
     // Column for Flights
     flightsContentPanel = new JPanel(); // content panel to be scrolled
-    flightsContentPanel.setLayout(new BoxLayout(flightsContentPanel, BoxLayout.PAGE_AXIS)); // set layout
+    flightsContentPanel.setLayout(new GridLayout(allFlights.size(),0)); // set layout
     JScrollPane flightsScrollPane = new JScrollPane(flightsContentPanel);// scrollpane object
+    flightsScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
     JPanel flightsPanel = new JPanel(); // top level container panel for border
     flightsPanel.setBorder(createBorder("Flights")); // set border
     flightsPanel.setLayout(new BoxLayout(flightsPanel, BoxLayout.PAGE_AXIS)); // set layout
@@ -147,11 +180,18 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     allFlightComponents.forEach((key,value) -> flightsContentPanel.add(value));
 
     JPanel mainPanel = new JPanel(); // the panel is not visible in output
-    mainPanel.setLayout(new GridLayout(0, 3));
-    mainPanel.add(queuePanel);
-    mainPanel.add(desksPanel);
-    mainPanel.add(flightsPanel);
-
+    mainPanel.setLayout(new GridBagLayout());
+    GridBagConstraints c = new GridBagConstraints();
+    c.fill = GridBagConstraints.BOTH;
+    c.weightx = 1.0;
+    c.weighty = 1.0;
+    c.gridheight = 1;
+    c.gridwidth = 1;
+    mainPanel.add(queuePanel,c);
+    c.weightx = 0.5;
+    mainPanel.add(desksPanel,c);
+    c.weightx = 0.25;
+    mainPanel.add(flightsPanel,c);
     // Column for Play/Pause
     JPanel playControlPanel = new JPanel(); // panel for buttons
     playControlPanel.setLayout(new GridLayout(0, 2)); // set layout
@@ -183,7 +223,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     // Column for speed Slider
     JPanel speedControlPanel = new JPanel(); // panel for slider
     speedControlPanel.setLayout(new GridLayout(2, 0)); // set layout
-    //speedControlPanel.setLayout(new BoxLayout(speedControlPanel, BoxLayout.PAGE_AXIS)); // set layout
     JLabel speedSliderLabel = new JLabel("Simulation Speed", SwingConstants.CENTER);
     speedControlPanel.add(speedSliderLabel);
     JSlider speedSlider = new JSlider(0, 3, 0);
@@ -215,7 +254,9 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     // Adding Components to the frame.
     checkFrame.getContentPane().add(BorderLayout.CENTER, mainPanel);
     checkFrame.getContentPane().add(BorderLayout.SOUTH, simControlPanel);
+    // checkFrame.setMinimumSize(new Dimension(100,400));
     checkFrame.setVisible(true);
+    
   }
 
   TitledBorder createBorder(String borderText) {
@@ -231,7 +272,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     if(arg instanceof PassengerQueue) updateQueue(arg);
     else if(arg instanceof CheckinCounter) updateCounter(arg);
     else if(arg instanceof Flight) updateFlight(arg);
-    // TODO else throw exception
   }
 
   /** Listen to the slider. */
@@ -262,7 +302,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   private void updateCounter(Object arg) {
     CheckinCounter checkinCounter = (CheckinCounter)arg;
     if (checkinCounter.getIsOpen()){
-      allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking(), checkinCounter.getPassengerExcessFee());
+      allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking());
     }
     else {allDeskComponents[checkinCounter.getCounterNumber()-1].closeCounter();}
   }
@@ -270,25 +310,10 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   private void updateFlight(Object arg) {
     Flight flight = (Flight)arg;
     allFlightComponents.get(flight.getFlightCode()).setcontents(flight);
-    //TODO flight takes off
   }
 
   public void updateClock(){
     this.clock.setText(this.timer.getTimeString());
-  }
-
-  private void testFillGUI() {
-    // for (int i = 0; i < 20; i++) {
-    //   queueContentPanel.add(new PassengerComponent("FLT" + i, "Passenger Name", i * 2, i + "x" + (i + 1) + "x" + (i + 2)));
-    // } // TEST to fill scroll panel
-
-    //desksContentPanel.add(new DeskComponent("Desk 1", "Joshua Roe", 7, 12));
-    //desksContentPanel.add(new DeskComponent("Desk 2", "Sean Katagiri", 4, 0));
-    // TEST to fill scroll panel
-
-    // for (int i = 0; i < 20; i++) {
-    //   flightsContentPanel.add(new FlightComponent("FlightName:" + i, i, i + 10, i));
-    // } // TEST to fill scroll panel
   }
 
   public void run() {
@@ -302,25 +327,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
           }
         }
     }
-}
-  public static void main(String[] args) {
-    SimTime t = new SimTime();
-    Timer timer = new Timer(t);
-
-    List<CheckinCounter> counters = new LinkedList<CheckinCounter>();
-    AllFlights flights = new AllFlights();
-    Flight f1 = new Flight("AF1", "Edinburgh", "AirFrance", 200, 23, 90, 40, 20, 15, 120);
-    flights.addFlight(f1);
-    CheckinCounter c1 = new CheckinCounter(1,flights,t,timer);
-    counters.add(c1);
-    CheckinCounter c2 = new CheckinCounter(2,flights,t,timer);
-    counters.add(c2);
-    //updateCounter(c1);
-
-    ManagementGUI g = new ManagementGUI(timer,t,counters,flights.getAllFlights());
-    g.testFillGUI();
-    timer.start();
-    g.start();
   }
 }
 	

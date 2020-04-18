@@ -17,27 +17,25 @@ public class CheckinCounter extends Thread implements Subject {
     private Flight passengerFlight;
     private List<Observer> registeredObservers = new LinkedList<Observer>();
     private AllFlights flights;
-    private SimTime t;
     private Timer timer;
+    private int currentTime;
+    private String currentTimeString;
     private boolean open;
 
-    //Change this variable to change time to close counter
-    private int stopTime = 120;
-
-    public CheckinCounter(int number, AllFlights flights, SimTime t, Timer timer) {
+    public CheckinCounter(int number, AllFlights flights, Timer timer) {
         this.counter_number = number;
         this.flights = flights;
-        this.t = t;
         this.timer = timer;
         this.open = true;
     }
 
-    public void closeCounter(){
-        if (this.open){
-            this.open = false;
-            logMessage("Checkin counter "+this.counter_number+" closed");
-            notifyObservers();
+    public synchronized void closeCounter(){
+        
+        this.open = !this.open;
+        if(this.open){
+            logMessage("Checkin counter "+this.counter_number+" opened.");
         }
+        else logMessage("Checkin counter "+this.counter_number+" closed.");
     }
 
     public void run() {
@@ -48,10 +46,9 @@ public class CheckinCounter extends Thread implements Subject {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                currentTimeString = timer.getTimeString();
+                currentTime = timer.getTime();
                 serveCustomer();
-                if(timer.getTime() > this.stopTime){
-                    closeCounter();
-                } 
             }
         }
     }
@@ -80,25 +77,39 @@ public class CheckinCounter extends Thread implements Subject {
         return this.open;
     }
 
-    private synchronized void logMessage(String message){
+    private void logMessage(String message){
         Log l = Log.INSTANCE;
-        l.log(this.timer.getTimeString()+" "+message);
+        l.log(this.currentTimeString+" "+message);
     }
 
     public synchronized void serveCustomer(){
         if(queue.size()>0 && this.open){
-            this.passenger = queue.dequeue();
-            setPassengerFlight();
             //TODO: clear passenger details once queue has ended so GUI isnt stuck with last served passenger
-            try{
-                this.passengerFlight.checkBaggage(passenger.getBaggageWeight(), passenger.getBaggageLength(),passenger.getBaggageHeight(),passenger.getBaggageWidth());
+            if(!this.queue.peek().getMissedFlight()){
+                this.passenger = queue.dequeue();
+                setPassengerFlight();
+                if(this.passengerFlight.checkGateOpen(this.currentTime,this.currentTimeString)){
+                    try{
+                        this.passengerFlight.checkBaggage(passenger.getBaggageWeight(), passenger.getBaggageLength(),passenger.getBaggageHeight(),passenger.getBaggageWidth());
+                    }
+                    catch(OverBaggageLimitException e){
+                        this.passenger.setExcessFeeCharged(this.passengerFlight.getExcessFeeCharge());
+                    }
+                    this.passengerFlight.addPassenger();
+                    logMessage("[Counter "+this.counter_number+"] "+this.passenger.getFullName()+" checked into flight "+this.passengerFlight.getFlightCode()+". Excess fee of £"+this.passenger.getExcessFeeCharged()+" charged.");
+                }
+                else{
+                    this.passenger.missFlight();
+                    this.queue.enqueue(this.passenger);
+                    logMessage("[Counter "+this.counter_number+"] "+this.passengerFlight.getFlightCode()+" has already departed, "+this.passenger.getFullName()+" has missed their flight and has joined the end of the queue.");
+                }
+                notifyObservers();
             }
-            catch(OverBaggageLimitException e){
-                this.passenger.setExcessFeeCharged(this.passengerFlight.getExcessFeeCharge());
+            else{
+                this.passenger = null;
+                this.passengerFlight = null;
+                notifyObservers();
             }
-            this.passengerFlight.addPassenger();
-            logMessage("[Counter "+this.counter_number+"] "+this.passenger.getFullName()+" checked into flight "+this.passengerFlight.getFlightCode()+". Excess fee of £"+this.passenger.getExcessFeeCharged()+" charged.");
-            notifyObservers();
         }
     }
     @Override
