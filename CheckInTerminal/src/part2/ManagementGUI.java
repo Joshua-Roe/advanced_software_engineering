@@ -84,7 +84,10 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     public void setcontents(Flight currentFlight) {
       checkedIn.setText(currentFlight.getNumberOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());//set text for passenger info
       holdPercent.setText("Hold is " + currentFlight.getBaggagePercent() + "% full");//set text for luggage info
-      if(!currentFlight.getGateOpen()){this.setBorder(createBorder(currentFlight.getFlightCode() + " DEPARTED"));} // set border text when flight has departed
+      if(!currentFlight.getGateOpen()){
+        this.setBorder(createBorder(currentFlight.getFlightCode() + " DEPARTED")); // set border text when flight has departed
+        this.setEnabled(false);//disable component
+      }
     }
   }
 
