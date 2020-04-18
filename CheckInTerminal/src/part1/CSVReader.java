@@ -1,6 +1,6 @@
 package part1;
-
 import java.io.*;
+import java.util.Random;
 
 public class CSVReader { 
 	private AllFlights flights;
@@ -9,8 +9,8 @@ public class CSVReader {
 	public CSVReader() {
 		try {
 		    String sep = File.separator;
-		    String bookingCSVpath = new File(".."+sep+"data"+sep+"bookingDetails.csv").getAbsolutePath();
-		    String flightCSVpath = new File(".."+sep+"data"+sep+"flightDetails.csv").getAbsolutePath();
+		    String bookingCSVpath = new File("CheckInTerminal"+sep+"data"+sep+"bookingDetails.csv").getAbsolutePath();
+		    String flightCSVpath = new File("CheckInTerminal"+sep+"data"+sep+"flightDetails.csv").getAbsolutePath();
 		   
 			File flightCSV = new File(flightCSVpath);
 			File bookingCSV = new File(bookingCSVpath);
@@ -23,13 +23,32 @@ public class CSVReader {
 			String st; 
 			while ((st = bookingBR.readLine()) != null) {
 				String[] temp = st.split(",", 0);
-				Booking booking = new Booking(temp[0], temp[1], temp[2], temp[3]);
+
+				Random rand1 = new Random();
+				Random rand2 = new Random();
+				Random rand3 = new Random();
+				Random rand4 = new Random();
+				float min = 1;
+				float maxWeight = 60;
+				float maxLH = 150;
+				float maxW = 100;
+				float ranWeight = rand1.nextFloat() * (maxWeight - min) + min;
+				float ranL = rand2.nextFloat() * (maxLH - min) + min;
+				float ranH = rand3.nextFloat() * (maxLH - min) + min;
+				float ranW = rand4.nextFloat() * (maxW - min) + min;
+				//Booking example = new Booking(bookingCode, firstName, lastName, flightCode, baggageWeight, baggageLength, baggageHeight, baggageWidth)
+				Booking booking = new Booking(temp[0], temp[1], temp[2], temp[3], ranWeight, ranL, ranH, ranW);
 				bookings.addBooking(booking);
 			}
 			
 			while ((st = flightBR.readLine()) != null) {
 				String[] temp = st.split(",", 0);
-				Flight flight = new Flight(temp[0], temp[3], temp[1], Integer.parseInt(temp[5]), Float.parseFloat(temp[6]), Float.parseFloat(temp[7]), Float.parseFloat(temp[8]));
+				String[] tempTime = temp[11].split(":");
+				int h = Integer.parseInt(tempTime[0]);
+        		int m = Integer.parseInt(tempTime[1]);
+				int time = h*60 + m;
+				//Flight example = new Flight(flightCode, destination, carrier, maxPassengers, allowedBaggageWeight, allowedBaggageLength, allowedBaggageHeight, allowedBaggageWidth, excessFeeCharge, time)
+				Flight flight = new Flight(temp[0], temp[3], temp[1], Integer.parseInt(temp[5]), Float.parseFloat(temp[6]), Float.parseFloat(temp[7]), Float.parseFloat(temp[8]), Float.parseFloat(temp[9]), Float.parseFloat(temp[10]), time);
 				flights.addFlight(flight);
 			}
 			

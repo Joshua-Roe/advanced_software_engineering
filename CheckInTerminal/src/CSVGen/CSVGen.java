@@ -12,7 +12,7 @@ public class CSVGen {
 							 "FR5160", "LM335", "FR6652", "LM397",
 							 "EJU3386", "BE849", "EZS6917", "EZY6979",
 							 "EJU2684", "LM347", "LM365", "EZY012",
-							 "EZY236", "E2107", "EZY426", "FR1049",
+							 "EZY236", "BE2107", "EZY426", "FR1049",
 							 "LM385", "FR5834", "BA8857", "EZY488",
 							 "FR815", "EZY2686", "BE851", "EK024"}; 
 		Random rand = new Random();

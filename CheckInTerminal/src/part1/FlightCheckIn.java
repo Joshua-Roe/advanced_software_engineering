@@ -10,11 +10,11 @@ public class FlightCheckIn {
         	Map.Entry<String, Flight> MapElement = it.next();
         	System.out.println("Flight Code: " + MapElement.getKey());
         	Flight flight = (Flight) MapElement.getValue();
-        	System.out.println("Number of checked-in passengers: " + flight.getNumOfPassengers() + " / " + flight.getMaxPassengers());
+        	System.out.println("Number of checked-in passengers: " + flight.getNumberOfPassengers() + " / " + flight.getMaxPassengers());
         	System.out.println("Total baggage weight: " + flight.getTotalBaggageWeight());
         	System.out.println("Total baggage volume: " + flight.getTotalBaggageVolume());
-        	System.out.println("Total excess fees collected: " + flight.getCollectedFees());
-        	String cap = (flight.getNumOfPassengers() > flight.getMaxPassengers()) ? "Y" : "N";
+        	System.out.println("Total excess fees collected: " + flight.getTotalExcessFees());
+        	String cap = (flight.getNumberOfPassengers() > flight.getMaxPassengers()) ? "Y" : "N";
         	System.out.println("Over capacity?: " + cap);
         	System.out.println();
         }
