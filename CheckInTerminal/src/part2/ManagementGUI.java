@@ -79,7 +79,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       holdPercent = new JLabel("waiting for details");//create placeholder label and add to component
       this.add(holdPercent);
       this.setcontents(currentFlight);//populate labels
-      this.setToolTipText("<html>" + "Carrier: " + currentFlight.getCarrier() +"<br>" + "Destination: " + currentFlight.getDestination() + "</html>");// set text for cursor hover
+      this.setToolTipText("<html>" + "Flight: " + currentFlight.getFlightCode() +"<br>" + "Carrier: " + currentFlight.getCarrier() +"<br>" + "Destination: " + currentFlight.getDestination() + "</html>");// set text for cursor hover
     }
     public void setcontents(Flight currentFlight) {
       checkedIn.setText(currentFlight.getNumberOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());//set text for passenger info
