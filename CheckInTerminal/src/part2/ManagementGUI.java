@@ -21,19 +21,20 @@ import java.util.Queue;
 public class ManagementGUI extends Thread implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
 
-    public PassengerComponent(String flight, String passengerName, float bagWeight, String bagSize) {
+    public PassengerComponent(Booking currentBooking) {
       this.setBorder(createBorder("")); // set border
       this.setLayout(new GridLayout(0, 4)); // set layout
-      JLabel flightText = new JLabel(flight, SwingConstants.CENTER);
+      JLabel flightText = new JLabel(currentBooking.getFlightCode(), SwingConstants.CENTER);//create label for FlightCode
       this.add(flightText);
-      JLabel nameText = new JLabel(passengerName, SwingConstants.CENTER);
+      JLabel nameText = new JLabel(currentBooking.getFullName(), SwingConstants.CENTER);//create label for Full Name
       this.add(nameText);
-      JLabel weightText = new JLabel(bagWeight + "kg", SwingConstants.CENTER);
+      JLabel weightText = new JLabel(currentBooking.getBaggageWeight() + "kg", SwingConstants.CENTER);//create label for baggage weight
       this.add(weightText);
-      JLabel sizeText = new JLabel(bagSize, SwingConstants.CENTER);
+      JLabel sizeText = new JLabel("L"+currentBooking.getBaggageLength()+" W"+currentBooking.getBaggageWidth()+" H"+currentBooking.getBaggageHeight(), SwingConstants.CENTER); //label for baggage size eg L7.2 W4.4 H8.1
       this.add(sizeText);
     //   this.setMaximumSize(new Dimension(2000,20));
-      this.setMaximumSize(new Dimension(Integer.MAX_VALUE,18));
+      this.setMaximumSize(new Dimension(Integer.MAX_VALUE,18));//limit size to one row in scrollpanel
+      this.setToolTipText("<html>" + "Name: " + currentBooking.getFullName() +"<br>" + "Booking Reference: " + currentBooking.getReference() + "</html>");
     }
   }
 
@@ -252,7 +253,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     Queue<Booking> bookingQueue = passengerQueue.getQueue();
     queueContentPanel.removeAll();
     for (Booking item: bookingQueue) {
-      queueContentPanel.add(new PassengerComponent(item.getFlightCode(), item.getFullName(), item.getBaggageWeight(), "L"+item.getBaggageLength()+" W"+item.getBaggageWidth()+" H"+item.getBaggageHeight())); //eg L7.2 W4.4 H8.1
+      queueContentPanel.add(new PassengerComponent(item));
     }
     queueContentPanel.setVisible(false);// this forces update of the JPanel and its contents
     queueContentPanel.setVisible(true);
@@ -277,9 +278,9 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   }
 
   private void testFillGUI() {
-    for (int i = 0; i < 20; i++) {
-      queueContentPanel.add(new PassengerComponent("FLT" + i, "Passenger Name", i * 2, i + "x" + (i + 1) + "x" + (i + 2)));
-    } // TEST to fill scroll panel
+    // for (int i = 0; i < 20; i++) {
+    //   queueContentPanel.add(new PassengerComponent("FLT" + i, "Passenger Name", i * 2, i + "x" + (i + 1) + "x" + (i + 2)));
+    // } // TEST to fill scroll panel
 
     //desksContentPanel.add(new DeskComponent("Desk 1", "Joshua Roe", 7, 12));
     //desksContentPanel.add(new DeskComponent("Desk 2", "Sean Katagiri", 4, 0));
