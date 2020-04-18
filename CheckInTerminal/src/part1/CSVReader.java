@@ -9,8 +9,8 @@ public class CSVReader {
 	public CSVReader() {
 		try {
 		    String sep = File.separator;
-		    String bookingCSVpath = new File("CheckInTerminal"+sep+"data"+sep+"bookingDetails.csv").getAbsolutePath();
-		    String flightCSVpath = new File("CheckInTerminal"+sep+"data"+sep+"flightDetails.csv").getAbsolutePath();
+		    String bookingCSVpath = new File("data"+sep+"bookingDetails.csv").getAbsolutePath();
+		    String flightCSVpath = new File("data"+sep+"flightDetails.csv").getAbsolutePath();
 		   
 			File flightCSV = new File(flightCSVpath);
 			File bookingCSV = new File(bookingCSVpath);
