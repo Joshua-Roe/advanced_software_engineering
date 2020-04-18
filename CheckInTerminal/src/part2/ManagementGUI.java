@@ -80,7 +80,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
         if (bagFee == 0) {//create string representation of luggage charge
           feeText = "No baggage fee is due";
         } else {
-          feeText = "A bagagge fee of £" + bagFee + " is due";
+          feeText = "A bagagge fee of \u00a3" + bagFee + " is due";
         }
         feeDetails.setText(feeText);
       }
@@ -112,7 +112,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     public void setcontents(Flight currentFlight) {
       checkedIn.setText(currentFlight.getNumberOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());//set text for passenger info
       holdPercent.setText("Hold is " + currentFlight.getBaggagePercent() + "% full");//set text for luggage info
-      this.setToolTipText("<html>" + "Flight: " + currentFlight.getFlightCode() +"<br>" + "Carrier: " + currentFlight.getCarrier() +"<br>" + "Destination: " + currentFlight.getDestination() +"<br>"+"Total fees collected: £"+currentFlight.getTotalExcessFees()+ "</html>");// set text for cursor hover
+      this.setToolTipText("<html>" + "Flight: " + currentFlight.getFlightCode() +"<br>" + "Carrier: " + currentFlight.getCarrier() +"<br>" + "Destination: " + currentFlight.getDestination() +"<br>"+"Total fees collected: \u00a3"+currentFlight.getTotalExcessFees()+ "</html>");// set text for cursor hover
       if(!currentFlight.getGateOpen()){
         this.setBorder(createBorder(currentFlight.getFlightCode() + " DEPARTED")); // set border text when flight has departed
         this.setEnabled(false);//disable component
