@@ -102,7 +102,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   
 
   public ManagementGUI(Timer timer, SimTime t, List<CheckinCounter> allCounters, HashMap<String,Flight> allFlights) {
-
+    ToolTipManager.sharedInstance().setInitialDelay(0);//tooltips show immediately
     this.timer = timer;
     this.t = t;
     // create frame
