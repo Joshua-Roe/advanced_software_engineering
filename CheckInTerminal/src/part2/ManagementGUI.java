@@ -35,7 +35,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     //   this.setMaximumSize(new Dimension(2000,20));
       this.setMaximumSize(new Dimension(Integer.MAX_VALUE,18));
     }
-    // TODO setContents
   }
 
   class DeskComponent extends JPanel {
@@ -44,17 +43,17 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     public DeskComponent(int deskNumber) {
       this.setBorder(createBorder("Desk "+ deskNumber)); // set border
       this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); // set layout
-      bagDetails = new JLabel("waiting for details");
+      bagDetails = new JLabel("waiting for details"); //create placeholder label and add to component
       this.add(bagDetails);
-      feeDetails = new JLabel("waiting for details");
+      feeDetails = new JLabel("waiting for details"); //create placeholder label and add to component
       this.add(feeDetails);
       this.closeCounter();
     }
     public void setcontents(Booking currentBooking, Float bagFee) {
-      this.setEnabled(true);
-      bagDetails.setText(currentBooking.getFullName() + " is dropping off 1 bag of " + currentBooking.getBaggageWeight() + "kg");
+      this.setEnabled(true);// enable desk if it was previously closed
+      bagDetails.setText(currentBooking.getFullName() + " is dropping off 1 bag of " + currentBooking.getBaggageWeight() + "kg");//set text for passenger details
       String feeText = "";
-      if (bagFee == 0) {
+      if (bagFee == 0) {//create string representation of luggage charge
         feeText = "No baggage fee is due";
       } else {
         feeText = "A bagagge fee of £" + bagFee + " is due";
@@ -62,11 +61,10 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       feeDetails.setText(feeText);
     }
     public void closeCounter() {
-      this.setEnabled(false);
+      this.setEnabled(false);//close desk and gray gui element
       bagDetails.setText("Counter Closed");
       feeDetails.setText("");
     }
-    //TODO close counter
   }
 
   class FlightComponent extends JPanel {
@@ -75,15 +73,16 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     public FlightComponent(Flight currentFlight) {
       this.setBorder(createBorder(currentFlight.getFlightCode())); // set border
       this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); // set layout
-      checkedIn = new JLabel("waiting for details");
+      checkedIn = new JLabel("waiting for details"); //create placeholder label and add to component
       this.add(checkedIn);
-      holdPercent = new JLabel("waiting for details");
+      holdPercent = new JLabel("waiting for details");//create placeholder label and add to component
       this.add(holdPercent);
-      this.setcontents(currentFlight);
+      this.setcontents(currentFlight);//populate labels
+      this.setToolTipText("<html>" + "Carrier: " + currentFlight.getCarrier() +"<br>" + "Destination: " + currentFlight.getDestination() + "</html>");// set text for cursor hover
     }
     public void setcontents(Flight currentFlight) {
-      checkedIn.setText(currentFlight.getNumberOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());
-      holdPercent.setText("Hold is " + currentFlight.getBaggagePercent() + "% full");
+      checkedIn.setText(currentFlight.getNumberOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());//set text for passenger info
+      holdPercent.setText("Hold is " + currentFlight.getBaggagePercent() + "% full");//set text for luggage info
     }
     //TODO flight takes off
   }
