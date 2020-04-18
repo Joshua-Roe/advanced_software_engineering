@@ -84,8 +84,8 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     public void setcontents(Flight currentFlight) {
       checkedIn.setText(currentFlight.getNumberOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());//set text for passenger info
       holdPercent.setText("Hold is " + currentFlight.getBaggagePercent() + "% full");//set text for luggage info
+      if(!currentFlight.getGateOpen()){this.setBorder(createBorder(currentFlight.getFlightCode() + " DEPARTED"));} // set border text when flight has departed
     }
-    //TODO flight takes off
   }
 
   static JFrame frame;
@@ -95,8 +95,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   private JLabel clock;
   private Timer timer;
   private SimTime t;
-  private String hours;
-  private String minutes;
   private DeskComponent[] allDeskComponents;
   private HashMap<String,FlightComponent> allFlightComponents;
   
@@ -231,7 +229,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     if(arg instanceof PassengerQueue) updateQueue(arg);
     else if(arg instanceof CheckinCounter) updateCounter(arg);
     else if(arg instanceof Flight) updateFlight(arg);
-    // TODO else throw exception
   }
 
   /** Listen to the slider. */
@@ -270,7 +267,6 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   private void updateFlight(Object arg) {
     Flight flight = (Flight)arg;
     allFlightComponents.get(flight.getFlightCode()).setcontents(flight);
-    //TODO flight takes off
   }
 
   public void updateClock(){
