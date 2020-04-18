@@ -34,7 +34,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       this.add(sizeText);
     //   this.setMaximumSize(new Dimension(2000,20));
       this.setMaximumSize(new Dimension(Integer.MAX_VALUE,18));//limit size to one row in scrollpanel
-      this.setToolTipText("<html>" + "Name: " + currentBooking.getFullName() +"<br>" + "Booking Reference: " + currentBooking.getReference() + "</html>");
+      this.setToolTipText("<html>" + "Name: " + currentBooking.getFullName() +"<br>" + "Booking Reference: " + currentBooking.getReference().toUpperCase() + "</html>");
     }
   }
 
