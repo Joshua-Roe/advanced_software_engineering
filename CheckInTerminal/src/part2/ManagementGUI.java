@@ -86,13 +86,13 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
       }
       else{
         bagDetails.setText("Currently not serving a customer");
-        feeDetails.setText("");
+        feeDetails.setText(" ");
       }
     }
     public void closeCounter() {
       this.setEnabled(false);//close desk and gray gui element
       bagDetails.setText("Counter Closed");
-      feeDetails.setText("");
+      feeDetails.setText(" ");
     }
   }
 
