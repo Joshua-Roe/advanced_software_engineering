@@ -36,6 +36,10 @@ public class PassengerQueue extends Thread implements Subject {
         return queue.size();
     }
 
+    public Booking peek(){
+        return queue.peek();
+    }
+
     public synchronized Queue<Booking> getQueue() {
         return this.queue;
     }

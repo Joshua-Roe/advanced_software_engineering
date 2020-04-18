@@ -157,7 +157,7 @@ public class Flight implements Subject {
      * @return the percent (1 = 100%) of the aircraft baggage compartment being filled. It checks both weight and volume and return the bigger one.
      */
     public float getBaggagePercent() {
-        return Math.max(100*this.totalBaggageWeight/this.maxBaggageWeightCapacity, 100*this.totalBaggageVolume/this.maxBaggageVolumeCapacity);
+        return Math.round(10.0f*Math.max(100f*this.totalBaggageWeight/this.maxBaggageWeightCapacity, 100*this.totalBaggageVolume/this.maxBaggageVolumeCapacity))/10.0f;
     }
 
     /**
@@ -211,16 +211,22 @@ public class Flight implements Subject {
         }
     }
 
-    public boolean checkGateOpen(int currentTime) {
+    public boolean checkGateOpen(int currentTime, String currentTimeString) {
         if (currentTime >= this.departureTime && this.gateOpen){
-            notifyObservers();
             this.gateOpen = false;
+            notifyObservers();
+            logMessage("Flight "+this.flightCode+" has taken off.", currentTimeString);
         }
         return this.gateOpen;
     }
     
     public boolean getGateOpen(){
         return this.gateOpen;
+    }
+
+    private void logMessage(String message, String currentTimeString){
+        Log l = Log.INSTANCE;
+        l.log(currentTimeString+" "+message);
     }
 
     @Override

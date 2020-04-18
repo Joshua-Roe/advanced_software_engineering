@@ -1,11 +1,11 @@
 package part1;
+
 import java.io.*;
 import java.util.Random;
 
 public class CSVReader { 
 	private AllFlights flights;
 	private AllBookings bookings;
-
 	public CSVReader() {
 		try {
 		    String sep = File.separator;
@@ -33,9 +33,13 @@ public class CSVReader {
 				float maxLH = 150;
 				float maxW = 100;
 				float ranWeight = rand1.nextFloat() * (maxWeight - min) + min;
+				ranWeight = Math.round(ranWeight*10.0f)/10.0f;
 				float ranL = rand2.nextFloat() * (maxLH - min) + min;
+				ranL = Math.round(ranL*10.0f)/10.0f;
 				float ranH = rand3.nextFloat() * (maxLH - min) + min;
+				ranH = Math.round(ranH*10.0f)/10.0f;
 				float ranW = rand4.nextFloat() * (maxW - min) + min;
+				ranW = Math.round(ranW*10.0f)/10.0f;
 				//Booking example = new Booking(bookingCode, firstName, lastName, flightCode, baggageWeight, baggageLength, baggageHeight, baggageWidth)
 				Booking booking = new Booking(temp[0], temp[1], temp[2], temp[3], ranWeight, ranL, ranH, ranW);
 				bookings.addBooking(booking);
