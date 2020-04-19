@@ -19,7 +19,11 @@ import java.util.Queue;
 @SuppressWarnings({"serial","deprecation"})
 public class ManagementGUI implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
-
+    /**
+     * Creates a new passenger component from a given booking for the GUI and adds it to the content panel
+     *
+     * @param currentBooking       the booking object to populate the component
+     */
     public PassengerComponent(Booking currentBooking) {
       this.setBorder(createBorder("")); // set border
       this.setLayout(new GridLayout(0, 4)); // set layout
@@ -45,6 +49,12 @@ public class ManagementGUI implements Observer, ChangeListener {
     JLabel bagDetails;
     JLabel feeDetails;
     CheckinCounter counter;
+    /**
+     * Creates a new Desk component from a given counter object for the GUI and adds it to the content panel
+     *
+     * @param deskNumber    the Number to assign to the desk
+     * @param counter       the counter object to populate the component
+     */
     public DeskComponent(int deskNumber, CheckinCounter counter) {
       this.counter = counter;
       this.setBorder(createBorder("Desk "+ deskNumber)); // set border
@@ -70,6 +80,11 @@ public class ManagementGUI implements Observer, ChangeListener {
       });
       
     }
+    /**
+     * Sets the contents of the Desk component for a given booking
+     *
+     * @param currentBooking       the booking object to populate the component
+     */
     public void setcontents(Booking currentBooking) {
       this.setEnabled(true);// enable desk if it was previously closed
       if(currentBooking != null){
@@ -88,6 +103,9 @@ public class ManagementGUI implements Observer, ChangeListener {
         feeDetails.setText(" ");
       }
     }
+    /**
+     * Closes the desk
+     */
     public void closeCounter() {
       this.setEnabled(false);//close desk and gray gui element
       bagDetails.setText("Counter Closed");
@@ -98,6 +116,11 @@ public class ManagementGUI implements Observer, ChangeListener {
   class FlightComponent extends JPanel {
     JLabel checkedIn;
     JLabel holdPercent;
+    /**
+     * Creates a new flight component from a given flight for the GUI and adds it to the content panel
+     *
+     * @param currentFlight       the Flight object to populate the component
+     */
     public FlightComponent(Flight currentFlight) {
       this.setBorder(createBorder(currentFlight.getFlightCode())); // set border
       this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); // set layout
@@ -108,6 +131,11 @@ public class ManagementGUI implements Observer, ChangeListener {
       this.setcontents(currentFlight);//populate labels
       this.setToolTipText("<html>" + "Flight: " + currentFlight.getFlightCode() +"<br>" + "Carrier: " + currentFlight.getCarrier() +"<br>" + "Destination: " + currentFlight.getDestination() +"<br>"+"Total fees collected: "+currentFlight.getTotalExcessFees()+ "</html>");// set text for cursor hover
     }
+    /**
+     * Sets the contents of the flight component for a given flight
+     *
+     * @param currentFlight      the Flight object to populate the component
+     */
     public void setcontents(Flight currentFlight) {
       checkedIn.setText(currentFlight.getNumberOfPassengers() + " checked in of " + currentFlight.getMaxPassengers());//set text for passenger info
       holdPercent.setText("Hold is " + currentFlight.getBaggagePercent() + "% full");//set text for luggage info
@@ -128,7 +156,13 @@ public class ManagementGUI implements Observer, ChangeListener {
   private DeskComponent[] allDeskComponents;
   private HashMap<String,FlightComponent> allFlightComponents;
   
-
+  /**
+   * Create the ManagementGUI object
+   *
+   * @param t      the SimTime object to pass to the GUI
+   * @param allCounters      Hashmap of Counters to pass to GUI
+   * @param allFlights      Hashmap of Flights to pass to GUI
+   */
   public ManagementGUI(SimTime t, List<CheckinCounter> allCounters, HashMap<String,Flight> allFlights) {
     ToolTipManager.sharedInstance().setInitialDelay(0);//tooltips show immediately
     this.t = t;
@@ -255,7 +289,11 @@ public class ManagementGUI implements Observer, ChangeListener {
     checkFrame.setLocationRelativeTo(null);
     
   }
-
+  /**
+   * Create a titled border
+   *
+   * @param borderText      the text to display on the border
+   */
   TitledBorder createBorder(String borderText) {
     TitledBorder border;
     border = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), borderText);
@@ -263,7 +301,12 @@ public class ManagementGUI implements Observer, ChangeListener {
     border.setTitlePosition(TitledBorder.DEFAULT_POSITION);
     return border;
   }
-
+  /**
+   * update a part of the GUI depending on object type
+   *
+   * @param o      observable object
+   * @param arg      the object to update
+   */
   @Override
   public void update(Observable o, Object arg) {
     if(arg instanceof PassengerQueue) updateQueue(arg);
@@ -272,7 +315,11 @@ public class ManagementGUI implements Observer, ChangeListener {
     else if(arg instanceof Timer) updateClock(arg);
   }
 
-  /** Listen to the slider. */
+  /**
+   * listen to the slider
+   *
+   * @param e      slider changeEvent
+   */
   public void stateChanged(ChangeEvent e) {
     JSlider source = (JSlider)e.getSource();
     if (!source.getValueIsAdjusting()) {
@@ -285,7 +332,11 @@ public class ManagementGUI implements Observer, ChangeListener {
         t.set(simSpeed);
     }
   }
-
+  /**
+   * update passenger queue column
+   *
+   * @param arg      PassengerQueue object
+   */
   private void updateQueue(Object arg) {
     PassengerQueue passengerQueue = (PassengerQueue)arg;
     Queue<Booking> bookingQueue = passengerQueue.getQueue();
@@ -296,7 +347,11 @@ public class ManagementGUI implements Observer, ChangeListener {
     queueContentPanel.setVisible(false);// this forces update of the JPanel and its contents
     queueContentPanel.setVisible(true);
   }
-
+  /**
+   * update Counter component
+   *
+   * @param arg      Counter object
+   */
   private void updateCounter(Object arg) {
     CheckinCounter checkinCounter = (CheckinCounter)arg;
     if (checkinCounter.getIsOpen()){
@@ -304,12 +359,20 @@ public class ManagementGUI implements Observer, ChangeListener {
     }
     else {allDeskComponents[checkinCounter.getCounterNumber()-1].closeCounter();}
   }
-
+  /**
+   * update Flight component
+   *
+   * @param arg      Flight object
+   */
   private void updateFlight(Object arg) {
     Flight flight = (Flight)arg;
     allFlightComponents.get(flight.getFlightCode()).setcontents(flight);
   }
-
+  /**
+   * update the clock
+   *
+   * @param arg      Timer object
+   */
   public void updateClock(Object arg){
     Timer timer = (Timer) arg;
     this.clock.setText(timer.getTimeString());
