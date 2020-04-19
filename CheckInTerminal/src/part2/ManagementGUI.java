@@ -11,13 +11,12 @@ import java.awt.event.*;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial","deprecation"})
 public class ManagementGUI implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
 

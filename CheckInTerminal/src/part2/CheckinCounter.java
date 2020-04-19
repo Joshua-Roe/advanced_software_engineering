@@ -40,7 +40,7 @@ public class CheckinCounter extends Thread implements Subject {
 
     public void run() {
         synchronized(timer){
-            while (queue.size()>0) {
+            while (true) {
                 try {
                     timer.wait();
                 } catch (InterruptedException e) {
@@ -84,7 +84,6 @@ public class CheckinCounter extends Thread implements Subject {
 
     public synchronized void serveCustomer(){
         if(queue.size()>0 && this.open){
-            //TODO: clear passenger details once queue has ended so GUI isnt stuck with last served passenger
             if(!this.queue.peek().getMissedFlight()){
                 this.passenger = queue.dequeue();
                 setPassengerFlight();
@@ -106,6 +105,7 @@ public class CheckinCounter extends Thread implements Subject {
                 notifyObservers();
             }
             else{
+                queue.moveToBackOfQueue();
                 this.passenger = null;
                 this.passengerFlight = null;
                 notifyObservers();

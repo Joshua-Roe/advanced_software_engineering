@@ -25,13 +25,14 @@ public class Main {
         counters.add(c5);
         CheckinCounter c6 = new CheckinCounter(6,flights,timer);
         counters.add(c6);
-        PassengerQueue pq = new PassengerQueue(timer);
+        PassengerQueue pq = new PassengerQueue(timer, bookings);
         ManagementGUI gui = new ManagementGUI(t,counters,flights.getAllFlights());
         
+        pq.start();
         timer.registerObserver(gui);
         pq.registerObserver(gui);
         flights.getAllFlights().forEach((key,value) -> value.registerObserver(gui));
-        bookings.getAllBookings().forEach((key,value) -> pq.getQueue().add(value));
+        // bookings.getAllBookings().forEach((key,value) -> pq.getQueue().add(value));
 
         for(CheckinCounter c : counters){
             c.registerObserver(gui);
@@ -43,7 +44,6 @@ public class Main {
             e.printStackTrace();
         }
         timer.start();
-        pq.start();
         c1.start();
         c2.start();
         c3.start();
