@@ -1,0 +1,187 @@
+@startuml
+
+title __PART2's Class Diagram__\n
+
+  namespace part2 {
+    class part2.CheckinCounter {
+        - counter_number : int
+        - currentTime : int
+        - currentTimeString : String
+        - open : boolean
+        - registeredObservers : List<Observer>
+        + CheckinCounter()
+        + closeCounter()
+        + getBooking()
+        + getCounterNumber()
+        + getIsOpen()
+        + getPassengerExcessFee()
+        + notifyObservers()
+        + registerObserver()
+        + removeObserver()
+        + run()
+        + serveCustomer()
+        + setPassengerFlight()
+        + setQueue()
+        - logMessage()
+    }
+  }
+  
+
+  namespace part2 {
+    enum Log {
+      INSTANCE
+      logfile
+    }
+  }
+  
+
+  namespace part2 {
+    class part2.Main {
+        {static} + main()
+    }
+  }
+  
+
+  namespace part2 {
+    class part2.ManagementGUI {
+        {static} ~ frame : JFrame
+        - allDeskComponents : DeskComponent[]
+        - allFlightComponents : HashMap<String, FlightComponent>
+        - clock : JLabel
+        - desksContentPanel : JPanel
+        - flightsContentPanel : JPanel
+        - queueContentPanel : JPanel
+        + ManagementGUI()
+        + stateChanged()
+        + update()
+        + updateClock()
+        ~ createBorder()
+        - updateCounter()
+        - updateFlight()
+        - updateQueue()
+    }
+  }
+  
+
+  namespace part2 {
+    class part2.ManagementGUI.DeskComponent {
+        ~ bagDetails : JLabel
+        ~ feeDetails : JLabel
+        + DeskComponent()
+        + closeCounter()
+        + setcontents()
+    }
+  }
+  
+
+  namespace part2 {
+    class part2.ManagementGUI.FlightComponent {
+        ~ checkedIn : JLabel
+        ~ holdPercent : JLabel
+        + FlightComponent()
+        + setcontents()
+    }
+  }
+  
+
+  namespace part2 {
+    class part2.ManagementGUI.PassengerComponent {
+        + PassengerComponent()
+    }
+  }
+  
+
+  namespace part2 {
+    class part2.PassengerQueue {
+        - queue : Queue<Booking>
+        - registeredObservers : List<Observer>
+        + PassengerQueue()
+        + dequeue()
+        + enqueue()
+        + getQueue()
+        + notifyObservers()
+        + peek()
+        + registerObserver()
+        + removeObserver()
+        + run()
+        + size()
+        - logMessage()
+    }
+  }
+  
+
+  namespace part2 {
+    class part2.SimTime {
+        - pause : boolean
+        - sim_speed : long
+        + SimTime()
+        + get()
+        + getPause()
+        + pauseSim()
+        + resumeSim()
+        + set()
+    }
+  }
+  
+
+  namespace part2 {
+    interface part2.Subject {
+        {abstract} + notifyObservers()
+        {abstract} + registerObserver()
+        {abstract} + removeObserver()
+    }
+  }
+  
+
+  namespace part2 {
+    class part2.Timer {
+        - registeredObservers : List<Observer>
+        - setting : boolean
+        - time : int
+        + Timer()
+        + getTime()
+        + getTimeString()
+        + notifyObservers()
+        + registerObserver()
+        + removeObserver()
+        + run()
+        + setTime()
+    }
+  }
+  
+
+  part2.CheckinCounter .up.|> part2.Subject
+  part2.CheckinCounter o-- part1.AllFlights : flights
+  part2.CheckinCounter o-- part1.Booking : passenger
+  part2.CheckinCounter o-- part1.Flight : passengerFlight
+  part2.CheckinCounter o-- part2.PassengerQueue : queue
+  part2.CheckinCounter o-- part2.Timer : timer
+  part2.ManagementGUI .up.|> java.util.Observer
+  part2.ManagementGUI .up.|> javax.swing.event.ChangeListener
+  part2.ManagementGUI o-- part2.SimTime : t
+  part2.ManagementGUI +-down- part2.ManagementGUI.DeskComponent
+  part2.ManagementGUI +-down- part2.ManagementGUI.FlightComponent
+  part2.ManagementGUI +-down- part2.ManagementGUI.PassengerComponent
+  part2.ManagementGUI.DeskComponent -up-|> javax.swing.JPanel
+  part2.ManagementGUI.DeskComponent o-- part2.CheckinCounter : counter
+  part2.ManagementGUI.FlightComponent -up-|> javax.swing.JPanel
+  part2.ManagementGUI.PassengerComponent -up-|> javax.swing.JPanel
+  part2.PassengerQueue .up.|> part2.Subject
+  part2.PassengerQueue o-- part2.Timer : timer
+  part2.Timer .up.|> part2.Subject
+  part2.Timer o-- part2.SimTime : simTime
+
+skinparam LegendBorderThickness 0
+skinparam legendBackgroundColor #FFFFFF
+legend right
+Legend:
+
+|= field |= method |=  |
+|  <img:http://s.plantuml.com/private-field.png>     |   <img:http://s.plantuml.com/private-method.png>     | private |
+|  <img:http://s.plantuml.com/protected-field.png>   |   <img:http://s.plantuml.com/protected-method.png>   | protected |
+|  <img:http://s.plantuml.com/package-private-field.png>     |   <img:http://s.plantuml.com/package-private-method.png>    | package private |
+|  <img:http://s.plantuml.com/public-field.png>     |   <img:http://s.plantuml.com/public-method.png>     | public |
+
+endlegend
+
+@enduml
