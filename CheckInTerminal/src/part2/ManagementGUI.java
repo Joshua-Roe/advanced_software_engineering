@@ -210,8 +210,10 @@ public class ManagementGUI implements Observer, ChangeListener {
     allFlightComponents.forEach((key,value) -> flightsContentPanel.add(value));
 
     JPanel mainPanel = new JPanel(); // the panel is not visible in output
-    mainPanel.setLayout(new GridBagLayout());
-    GridBagConstraints c = new GridBagConstraints();
+    mainPanel.setLayout(new GridBagLayout()); // GridBagLayout used over GridLayout for better control of its component sizes
+    //GridBagConstraints object and the parameters for ensuring the right size ratio for the three main GUI components,
+    //queuePanel, desksPanel and flightsPanel
+    GridBagConstraints c = new GridBagConstraints(); 
     c.fill = GridBagConstraints.BOTH;
     c.weightx = 1.0;
     c.weighty = 1.0;
