@@ -136,7 +136,6 @@ public class ManagementGUI implements Observer, ChangeListener {
     JFrame checkFrame = new JFrame("Management");
     checkFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     checkFrame.setSize(1400, 340);
-    checkFrame.setLocationRelativeTo(null);
 
     // Column for Queue Patrons
     queueContentPanel = new JPanel(); // content panel to be scrolled
@@ -253,6 +252,7 @@ public class ManagementGUI implements Observer, ChangeListener {
     checkFrame.getContentPane().add(BorderLayout.SOUTH, simControlPanel);
     // checkFrame.setMinimumSize(new Dimension(100,400));
     checkFrame.setVisible(true);
+    checkFrame.setLocationRelativeTo(null);
     
   }
 

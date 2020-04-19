@@ -49,9 +49,14 @@ public class CSVReader {
 			while ((st = flightBR.readLine()) != null) {
 				String[] temp = st.split(",", 0);
 				for(int i = 5; i<=10;i++){
-					if(Integer.parseInt(temp[i])<0){
-						throw new NegativeValuesInCSVException("Value in column "+(i+1)+" of flightDetails.csv has a nagative value. Please do not tamper with CSV files.");
+					try {
+						if(Integer.parseInt(temp[i])<0){
+							throw new NegativeValuesInCSVException("Value in column "+(i+1)+" of flightDetails.csv has a nagative value. Please do not tamper with CSV files.");
+						}
+					} catch (NumberFormatException e) {
+						throw new NumberFormatInCSVException("Value in column "+(i+1)+" of flightDetails.csv is not a number. Please do not tamper with CSV files.");
 					}
+					
 				}
 				String[] tempTime = temp[11].split(":");
 				int h = Integer.parseInt(tempTime[0]);
@@ -71,13 +76,23 @@ public class CSVReader {
 		catch(NegativeValuesInCSVException e) {
 			generatePopUp(e);
 		}
+		catch(NumberFormatInCSVException e) {
+			generatePopUp(e);
+		}
 		catch(IOException e) {
 			System.out.println("IO exception experienced.");
 		}
+
 	} 
 
 	public class NegativeValuesInCSVException extends RuntimeException {
         public NegativeValuesInCSVException(String errorMessage) {
+            super(errorMessage);
+        }
+	}
+	
+	public class NumberFormatInCSVException extends RuntimeException {
+        public NumberFormatInCSVException(String errorMessage) {
             super(errorMessage);
         }
     }
@@ -95,7 +110,10 @@ public class CSVReader {
 		if(e instanceof FileNotFoundException){
 			popupMessage = "Data folder not found, ensure it is in its original directory.";
 		}
-		if(e instanceof NegativeValuesInCSVException){
+		else if(e instanceof NegativeValuesInCSVException){
+			popupMessage = e.getMessage();
+		}
+		else if(e instanceof NumberFormatInCSVException){
 			popupMessage = e.getMessage();
 		}
 		JOptionPane.showMessageDialog(f, popupMessage, 
