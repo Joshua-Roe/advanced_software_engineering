@@ -26,8 +26,9 @@ public class Main {
         CheckinCounter c6 = new CheckinCounter(6,flights,timer);
         counters.add(c6);
         PassengerQueue pq = new PassengerQueue(timer);
-        ManagementGUI gui = new ManagementGUI(timer,t,counters,flights.getAllFlights());
+        ManagementGUI gui = new ManagementGUI(t,counters,flights.getAllFlights());
         
+        timer.registerObserver(gui);
         pq.registerObserver(gui);
         flights.getAllFlights().forEach((key,value) -> value.registerObserver(gui));
         bookings.getAllBookings().forEach((key,value) -> pq.getQueue().add(value));
@@ -42,7 +43,6 @@ public class Main {
             e.printStackTrace();
         }
         timer.start();
-        gui.start();
         pq.start();
         c1.start();
         c2.start();
