@@ -26,7 +26,6 @@ public class CSVReader {
 			String st; 
 			while ((st = bookingBR.readLine()) != null) {
 				String[] temp = st.split(",", 0);
-
 				Random rand1 = new Random();
 				Random rand2 = new Random();
 				Random rand3 = new Random();
@@ -50,6 +49,11 @@ public class CSVReader {
 			
 			while ((st = flightBR.readLine()) != null) {
 				String[] temp = st.split(",", 0);
+				for(int i = 5; i<=10;i++){
+					if(Integer.parseInt(temp[i])<0){
+						throw new NegativeValuesInCSVException("Value in column "+(i+1)+" of flightDetails.csv has a nagative value. Please do not tamper with CSV files.");
+					}
+				}
 				String[] tempTime = temp[11].split(":");
 				int h = Integer.parseInt(tempTime[0]);
         		int m = Integer.parseInt(tempTime[1]);
@@ -63,13 +67,21 @@ public class CSVReader {
 			flightBR.close();
 		}
 		catch(FileNotFoundException e) {
-			generatePopUp();
+			generatePopUp(e);
+		}
+		catch(NegativeValuesInCSVException e) {
+			generatePopUp(e);
 		}
 		catch(IOException e) {
 			System.out.println("IO exception experienced.");
 		}
 	} 
-	
+
+	public class NegativeValuesInCSVException extends RuntimeException {
+        public NegativeValuesInCSVException(String errorMessage) {
+            super(errorMessage);
+        }
+    }
 	public AllBookings getBookings() {
 		return bookings;
 	}
@@ -78,9 +90,16 @@ public class CSVReader {
 		return flights;
 	}
 
-	public void generatePopUp(){
+	public void generatePopUp(Exception e){
 		JFrame f = new JFrame();
-		JOptionPane.showMessageDialog(f, "Data folder not found, ensure it is in its original directory.", 
+		String popupMessage = "Unknown exception when reading CSV";
+		if(e instanceof FileNotFoundException){
+			popupMessage = "Data folder not found, ensure it is in its original directory.";
+		}
+		if(e instanceof NegativeValuesInCSVException){
+			popupMessage = e.getMessage();
+		}
+		JOptionPane.showMessageDialog(f, popupMessage, 
 				"Alert", JOptionPane.WARNING_MESSAGE);
 		System.exit(404);
 	}
