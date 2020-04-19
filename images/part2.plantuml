@@ -29,7 +29,10 @@ title __PART2's Class Diagram__\n
 
   namespace part2 {
     enum Log  <<singleton>> {
-      logfile
+       - logfile: StringBuilder
+       - Log()
+       + log()
+       + saveFile()
     }
   }
   

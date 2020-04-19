@@ -157,6 +157,8 @@ title __PART1's Class Diagram__\n
   part1.Flight +-down- part1.Flight.OverBaggageLimitException
   part1.GUI o-- part1.AllBookings : bookings
   part1.GUI o-- part1.AllFlights : flights
+  part1.AllBookings "1 " o-- "1..* " part1.Booking
+  part1.AllFlights "1 " o-- "1..* " part1.Flight
 
 skinparam LegendBorderThickness 0
 skinparam legendBackgroundColor #FFFFFF

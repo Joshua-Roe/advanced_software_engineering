@@ -116,6 +116,8 @@ title __CheckInTerminal's Class Diagram__\n
   part2.PassengerQueue o-- part2.Timer : timer
   part2.Timer .up.|> part2.Subject
   part2.Timer o-- part2.SimTime : simTime
+  part1.AllBookings "1 " o-- "1..* " part1.Booking
+  part1.AllFlights "1 " o-- "1..* " part1.Flight
 
 
 @enduml
