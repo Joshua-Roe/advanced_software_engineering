@@ -18,7 +18,7 @@ import java.util.Queue;
 
 
 @SuppressWarnings("serial")
-public class ManagementGUI extends Thread implements Observer, ChangeListener {
+public class ManagementGUI implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
 
     public PassengerComponent(Booking currentBooking) {
@@ -125,15 +125,13 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
   private JPanel desksContentPanel;
   private JPanel flightsContentPanel;
   private JLabel clock;
-  private Timer timer;
   private SimTime t;
   private DeskComponent[] allDeskComponents;
   private HashMap<String,FlightComponent> allFlightComponents;
   
 
-  public ManagementGUI(Timer timer, SimTime t, List<CheckinCounter> allCounters, HashMap<String,Flight> allFlights) {
+  public ManagementGUI(SimTime t, List<CheckinCounter> allCounters, HashMap<String,Flight> allFlights) {
     ToolTipManager.sharedInstance().setInitialDelay(0);//tooltips show immediately
-    this.timer = timer;
     this.t = t;
     // create frame
     JFrame checkFrame = new JFrame("Management");
@@ -272,6 +270,7 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     if(arg instanceof PassengerQueue) updateQueue(arg);
     else if(arg instanceof CheckinCounter) updateCounter(arg);
     else if(arg instanceof Flight) updateFlight(arg);
+    else if(arg instanceof Timer) updateClock(arg);
   }
 
   /** Listen to the slider. */
@@ -312,21 +311,9 @@ public class ManagementGUI extends Thread implements Observer, ChangeListener {
     allFlightComponents.get(flight.getFlightCode()).setcontents(flight);
   }
 
-  public void updateClock(){
-    this.clock.setText(this.timer.getTimeString());
-  }
-
-  public void run() {
-    synchronized(timer){
-        while (true) {
-          try {
-            timer.wait();
-            updateClock();
-          } catch (InterruptedException e) {
-              e.printStackTrace();
-          }
-        }
-    }
+  public void updateClock(Object arg){
+    Timer timer = (Timer) arg;
+    this.clock.setText(timer.getTimeString());
   }
 }
 	
