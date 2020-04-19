@@ -34,7 +34,10 @@ class Timer extends Thread implements Subject {
      * Run method for the thread
      * Increments time by 1 and notifies its observers.
      * Thread will sleep for a duration determined by the simulation peed stored in the class <tt>SimTime</tt>.
+     * It checks if {@code simTime} has its {@code pause} boolean set to true, if it is it remains in a infinite loop until that boolean changes.
+     * 
      * @see java.lang.Thread#run()
+     * @see part2.SimTime#getPause()
      */
     public void run() {
         while (true) {
