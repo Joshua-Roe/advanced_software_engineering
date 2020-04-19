@@ -84,7 +84,6 @@ public class CheckinCounter extends Thread implements Subject {
 
     public synchronized void serveCustomer(){
         if(queue.size()>0 && this.open){
-            //TODO: clear passenger details once queue has ended so GUI isnt stuck with last served passenger
             if(!this.queue.peek().getMissedFlight()){
                 this.passenger = queue.dequeue();
                 setPassengerFlight();

@@ -17,8 +17,8 @@ public class PassengerQueue extends Thread implements Subject {
     private List<Booking> bookingList = new ArrayList<Booking>();
     private Timer timer;
     private Random generator = new Random();
+    
     public PassengerQueue(Timer timer, AllBookings bookings) {
-        // TODO: possibly change to passengers are added to queue at given sim time, in
         this.timer = timer;
         this.bookingList.addAll(bookings.getAllBookings().values());
     }

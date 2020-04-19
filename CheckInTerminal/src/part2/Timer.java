@@ -4,19 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
 
-// public class Timer {
-//     private long time;
-//     private SimTime t;
-//     public Timer(SimTime t){
-//         this.t = t;
-//     }
-//     public synchronized void incr(){time += t.get();}
-//     public long getTime(){
-//         return time;
-//     }
-//     //TODO pass Timer as an argument in the constructor to each object that uses time 
-// }
-
+@SuppressWarnings("deprecation")
 class Timer extends Thread implements Subject {
     private int time = 0;
     private boolean setting = false;
@@ -93,6 +81,7 @@ class Timer extends Thread implements Subject {
 
     @Override
     public void notifyObservers() {
-        for(Observer obs : registeredObservers) obs.update(null, this);
+        for (Observer obs : registeredObservers)
+            obs.update(null, this);
     }
 }

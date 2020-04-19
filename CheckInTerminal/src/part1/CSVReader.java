@@ -1,6 +1,5 @@
 package part1;
 
-import java.awt.Dimension;
 import java.io.*;
 import java.util.Random;
 
