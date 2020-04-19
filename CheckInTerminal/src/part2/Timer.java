@@ -1,13 +1,15 @@
-package part2;
 
+package part2;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
+
 /**
- * Class to handle the threading of a timer
+ * Timer threaded object.
  * It is also responsible for notifying other threads at a set interval to perform their tasks.
  * The class implements the {@code Subject} interface.
  *
+ * @see part2.Subject
  * @author Sean Katagiri
  * @version %I%, %G%
  */
@@ -17,7 +19,13 @@ class Timer extends Thread implements Subject {
     private boolean setting = false;
     private SimTime simTime;
     private List<Observer> registeredObservers = new LinkedList<Observer>();
-
+    
+    /**
+    * Constructor.
+    * 
+    * @param simTime (required) {@code SimTime} object holding simulation speed.
+    * @see part2.SimTime 
+    */
     public Timer(SimTime simTime) {
         this.simTime = simTime;
     }
