@@ -6,7 +6,7 @@ title __PART1's Class Diagram__\n
     class part1.AllBookings {
         - bookings : HashMap<String, Booking>
         - numOfBookings : int
-        + AllBookings() <<constructor>>
+        + AllBookings() <color purple><size:10><<constructor>></size></color>
         + addBooking()
         + getAllBookings()
         + getBooking()
@@ -19,7 +19,7 @@ title __PART1's Class Diagram__\n
     class part1.AllFlights {
         - flights : HashMap<String, Flight>
         - numOfFlights : int
-        + AllFlights() <<constructor>>
+        + AllFlights() <color purple><size:10><<constructor>></size></color>
         + addFlight()
         + getAllFlights()
         + getFlight()
@@ -41,7 +41,7 @@ title __PART1's Class Diagram__\n
         - flightCode : String
         - lastName : String
         - missedFlight : boolean
-        + Booking() <<constructor>>
+        + Booking() <color purple><size:10><<constructor>></size></color>
         + getBaggageHeight()
         + getBaggageLength()
         + getBaggageWeight()
@@ -64,7 +64,7 @@ title __PART1's Class Diagram__\n
 
   namespace part1 {
     class part1.CSVReader {
-        + CSVReader() <<constructor>>
+        + CSVReader() <color purple><size:10><<constructor>></size></color>
         + generatePopUp()
         + getBookings()
         + getFlights()
@@ -93,7 +93,7 @@ title __PART1's Class Diagram__\n
         - totalBaggageVolume : float
         - totalBaggageWeight : float
         - totalExcessFees : float
-        + Flight() <<constructor>>
+        + Flight() <color purple><size:10><<constructor>></size></color>
         + addPassenger()
         + checkBaggage()
         + checkBaggageByVolume()
@@ -127,7 +127,7 @@ title __PART1's Class Diagram__\n
 
   namespace part1 {
     class part1.Flight.OverBaggageLimitException {
-        + OverBaggageLimitException() <<constructor>>
+        + OverBaggageLimitException() <color purple><size:10><<constructor>></size></color>
     }
   }
   
@@ -145,7 +145,7 @@ title __PART1's Class Diagram__\n
         {static} ~ frame : JFrame
         - v : float
         - w : float
-        + GUI() <<constructor>>
+        + GUI() <color purple><size:10><<constructor>></size></color>
         + confirm()
     }
   }

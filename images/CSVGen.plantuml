@@ -20,6 +20,11 @@ Legend:
 |  <img:http://s.plantuml.com/package-private-field.png>     |   <img:http://s.plantuml.com/package-private-method.png>    | package private |
 |  <img:http://s.plantuml.com/public-field.png>     |   <img:http://s.plantuml.com/public-method.png>     | public |
 
+Class relations:
+<img:http://s.plantuml.com/extends01.png> extension
+<img:http://s.plantuml.com/sym03.png> composition
+<img:http://s.plantuml.com/sym01.png>  aggregation
+
 endlegend
 
 @enduml

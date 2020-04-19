@@ -9,7 +9,7 @@ title __PART2's Class Diagram__\n
         - currentTimeString : String
         - open : boolean
         - registeredObservers : List<Observer>
-        + CheckinCounter()
+        + CheckinCounter() <color purple><size:10><<constructor>></size> </color>
         + closeCounter()
         + getBooking()
         + getCounterNumber()
@@ -28,8 +28,7 @@ title __PART2's Class Diagram__\n
   
 
   namespace part2 {
-    enum Log {
-      INSTANCE
+    enum Log  <<singleton>> {
       logfile
     }
   }
@@ -51,7 +50,7 @@ title __PART2's Class Diagram__\n
         - desksContentPanel : JPanel
         - flightsContentPanel : JPanel
         - queueContentPanel : JPanel
-        + ManagementGUI()
+        + ManagementGUI() <color purple><size:10><<constructor>></size> </color>
         + stateChanged()
         + update()
         + updateClock()
@@ -67,7 +66,7 @@ title __PART2's Class Diagram__\n
     class part2.ManagementGUI.DeskComponent {
         ~ bagDetails : JLabel
         ~ feeDetails : JLabel
-        + DeskComponent()
+        + DeskComponent() <color purple><size:10><<constructor>></size> </color>
         + closeCounter()
         + setcontents()
     }
@@ -78,7 +77,7 @@ title __PART2's Class Diagram__\n
     class part2.ManagementGUI.FlightComponent {
         ~ checkedIn : JLabel
         ~ holdPercent : JLabel
-        + FlightComponent()
+        + FlightComponent() <color purple><size:10><<constructor>></size> </color>
         + setcontents()
     }
   }
@@ -86,7 +85,7 @@ title __PART2's Class Diagram__\n
 
   namespace part2 {
     class part2.ManagementGUI.PassengerComponent {
-        + PassengerComponent()
+        + PassengerComponent() <color purple><size:10><<constructor>></size> </color>
     }
   }
   
@@ -95,7 +94,7 @@ title __PART2's Class Diagram__\n
     class part2.PassengerQueue {
         - queue : Queue<Booking>
         - registeredObservers : List<Observer>
-        + PassengerQueue()
+        + PassengerQueue() <color purple><size:10><<constructor>></size> </color>
         + dequeue()
         + enqueue()
         + getQueue()
@@ -114,7 +113,7 @@ title __PART2's Class Diagram__\n
     class part2.SimTime {
         - pause : boolean
         - sim_speed : long
-        + SimTime()
+        + SimTime() <color purple><size:10><<constructor>></size> </color>
         + get()
         + getPause()
         + pauseSim()
@@ -138,7 +137,7 @@ title __PART2's Class Diagram__\n
         - registeredObservers : List<Observer>
         - setting : boolean
         - time : int
-        + Timer()
+        + Timer() <color purple><size:10><<constructor>></size> </color>
         + getTime()
         + getTimeString()
         + notifyObservers()
