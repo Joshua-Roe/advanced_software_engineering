@@ -225,27 +225,27 @@ public class ManagementGUI implements Observer, ChangeListener {
     // Column for Play/Pause
     JPanel playControlPanel = new JPanel(); // panel for buttons
     playControlPanel.setLayout(new GridLayout(0, 2)); // set layout
-    JButton playButton = new JButton("Play");
+    JButton playButton = new JButton("Play"); //play button
     playButton.setActionCommand("play");
-    playButton.setEnabled(false);
+    playButton.setEnabled(false);//disabled because simulation starts playing
     playControlPanel.add(playButton);
-    JButton pauseButton = new JButton("Pause");
+    JButton pauseButton = new JButton("Pause");//pause button
     pauseButton.setActionCommand("pause");
     playControlPanel.add(pauseButton);
-    playButton.addActionListener(new ActionListener() {
+    playButton.addActionListener(new ActionListener() {//action listener for play
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void actionPerformed(ActionEvent e) {//swap buttons
         playButton.setEnabled(false);
         pauseButton.setEnabled(true);
-        t.resumeSim();
+        t.resumeSim();//play simulation
       }
     });
-    pauseButton.addActionListener(new ActionListener() {
+    pauseButton.addActionListener(new ActionListener() {//action listener for pause
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void actionPerformed(ActionEvent e) {//swap buttons
         playButton.setEnabled(true);
         pauseButton.setEnabled(false);
-        t.pauseSim();
+        t.pauseSim();//pause simulation
       }
     });
 
@@ -255,28 +255,28 @@ public class ManagementGUI implements Observer, ChangeListener {
     speedControlPanel.setLayout(new GridLayout(2, 0)); // set layout
     JLabel speedSliderLabel = new JLabel("Simulation Speed", SwingConstants.CENTER);
     speedControlPanel.add(speedSliderLabel);
-    JSlider speedSlider = new JSlider(0, 3, 0);
+    JSlider speedSlider = new JSlider(0, 3, 0);//slider for sim speed
     speedSlider.setMajorTickSpacing(1);
-    speedSlider.setSnapToTicks(true);
+    speedSlider.setSnapToTicks(true);//have slider click into place
     speedSlider.setPaintTicks(true);
-    Hashtable<Integer, JLabel> sliderLabels = new Hashtable<>();
+    Hashtable<Integer, JLabel> sliderLabels = new Hashtable<>();//hastable for staring custom slider labels
     sliderLabels.put(0, new JLabel("1x"));
     sliderLabels.put(1, new JLabel("2x"));
     sliderLabels.put(2, new JLabel("4x"));
     sliderLabels.put(3, new JLabel("8x"));
     speedSlider.setLabelTable(sliderLabels);
     speedSlider.setPaintLabels(true);
-    speedSlider.addChangeListener(this);
-    speedControlPanel.add(speedSlider);
+    speedSlider.addChangeListener(this);//add changelistener for slider
+    speedControlPanel.add(speedSlider);//add to controll panel
 
     // Column for Sim Clock
     JPanel clockControlPanel = new JPanel(); // panel for clock
     this.clock = new JLabel("[00:00]");
-    this.clock.setFont(clock.getFont().deriveFont(32.0f));
+    this.clock.setFont(clock.getFont().deriveFont(32.0f));//set clock font
     clockControlPanel.add(clock);
 
     JPanel simControlPanel = new JPanel(); // panel for holding simulation controls
-    simControlPanel.setLayout(new GridLayout(0, 3));
+    simControlPanel.setLayout(new GridLayout(0, 3));//set layout and add controls
     simControlPanel.add(playControlPanel);
     simControlPanel.add(speedControlPanel);
     simControlPanel.add(clockControlPanel);
@@ -293,12 +293,14 @@ public class ManagementGUI implements Observer, ChangeListener {
    * Create a titled border
    *
    * @param borderText      the text to display on the border
+   * 
+   * @return returns titled border.
    */
   TitledBorder createBorder(String borderText) {
     TitledBorder border;
-    border = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), borderText);
-    border.setTitleJustification(TitledBorder.CENTER);
-    border.setTitlePosition(TitledBorder.DEFAULT_POSITION);
+    border = BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), borderText);//create the titled border
+    border.setTitleJustification(TitledBorder.CENTER);//centre title within label
+    border.setTitlePosition(TitledBorder.DEFAULT_POSITION);//default position
     return border;
   }
   /**
@@ -308,7 +310,7 @@ public class ManagementGUI implements Observer, ChangeListener {
    * @param arg      the object to update
    */
   @Override
-  public void update(Observable o, Object arg) {
+  public void update(Observable o, Object arg) {//run specific method depending on object type, if unrecognised then do nothing
     if(arg instanceof PassengerQueue) updateQueue(arg);
     else if(arg instanceof CheckinCounter) updateCounter(arg);
     else if(arg instanceof Flight) updateFlight(arg);
@@ -322,10 +324,10 @@ public class ManagementGUI implements Observer, ChangeListener {
    */
   public void stateChanged(ChangeEvent e) {
     JSlider source = (JSlider)e.getSource();
-    if (!source.getValueIsAdjusting()) {
+    if (!source.getValueIsAdjusting()) {//wait for slider to stop moving
         int sliderPos = (int)source.getValue();
         int simSpeed = -1;
-        if (sliderPos == 0) simSpeed = 1;
+        if (sliderPos == 0) simSpeed = 1;//set simspeed depending on slider position
         else if (sliderPos == 1) simSpeed = 2;
         else if (sliderPos == 2) simSpeed = 4;
         else if (sliderPos == 3) simSpeed = 8;
@@ -338,11 +340,11 @@ public class ManagementGUI implements Observer, ChangeListener {
    * @param arg      PassengerQueue object
    */
   private void updateQueue(Object arg) {
-    PassengerQueue passengerQueue = (PassengerQueue)arg;
+    PassengerQueue passengerQueue = (PassengerQueue)arg;//cast to PassengerQueue object
     Queue<Booking> bookingQueue = passengerQueue.getQueue();
-    queueContentPanel.removeAll();
+    queueContentPanel.removeAll();//flush the panel
     for (Booking item: bookingQueue) {
-      queueContentPanel.add(new PassengerComponent(item));
+      queueContentPanel.add(new PassengerComponent(item));//add each passenger to panel
     }
     queueContentPanel.setVisible(false);// this forces update of the JPanel and its contents
     queueContentPanel.setVisible(true);
@@ -353,11 +355,11 @@ public class ManagementGUI implements Observer, ChangeListener {
    * @param arg      Counter object
    */
   private void updateCounter(Object arg) {
-    CheckinCounter checkinCounter = (CheckinCounter)arg;
+    CheckinCounter checkinCounter = (CheckinCounter)arg;//cast to CheckinCounter object
     if (checkinCounter.getIsOpen()){
-      allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking());
+      allDeskComponents[checkinCounter.getCounterNumber()-1].setcontents(checkinCounter.getBooking());//set countents of component
     }
-    else {allDeskComponents[checkinCounter.getCounterNumber()-1].closeCounter();}
+    else {allDeskComponents[checkinCounter.getCounterNumber()-1].closeCounter();}//close counter
   }
   /**
    * update Flight component
@@ -365,8 +367,8 @@ public class ManagementGUI implements Observer, ChangeListener {
    * @param arg      Flight object
    */
   private void updateFlight(Object arg) {
-    Flight flight = (Flight)arg;
-    allFlightComponents.get(flight.getFlightCode()).setcontents(flight);
+    Flight flight = (Flight)arg;//cast to Flight object
+    allFlightComponents.get(flight.getFlightCode()).setcontents(flight);//set contents of flight component
   }
   /**
    * update the clock
@@ -374,8 +376,8 @@ public class ManagementGUI implements Observer, ChangeListener {
    * @param arg      Timer object
    */
   public void updateClock(Object arg){
-    Timer timer = (Timer) arg;
-    this.clock.setText(timer.getTimeString());
+    Timer timer = (Timer) arg;//cast to Timer object
+    this.clock.setText(timer.getTimeString());//set clock text
   }
 }
 	
