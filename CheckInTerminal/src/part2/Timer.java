@@ -3,7 +3,14 @@ package part2;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
-
+/**
+ * Class to handle the threading of a timer
+ * It is also responsible for notifying other threads at a set interval to perform their tasks.
+ * The class implements the {@code Subject} interface.
+ *
+ * @author Sean Katagiri
+ * @version %I%, %G%
+ */
 @SuppressWarnings("deprecation")
 class Timer extends Thread implements Subject {
     private int time = 0;
@@ -15,6 +22,12 @@ class Timer extends Thread implements Subject {
         this.simTime = simTime;
     }
 
+    /** 
+     * Run method for the thread
+     * Increments time by 1 and notifies its observers.
+     * Thread will sleep for a duration determined by the simulation peed stored in the class <tt>SimTime</tt>.
+     * @see java.lang.Thread#run()
+     */
     public void run() {
         while (true) {
             setTime(time + 1);
@@ -28,10 +41,14 @@ class Timer extends Thread implements Subject {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            // Switching the order of these 2 ^^^ statements and initializing time to 0 will
-            // give an output that is more accurate to the time.
         }
     }
+
+    /** 
+     * Getter method for current time as an int.
+     * It checks the boolean {@code setting}, and waits until setting of time is complete before returning. 
+     * @return the current time
+     */
 
     public synchronized int getTime() {
         while (setting) {
@@ -45,6 +62,12 @@ class Timer extends Thread implements Subject {
         return this.time;
     }
 
+    /**
+     * Getter method for current time as a String.
+     * It checks the boolean {@code setting}, and waits until setting of time is complete before creating a String
+     * for the current time based on the integer {@code time} and returns the new String.
+     * @return the current time as a String 
+     */
     public synchronized String getTimeString() {
         while (setting) {
             try {
@@ -62,6 +85,13 @@ class Timer extends Thread implements Subject {
         return timeString;
     }
 
+    /**
+     * Setter method for {@code time}.
+     * Sets the {@code setting} as true while setting takes place, before setting it back to false after completion.
+     * Also notifies all threads waiting on {@code Timer}.
+     * @param t the new time to set {@code time} as.
+     * @see java.lang.Object#notifyAll()
+     */
     public synchronized void setTime(int t) {
         setting = true;
         this.time = t;
@@ -69,16 +99,32 @@ class Timer extends Thread implements Subject {
         notifyAll();
     }
 
+    /**
+     * A method for registering observers.
+     * Adds an {@code Observer} object to its list of {@code registeredObservers}.
+     * @see java.util#Observer 
+     */
     @Override
     public void registerObserver(Observer obs) {
         registeredObservers.add(obs);
     }
 
+    /**
+     * A method for removing observers.
+     * Removes an {@code Observer} object from its list of {@code registeredObservers}.
+     * @see java.util.Observer 
+     */
     @Override
     public void removeObserver(Observer obs) {
         registeredObservers.remove(obs);
     }
 
+    /**
+     * A method for notifying registered observers.
+     * Notifies all {@code Observer} object in its {@code registeredObservers} list.
+     * @see java.util.Observer 
+     * @see java.util.Observer#update(java.util.Observable, Object)
+     */
     @Override
     public void notifyObservers() {
         for (Observer obs : registeredObservers)
