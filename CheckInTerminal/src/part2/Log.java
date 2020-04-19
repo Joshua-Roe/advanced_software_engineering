@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-//Enum-based singleton
-
+/**
+ * Enum-based singleton Log class
+ * Provides methods for storing log messages and outputting stored messages to a log file
+ * @author Randy Adjepong
+ * @version %I%, %G%
+ */
 public enum Log {
 
     INSTANCE;
