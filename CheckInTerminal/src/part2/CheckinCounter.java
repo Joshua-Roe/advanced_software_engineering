@@ -40,7 +40,7 @@ public class CheckinCounter extends Thread implements Subject {
 
     public void run() {
         synchronized(timer){
-            while (queue.size()>0) {
+            while (true) {
                 try {
                     timer.wait();
                 } catch (InterruptedException e) {
@@ -106,6 +106,7 @@ public class CheckinCounter extends Thread implements Subject {
                 notifyObservers();
             }
             else{
+                queue.moveToBackOfQueue();
                 this.passenger = null;
                 this.passengerFlight = null;
                 notifyObservers();
