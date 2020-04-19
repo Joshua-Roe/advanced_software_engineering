@@ -17,7 +17,8 @@ public class PassengerQueue extends Thread implements Subject {
     private List<Booking> bookingList = new ArrayList<Booking>();
     private Timer timer;
     private Random generator = new Random();
-    
+    private Boolean finishedEnqueue = false;
+
     public PassengerQueue(Timer timer, AllBookings bookings) {
         this.timer = timer;
         this.bookingList.addAll(bookings.getAllBookings().values());
@@ -29,13 +30,19 @@ public class PassengerQueue extends Thread implements Subject {
     }
 
     public synchronized void enqueueRandom(){
-        if(bookingList.size()>0){
-            Booking booking = bookingList.remove(generator.nextInt(bookingList.size()));
-            queue.add(booking);
-            logMessage(booking.getFullName()+" joined the queue.");
-            notifyObservers();
+        if(!finishedEnqueue){
+            if(bookingList.size()>0){
+                Booking booking = bookingList.remove(generator.nextInt(bookingList.size()));
+                queue.add(booking);
+                logMessage(booking.getFullName()+" joined the queue.");
+                notifyObservers();
+            }
+            else{
+                finishedEnqueue = true;
+                logMessage("All passengers have joined the queue");
+            }
         }
-        logMessage("All passengers have joined the queue");
+        
     }
 
     public synchronized void enqueue(Booking booking) {
