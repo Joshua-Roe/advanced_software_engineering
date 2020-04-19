@@ -13,19 +13,19 @@ public class Main {
         AllFlights flights = csvReader.getFlights();
         SimTime t = new SimTime();
         Timer timer = new Timer(t);
-        CheckinCounter c1 = new CheckinCounter(1,flights,timer);
-        counters.add(c1); 
-        CheckinCounter c2 = new CheckinCounter(2,flights,timer);
-        counters.add(c2);
-        CheckinCounter c3 = new CheckinCounter(3,flights,timer);
-        counters.add(c3);
-        CheckinCounter c4 = new CheckinCounter(4,flights,timer);
-        counters.add(c4);
-        CheckinCounter c5 = new CheckinCounter(5,flights,timer);
-        counters.add(c5);
-        CheckinCounter c6 = new CheckinCounter(6,flights,timer);
-        counters.add(c6);
         PassengerQueue pq = new PassengerQueue(timer, bookings);
+        CheckinCounter c1 = new CheckinCounter(1,flights,timer,pq);
+        counters.add(c1); 
+        CheckinCounter c2 = new CheckinCounter(2,flights,timer,pq);
+        counters.add(c2);
+        CheckinCounter c3 = new CheckinCounter(3,flights,timer,pq);
+        counters.add(c3);
+        CheckinCounter c4 = new CheckinCounter(4,flights,timer,pq);
+        counters.add(c4);
+        CheckinCounter c5 = new CheckinCounter(5,flights,timer,pq);
+        counters.add(c5);
+        CheckinCounter c6 = new CheckinCounter(6,flights,timer,pq);
+        counters.add(c6);
         ManagementGUI gui = new ManagementGUI(t,counters,flights.getAllFlights());
         
         pq.start();
@@ -36,7 +36,6 @@ public class Main {
 
         for(CheckinCounter c : counters){
             c.registerObserver(gui);
-            c.setQueue(pq);
         }
         try {
             Thread.sleep(1000);

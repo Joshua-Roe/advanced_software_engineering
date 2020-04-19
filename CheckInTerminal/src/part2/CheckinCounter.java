@@ -52,7 +52,7 @@ public class CheckinCounter extends Thread implements Subject {
      * Logs that the counter has opened/closed, along with its counter number.
      * @see part2.CheckinCounter#logMessage(String)
      */
-    public synchronized void openCloseCounter(){
+    public synchronized void toggleCounter(){
         this.open = !this.open;
         if(this.open){
             logMessage("Checkin counter "+this.counterNumber+" opened.");

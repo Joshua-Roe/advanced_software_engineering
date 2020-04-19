@@ -68,7 +68,7 @@ public class ManagementGUI implements Observer, ChangeListener {
       counterButton.addActionListener(new ActionListener() {
         @Override
         public synchronized void actionPerformed(ActionEvent e) {
-          counter.closeCounter();
+          counter.toggleCounter();
           if(counter.getIsOpen()){
             counterButton.setText("Close Counter");
           }
