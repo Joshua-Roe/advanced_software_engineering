@@ -33,7 +33,7 @@ public class PassengerQueue extends Thread implements Subject {
     /** 
     * Constructor.
     * 
-    * @param timer (required) {@code Timer} object.
+    * @param timer (required) {@code Timer} object in charge of managing simulation timer.
     * @param bookings (required) {@link AllBookings} object containing all {@link Booking}.
     * @see part2.Timer
     * @see part1.AllBookings
@@ -154,7 +154,7 @@ public class PassengerQueue extends Thread implements Subject {
 
     /** 
      * Run method for the thread
-     * synchronised with {@link part2.Timer} object, waits to be notified before performing task each loop.
+     * synchronised with {@link part2.Timer} object {@code timer}, waits to be notified before performing task each loop.
      * Initially adds 6 passengers to the queue, and adds an additional 6 every timer tick.
      * 
      * @see java.lang.Thread#run()
