@@ -7,7 +7,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 import java.util.Random;
-import java.util.LinkedList;
 
 import part1.*;
 
@@ -25,12 +24,12 @@ import part1.*;
  */
 @SuppressWarnings("deprecation")
 public class PassengerQueue extends Observable implements Subject, Runnable {
+    private Queue<Booking> queue = new LinkedList<>();
     private List<Observer> registeredObservers = new LinkedList<Observer>();
     private List<Booking> bookingList = new ArrayList<Booking>();
     private Timer timer;
     private Random generator = new Random();
     private Boolean finishedEnqueue = false;
-    private LinkedList<Booking> list = new LinkedList<Booking>();
 
     /** 
     * Constructor.
@@ -55,10 +54,10 @@ public class PassengerQueue extends Observable implements Subject, Runnable {
      * @see java.util.Queue#add(Object)
      */
     public synchronized void moveToBackOfQueue(){
-        Booking temp = list.removeFirst();
-        notifyObservers(false);
-        list.addLast(temp);
-        notifyObservers(true);
+        Booking temp = queue.remove();
+        notifyObservers();
+        queue.add(temp);
+        notifyObservers(temp);
     }
 
     /**
@@ -71,15 +70,15 @@ public class PassengerQueue extends Observable implements Subject, Runnable {
      * @see java.util.Queue#add(Object)
      * @see java.util.List#remove(int)
      * @see part2.PassengerQueue#logMessage(String)
-     * @see part2.PassengerQueue#notifyObservers()
+     * @see part2.PassengerQueue#notifyObservers(Booking)
      */
     public synchronized void enqueueRandom(){
         if(!finishedEnqueue){
             if(bookingList.size()>0){
                 Booking booking = bookingList.remove(generator.nextInt(bookingList.size()));
-                list.addLast(booking);
+                queue.add(booking);
                 logMessage(booking.getFullName()+" joined the queue.");
-                notifyObservers(true);
+                notifyObservers(booking);
             }
             else{
                 finishedEnqueue = true;
@@ -97,12 +96,12 @@ public class PassengerQueue extends Observable implements Subject, Runnable {
      * @param booking {@link Booking} object to be enqueue'd
      * @see part1.Booking#getFullName()
      * @see part2.PassengerQueue#logMessage(String)
-     * @see part2.PassengerQueue#notifyObservers()
+     * @see part2.PassengerQueue#notifyObservers(Booking)
      */
     public synchronized void enqueue(Booking booking) {
-        list.addLast(booking);
+        queue.add(booking);
         logMessage(booking.getFullName()+" joined the queue.");
-        notifyObservers(true);
+        notifyObservers(booking);
     }
 
     /**
@@ -115,9 +114,9 @@ public class PassengerQueue extends Observable implements Subject, Runnable {
      * @see part2.PassengerQueue#notifyObservers()
      */
     public synchronized Booking dequeue() {
-        Booking queueHead = list.removeFirst();
+        Booking queueHead = queue.remove();
         logMessage(queueHead.getFullName()+" left the queue.");
-        notifyObservers(false);
+        notifyObservers();
         return queueHead;
     }
 
@@ -126,7 +125,7 @@ public class PassengerQueue extends Observable implements Subject, Runnable {
      * @see java.util.Queue#size()
      */
     public int size() {
-        return list.size();
+        return queue.size();
     }
 
     /**
@@ -134,19 +133,15 @@ public class PassengerQueue extends Observable implements Subject, Runnable {
      * @see java.util.Queue#peek()
      */
     public Booking peek(){
-        return list.peek();
-    }
-
-    public Booking peekLast(){
-        return list.peekLast();
+        return queue.peek();
     }
 
     /**
      * Returns the {@code queue} object of type {@link java.util.Queue}.
      * @return {@code queue}
      */
-    public synchronized LinkedList<Booking> getQueue() {
-        return this.list;
+    public synchronized Queue<Booking> getQueue() {
+        return this.queue;
     }
 
     /**
@@ -178,7 +173,7 @@ public class PassengerQueue extends Observable implements Subject, Runnable {
         enqueueRandom();
         enqueueRandom();
         synchronized(timer){
-            while (list.size() > 0){
+            while (queue.size() > 0){
                 try {
                     timer.wait();
                 } catch (InterruptedException e) {
@@ -217,9 +212,14 @@ public class PassengerQueue extends Observable implements Subject, Runnable {
      * @see java.util.Observer 
      * @see java.util.Observer#update(java.util.Observable, Object)
      */
-
-    public void notifyObservers(Boolean enqueue) {
+    @Override
+    public void notifyObservers() {
         for (Observer obs : registeredObservers)
-            obs.update(this, enqueue);
+            obs.update(this, null);
+    }
+
+    public void notifyObservers(Booking booking) {
+        for (Observer obs : registeredObservers)
+            obs.update(this, booking);
     }
 }
