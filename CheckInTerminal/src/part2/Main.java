@@ -4,6 +4,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import part1.*;
+/**
+ * Main class
+ * @author Joshua Roe
+ * @author Sean Katagiri
+ * @version %I%, %G%
+ */
 
 public class Main {
     public static void main(String[] args) {
@@ -28,7 +34,8 @@ public class Main {
         counters.add(c6);
         ManagementGUI gui = new ManagementGUI(t,counters,flights.getAllFlights());
         
-        pq.start();
+        Thread pqThread = new Thread(pq);
+        pqThread.start();
         timer.registerObserver(gui);
         pq.registerObserver(gui);
         flights.getAllFlights().forEach((key,value) -> value.registerObserver(gui));

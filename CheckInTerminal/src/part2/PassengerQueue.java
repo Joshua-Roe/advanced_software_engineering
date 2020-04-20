@@ -3,6 +3,7 @@ package part2;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 import java.util.Random;
@@ -12,9 +13,12 @@ import part1.*;
 /**
  * PassengerQueue threaded object.
  * Holds {@code Queue<Booking>}, to which it adds and removes {@code Booking} objects from.
- * It implements the {@code Subject} interface to make it observable.
+ * It implements the {@code Subject} interface and extends {@code Observable} to make it observable and able to pass an argument to the update method of the Observer.
  * 
  * @see java.util.Queue
+ * @see java.util.Observable
+ * @see java.util.Observer
+ * @see java.lang.Runnable
  * @see part1.Booking
  * @see part2.Subject
  *  
@@ -22,7 +26,7 @@ import part1.*;
  * @version %I%, %G%
  */
 @SuppressWarnings("deprecation")
-public class PassengerQueue extends Thread implements Subject {
+public class PassengerQueue extends Observable implements Subject, Runnable {
     private Queue<Booking> queue = new LinkedList<>();
     private List<Observer> registeredObservers = new LinkedList<Observer>();
     private List<Booking> bookingList = new ArrayList<Booking>();
@@ -51,10 +55,14 @@ public class PassengerQueue extends Thread implements Subject {
      * 
      * @see java.util.Queue#remove()
      * @see java.util.Queue#add(Object)
+     * @see part2.PassengerQueue#notifyObservers()
+     * @see part2.PassengerQueue#notifyObservers(Booking)
      */
     public synchronized void moveToBackOfQueue(){
         Booking temp = queue.remove();
+        notifyObservers();
         queue.add(temp);
+        notifyObservers(temp);
     }
 
     /**
@@ -67,7 +75,7 @@ public class PassengerQueue extends Thread implements Subject {
      * @see java.util.Queue#add(Object)
      * @see java.util.List#remove(int)
      * @see part2.PassengerQueue#logMessage(String)
-     * @see part2.PassengerQueue#notifyObservers()
+     * @see part2.PassengerQueue#notifyObservers(Booking)
      */
     public synchronized void enqueueRandom(){
         if(!finishedEnqueue){
@@ -75,7 +83,7 @@ public class PassengerQueue extends Thread implements Subject {
                 Booking booking = bookingList.remove(generator.nextInt(bookingList.size()));
                 queue.add(booking);
                 logMessage(booking.getFullName()+" joined the queue.");
-                notifyObservers();
+                notifyObservers(booking);
             }
             else{
                 finishedEnqueue = true;
@@ -93,12 +101,12 @@ public class PassengerQueue extends Thread implements Subject {
      * @param booking {@link Booking} object to be enqueue'd
      * @see part1.Booking#getFullName()
      * @see part2.PassengerQueue#logMessage(String)
-     * @see part2.PassengerQueue#notifyObservers()
+     * @see part2.PassengerQueue#notifyObservers(Booking)
      */
     public synchronized void enqueue(Booking booking) {
         queue.add(booking);
         logMessage(booking.getFullName()+" joined the queue.");
-        notifyObservers();
+        notifyObservers(booking);
     }
 
     /**
@@ -212,6 +220,18 @@ public class PassengerQueue extends Thread implements Subject {
     @Override
     public void notifyObservers() {
         for (Observer obs : registeredObservers)
-            obs.update(null, this);
+            obs.update(this, null);
+    }
+
+    /**
+     * A method for notifying registered observers with a booking as its argument.
+     * Notifies all {@code Observer} object in its {@code registeredObservers} list with {@code booking}.
+     * @see java.util.Observer 
+     * @see java.util.Observer#update(java.util.Observable, Object)
+     * @see part1.Booking
+     */
+    public void notifyObservers(Booking booking) {
+        for (Observer obs : registeredObservers)
+            obs.update(this, booking);
     }
 }

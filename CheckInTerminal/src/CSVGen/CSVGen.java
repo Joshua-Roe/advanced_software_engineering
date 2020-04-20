@@ -4,17 +4,17 @@ import java.util.Random;
 import java.util.zip.CRC32;
 //import java.io.File;
 
-/*
-This is the CSV generator
-It reads the sample CSV file which comes eith 500 name smaples and used same pre-set flight nuumber to randomly generate a new CSV file.
-Each line of the new CSV file contains:
-	1. unique booking reference
-	2. first name of passenger
-	3. last name of passenger
-	4. flight number of thier upcoming travel
-	5. status of check-in
-*/
-
+/**
+ * This is the CSV generator
+ * It reads the sample CSV file which comes eith 500 name smaples and used same pre-set flight nuumber to randomly generate a new CSV file.
+ * Each line of the new CSV file contains:
+ * 	1. unique booking reference
+ * 	2. first name of passenger
+ * 	3. last name of passenger
+ * 	4. flight number of thier upcoming travel
+ * 	5. status of check-in
+ * @author Leo Kong
+ */
 public class CSVGen { 
 	public static void main(String[] args)throws Exception{ 
 		
