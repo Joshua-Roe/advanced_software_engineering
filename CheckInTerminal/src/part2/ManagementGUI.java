@@ -344,15 +344,9 @@ public class ManagementGUI implements Observer, ChangeListener {
    * @param arg      PassengerQueue object
    */
   private void updateQueue(Observable o, Object arg) {
-    PassengerQueue passengerQueue = (PassengerQueue)o;//cast to PassengerQueue object
-    Queue<Booking> bookingQueue = passengerQueue.getQueue();
-    // queueContentPanel.removeAll();//flush the panel
     if(arg!=null) queueContentPanel.add(new PassengerComponent((Booking) arg));
     else queueContentPanel.remove(0);
-    
-    // queueContentPanel.setVisible(false);// this forces update of the JPanel and its contents
-    // queueContentPanel.setVisible(true);
-    queueContentPanel.revalidate();
+    queueContentPanel.revalidate(); //update JPanel contents
   }
   /**
    * update Counter component

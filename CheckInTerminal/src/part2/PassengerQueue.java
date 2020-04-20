@@ -52,6 +52,8 @@ public class PassengerQueue extends Observable implements Subject, Runnable {
      * 
      * @see java.util.Queue#remove()
      * @see java.util.Queue#add(Object)
+     * @see part2.PassengerQueue#notifyObservers()
+     * @see part2.PassengerQueue#notifyObservers(Booking)
      */
     public synchronized void moveToBackOfQueue(){
         Booking temp = queue.remove();
@@ -218,6 +220,13 @@ public class PassengerQueue extends Observable implements Subject, Runnable {
             obs.update(this, null);
     }
 
+    /**
+     * A method for notifying registered observers with a booking as its argument.
+     * Notifies all {@code Observer} object in its {@code registeredObservers} list with {@code booking}.
+     * @see java.util.Observer 
+     * @see java.util.Observer#update(java.util.Observable, Object)
+     * @see part1.Booking
+     */
     public void notifyObservers(Booking booking) {
         for (Observer obs : registeredObservers)
             obs.update(this, booking);
