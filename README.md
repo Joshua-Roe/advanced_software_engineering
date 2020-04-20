@@ -69,4 +69,4 @@ passengers checking in, passengers boarding flights. This log is written to a fi
     - [x] Implementation of Class Log
 * Leo:
     - [x] Refactor of Class Booking
-    - [x]CSVGenerator & Reader refactor
+    - [x] CSVGenerator & Reader refactor
