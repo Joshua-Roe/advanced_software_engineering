@@ -13,9 +13,12 @@ import part1.*;
 /**
  * PassengerQueue threaded object.
  * Holds {@code Queue<Booking>}, to which it adds and removes {@code Booking} objects from.
- * It implements the {@code Subject} interface to make it observable.
+ * It implements the {@code Subject} interface and extends {@code Observable} to make it observable and able to pass an argument to the update method of the Observer.
  * 
  * @see java.util.Queue
+ * @see java.util.Observable
+ * @see java.util.Observer
+ * @see java.lang.Runnable
  * @see part1.Booking
  * @see part2.Subject
  *  
