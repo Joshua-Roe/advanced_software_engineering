@@ -15,8 +15,10 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 
-
-@SuppressWarnings({"serial","deprecation"})
+/** 
+ * @author Joshua Roe
+ */
+@SuppressWarnings({"serial","deprecation"})//deprecation warning when compiling with vesions after 1.8
 public class ManagementGUI implements Observer, ChangeListener {
   class PassengerComponent extends JPanel {
     /**
