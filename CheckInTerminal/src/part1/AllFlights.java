@@ -6,6 +6,7 @@ import java.util.HashMap;
  * number of flights there are.
  * @see     HashMap
  * @see     Flight
+ * @author Sean Katagiri
  */
 public class AllFlights {
 	private int numOfFlights;

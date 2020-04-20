@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-//Enum-based singleton
-
+/**
+ * Enum-based singleton Log class
+ * Provides methods for storing log messages and outputting stored messages to a log file
+ * @author Randy Adjepong
+ * @version %I%, %G%
+ */
 public enum Log {
 
     INSTANCE;
@@ -15,12 +19,18 @@ public enum Log {
     private Log(){
         logfile = new StringBuilder();
     }
-
+/**
+*Stringbuilder is used in this case because of the length of characters to simplify the code
+*/
+    
     public  void  log (String logstring ) {
         logfile.append(logstring);
         logfile.append(System.lineSeparator());
     }
-
+/**
+*lineSeparator is used to read each file on a different line
+*/
+    
     public  void savefile() {
         try {
             FileWriter logonscore =new FileWriter(new File("last_simulation_log.txt"),false);

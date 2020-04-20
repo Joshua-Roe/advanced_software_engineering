@@ -13,6 +13,9 @@ import part2.*;
  *
  * @author Leo Kong
  * @author Marek Kujawa
+ * @author Joshua Roe
+ * @author Sean Katagiri
+ * @author Randy Adjepong
  * @version %I%, %G%
  */
 
@@ -154,14 +157,14 @@ public class Flight implements Subject {
     public float getExcessFeeCharge() { return excessFeeCharge; }
 
     /**
-     * @return the percent (1 = 100%) of the aircraft baggage compartment being filled. It checks both weight and volume and return the bigger one.
+     * @return the percentage (100 = 100%) of the aircraft baggage compartment being filled. It checks both weight and volume and return the bigger one.
      */
     public float getBaggagePercent() {
         return Math.round(10.0f*Math.max(100f*this.totalBaggageWeight/this.maxBaggageWeightCapacity, 100*this.totalBaggageVolume/this.maxBaggageVolumeCapacity))/10.0f;
     }
 
     /**
-     * @return the percentage of the aircraft passenger capacity being filled.
+     * @return the percentage (100 = 100%) of the aircraft passenger capacity being filled.
      */
     public float getPassengerCapacity() { return (float)this.numberOfPassengers/this.maxPassengers*100; }
 
@@ -196,13 +199,23 @@ public class Flight implements Subject {
         float baggageVolume = length * height * width;
         this.totalBaggageWeight += weight;
         this.totalBaggageVolume += baggageVolume;
+        /* if the checked weight or volume is greater than the maximum allowed ... */
         if(weight > this.allowedBaggageWeight || baggageVolume > this.allowedBaggageVolume) {
+            /* ... do the following */
             this.totalExcessFees += this.excessFeeCharge;
             throw new OverBaggageLimitException("Baggage limit exceeded");
         }
 	}
-	
-	public void checkBaggageByVolume(float weight, float baggageVolume) {//Legacy method for original GUI
+
+    /**
+     * Check baggage volume against baggage volume restrictions, and applies excess fee if limits are
+     * exceeded.
+     *
+     * @deprecated Legacy method for original GUI (part1.GUI.java)
+     * @param weight        the weight
+     * @param baggageVolume the baggage volume
+     */
+    public void checkBaggageByVolume(float weight, float baggageVolume) {
         this.totalBaggageWeight += weight;
         this.totalBaggageVolume += baggageVolume;
         if(weight > this.allowedBaggageWeight || baggageVolume > this.allowedBaggageVolume) {
@@ -211,19 +224,39 @@ public class Flight implements Subject {
         }
     }
 
+    /**
+     * Check if the gate is open and update gateOpen field.
+     *
+     * @param currentTime       the current time
+     * @param currentTimeString the current time string
+     * @return the boolean
+     */
     public boolean checkGateOpen(int currentTime, String currentTimeString) {
+        /* if the airplane has already taken off and gate is open ... */
         if (currentTime >= this.departureTime && this.gateOpen){
+            /* ... do the following */
             this.gateOpen = false;
             notifyObservers();
             logMessage("Flight "+this.flightCode+" has taken off.", currentTimeString);
         }
         return this.gateOpen;
     }
-    
+
+    /**
+     * Check if the gate is open.
+     *
+     * @return the boolean
+     */
     public boolean getGateOpen(){
         return this.gateOpen;
     }
 
+    /**
+     * helper method for logging.
+     *
+     * @param message           the log message
+     * @param currentTimeString the current time string
+     */
     private void logMessage(String message, String currentTimeString){
         Log l = Log.INSTANCE;
         l.log(currentTimeString+" "+message);

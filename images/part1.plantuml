@@ -1,0 +1,176 @@
+@startuml
+
+title __PART1's Class Diagram__\n
+
+  namespace part1 {
+    class part1.AllBookings {
+        - bookings : HashMap<String, Booking>
+        - numOfBookings : int
+        + AllBookings() <color purple><size:10><<constructor>></size></color>
+        + addBooking()
+        + getAllBookings()
+        + getBooking()
+        + getnumofBookings()
+    }
+  }
+  
+
+  namespace part1 {
+    class part1.AllFlights {
+        - flights : HashMap<String, Flight>
+        - numOfFlights : int
+        + AllFlights() <color purple><size:10><<constructor>></size></color>
+        + addFlight()
+        + getAllFlights()
+        + getFlight()
+        + getTotalFlights()
+    }
+  }
+  
+
+  namespace part1 {
+    class part1.Booking {
+        - baggageHeight : float
+        - baggageLength : float
+        - baggageWeight : float
+        - baggageWidth : float
+        - bookingCode : String
+        - checkInStatus : boolean
+        - excessFeeCharged : float
+        - firstName : String
+        - flightCode : String
+        - lastName : String
+        - missedFlight : boolean
+        + Booking() <color purple><size:10><<constructor>></size></color>
+        + getBaggageHeight()
+        + getBaggageLength()
+        + getBaggageWeight()
+        + getBaggageWidth()
+        + getCheckInStatus()
+        + getExcessFeeCharged()
+        + getFirstName()
+        + getFlightCode()
+        + getFullName()
+        + getLastName()
+        + getMissedFlight()
+        + getReference()
+        + missFlight()
+        + setBaggageInfo()
+        + setCheckInStatus()
+        + setExcessFeeCharged()
+    }
+  }
+  
+
+  namespace part1 {
+    class part1.CSVReader {
+        + CSVReader() <color purple><size:10><<constructor>></size></color>
+        + generatePopUp()
+        + getBookings()
+        + getFlights()
+    }
+  }
+  
+
+  namespace part1 {
+    class part1.Flight {
+        - allowedBaggageHeight : float
+        - allowedBaggageLength : float
+        - allowedBaggageVolume : float
+        - allowedBaggageWeight : float
+        - allowedBaggageWidth : float
+        - carrier : String
+        - departureTime : float
+        - destination : String
+        - excessFeeCharge : float
+        - flightCode : String
+        - gateOpen : boolean
+        - maxBaggageVolumeCapacity : float
+        - maxBaggageWeightCapacity : float
+        - maxPassengers : int
+        - numberOfPassengers : int
+        - registeredObservers : List<Observer>
+        - totalBaggageVolume : float
+        - totalBaggageWeight : float
+        - totalExcessFees : float
+        + Flight() <color purple><size:10><<constructor>></size></color>
+        + addPassenger()
+        + checkBaggage()
+        + checkBaggageByVolume()
+        + checkGateOpen()
+        + getAllowedBaggageHeight()
+        + getAllowedBaggageLength()
+        + getAllowedBaggageVolume()
+        + getAllowedBaggageWeight()
+        + getAllowedBaggageWidth()
+        + getBaggagePercent()
+        + getCarrier()
+        + getDestination()
+        + getExcessFeeCharge()
+        + getFlightCode()
+        + getGateOpen()
+        + getMaxBaggageVolumeCapacity()
+        + getMaxBaggageWeightCapacity()
+        + getMaxPassengers()
+        + getNumberOfPassengers()
+        + getPassengerCapacity()
+        + getTotalBaggageVolume()
+        + getTotalBaggageWeight()
+        + getTotalExcessFees()
+        + notifyObservers()
+        + registerObserver()
+        + removeObserver()
+        - logMessage()
+    }
+  }
+  
+
+  namespace part1 {
+    class part1.Flight.OverBaggageLimitException {
+        + OverBaggageLimitException() <color purple><size:10><<constructor>></size></color>
+    }
+  }
+  
+
+  namespace part1 {
+    class part1.FlightCheckIn {
+        {static} + generateReport()
+        {static} + main()
+    }
+  }
+  
+
+  namespace part1 {
+    class part1.GUI {
+        {static} ~ frame : JFrame
+        - v : float
+        - w : float
+        + GUI() <color purple><size:10><<constructor>></size></color>
+        + confirm()
+    }
+  }
+  
+
+  part1.CSVReader o-- part1.AllBookings : bookings
+  part1.CSVReader o-- part1.AllFlights : flights
+  part1.Flight .up.|> part2.Subject
+  part1.Flight +-down- part1.Flight.OverBaggageLimitException
+  part1.GUI o-- part1.AllBookings : bookings
+  part1.GUI o-- part1.AllFlights : flights
+  part1.AllBookings "1 " o-- "1..* " part1.Booking
+  part1.AllFlights "1 " o-- "1..* " part1.Flight
+
+skinparam LegendBorderThickness 0
+skinparam legendBackgroundColor #FFFFFF
+legend right
+Legend:
+
+|= field |= method |=  |
+|  <img:http://s.plantuml.com/private-field.png>     |   <img:http://s.plantuml.com/private-method.png>     | private |
+|  <img:http://s.plantuml.com/protected-field.png>   |   <img:http://s.plantuml.com/protected-method.png>   | protected |
+|  <img:http://s.plantuml.com/package-private-field.png>     |   <img:http://s.plantuml.com/package-private-method.png>    | package private |
+|  <img:http://s.plantuml.com/public-field.png>     |   <img:http://s.plantuml.com/public-method.png>     | public |
+
+endlegend
+
+@enduml

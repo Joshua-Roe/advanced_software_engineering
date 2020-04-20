@@ -3,6 +3,9 @@ package part1;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+/** 
+ * @author Joshua Roe
+ */
 public class GUI {
 	static JFrame frame;
 	private AllBookings bookings;
