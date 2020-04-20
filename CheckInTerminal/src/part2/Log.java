@@ -28,7 +28,7 @@ public enum Log {
         logfile.append(System.lineSeparator());
     }
 /**
-*lineSepator is used to read each file on a different line
+*lineSeparator is used to read each file on a different line
 */
     
     public  void savefile() {
