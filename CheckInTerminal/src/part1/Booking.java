@@ -75,22 +75,37 @@ public class Booking{
      */
     public boolean getCheckInStatus() { return checkInStatus; }
 
+    /**
+     * @return the baggage weight
+     */
     public float getBaggageWeight() { return baggageWeight; }
 
+    /**
+     * @return the baggage length
+     */
     public float getBaggageLength() { return baggageLength; }
 
+    /**
+     * @return the baggage height
+     */
     public float getBaggageHeight() { return baggageHeight; }
 
+    /**
+     * @return the baggage width
+     */
     public float getBaggageWidth() { return baggageWidth; }
 
     /**
-     * Sets check in status of booking 
+     * Sets check in status of booking
+     *
      * @param checkInStatus the new check in status for the booking
      */
     public void setCheckInStatus(boolean checkInStatus) { this.checkInStatus = checkInStatus; }
-    
+
     /**
      * Sets baggage info for booking
+     *
+     * @deprecated Legacy method for original GUI (part1.GUI.java)
      * @param w the weight of the baggage
      * @param v the volume of the baggage
      */
@@ -99,18 +114,36 @@ public class Booking{
         //baggage_volume = v;
     }
 
+    /**
+     * Set excess fee charged.
+     *
+     * @param fee the fee
+     */
     public void setExcessFeeCharged(Float fee){
         this.excessFeeCharged = fee;
     }
 
+    /**
+     * Get excess fee charged float.
+     *
+     * @return the float
+     */
     public Float getExcessFeeCharged(){
         return this.excessFeeCharged;
     }
 
+    /**
+     * Get missed flight (true = missed). Check if the passenger in the booking missed the flight.
+     *
+     * @return the boolean
+     */
     public boolean getMissedFlight(){
         return this.missedFlight;
     }
 
+    /**
+     * Set Miss flight (to true). This indicates the passenger in the booking missed the flight.
+     */
     public void missFlight(){
         this.missedFlight = true;
     }
