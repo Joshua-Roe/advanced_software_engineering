@@ -19,7 +19,10 @@ public enum Log {
     private Log(){
         logfile = new StringBuilder();
     }
-
+/**
+*Stringbuilder is used in this case because of the lenght of characters to simplify the code
+*/
+    
     public  void  log (String logstring ) {
         logfile.append(logstring);
         logfile.append(System.lineSeparator());
