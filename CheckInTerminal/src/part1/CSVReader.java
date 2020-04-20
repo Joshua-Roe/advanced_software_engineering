@@ -5,11 +5,12 @@ import java.util.Random;
 
 import javax.swing.*;
 
-/*
-This is a class to read two CSV files and stores details to the hashmap
-This class also generate some random number for the size and weight of the baggage of each passenger
-This also check if the path and format are correct of these csv files
-*/
+/**
+ * This is a class to read two CSV files and stores details to the hashmap
+ * This class also generate some random number for the size and weight of the baggage of each passenger
+ * This also check if the path and format are correct of these csv files
+ * @author Leo Kong
+ */
 public class CSVReader { 
 	private AllFlights flights;
 	private AllBookings bookings;

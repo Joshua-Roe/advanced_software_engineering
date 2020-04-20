@@ -4,6 +4,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import part1.*;
+/**
+ * Main class
+ * @author Joshua Roe
+ * @author Sean Katagiri
+ * @version %I%, %G%
+ */
 
 public class Main {
     public static void main(String[] args) {

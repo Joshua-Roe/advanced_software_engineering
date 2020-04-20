@@ -13,9 +13,6 @@ import part2.*;
  *
  * @author Leo Kong
  * @author Marek Kujawa
- * @author Joshua Roe
- * @author Sean Katagiri
- * @author Randy Adjepong
  * @version %I%, %G%
  */
 

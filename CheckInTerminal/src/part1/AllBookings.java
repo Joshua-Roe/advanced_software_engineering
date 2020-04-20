@@ -1,9 +1,5 @@
 package part1;
 
-/**
- * @author ra124
- *
- */
 import java.util.HashMap;
 /**
  * <tt>AllBookings</tt> holds <tt>Booking</tt> objects in a <tt>HashMap</tt>, while also keeping track of the
