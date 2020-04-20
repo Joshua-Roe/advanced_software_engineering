@@ -58,11 +58,15 @@ passengers checking in, passengers boarding flights. This log is written to a fi
 
 * Marek:
     - [x] Refactor of Class Flight
+    - [x] UML diagram creation
 * Sean:
-    - [x] Implementation of Simulation and Timer
+    - [x] Implementation of CheckinCounter, PassengerQueue
+    - [x] Implementation of SimTime, Timer
 * Josh:
-    - [x] Implementation of Class ManagementGUI
+    - [x] Implementation of ManagementGUI
+    - [x] Project Management, Git repository management
 * Randy:
     - [x] Implementation of Class Log
 * Leo:
     - [x] Refactor of Class Booking
+    - [x]CSVGenerator & Reader refactor
