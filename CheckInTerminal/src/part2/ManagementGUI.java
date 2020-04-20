@@ -315,7 +315,7 @@ public class ManagementGUI implements Observer, ChangeListener {
    */
   @Override
   public void update(Observable o, Object arg) {//run specific method depending on object type, if unrecognised then do nothing
-    if(arg instanceof PassengerQueue) updateQueue(arg);
+    if(arg instanceof Boolean) updateQueue(o, arg);
     else if(arg instanceof CheckinCounter) updateCounter(arg);
     else if(arg instanceof Flight) updateFlight(arg);
     else if(arg instanceof Timer) updateClock(arg);
@@ -343,13 +343,14 @@ public class ManagementGUI implements Observer, ChangeListener {
    *
    * @param arg      PassengerQueue object
    */
-  private void updateQueue(Object arg) {
-    PassengerQueue passengerQueue = (PassengerQueue)arg;//cast to PassengerQueue object
+  private void updateQueue(Observable o, Object arg) {
+    PassengerQueue passengerQueue = (PassengerQueue)o;//cast to PassengerQueue object
     Queue<Booking> bookingQueue = passengerQueue.getQueue();
-    queueContentPanel.removeAll();//flush the panel
-    for (Booking item: bookingQueue) {
-      queueContentPanel.add(new PassengerComponent(item));//add each passenger to panel
-    }
+    Boolean isEnqueue = (Boolean) arg;
+    // queueContentPanel.removeAll();//flush the panel
+    if(isEnqueue) queueContentPanel.add(new PassengerComponent(passengerQueue.peekLast()));
+    else queueContentPanel.remove(0);
+    
     queueContentPanel.setVisible(false);// this forces update of the JPanel and its contents
     queueContentPanel.setVisible(true);
   }

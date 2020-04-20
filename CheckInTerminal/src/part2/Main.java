@@ -28,7 +28,8 @@ public class Main {
         counters.add(c6);
         ManagementGUI gui = new ManagementGUI(t,counters,flights.getAllFlights());
         
-        pq.start();
+        Thread pqThread = new Thread(pq);
+        pqThread.start();
         timer.registerObserver(gui);
         pq.registerObserver(gui);
         flights.getAllFlights().forEach((key,value) -> value.registerObserver(gui));

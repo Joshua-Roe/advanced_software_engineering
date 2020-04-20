@@ -3,9 +3,11 @@ package part2;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 import java.util.Random;
+import java.util.LinkedList;
 
 import part1.*;
 
@@ -22,13 +24,13 @@ import part1.*;
  * @version %I%, %G%
  */
 @SuppressWarnings("deprecation")
-public class PassengerQueue extends Thread implements Subject {
-    private Queue<Booking> queue = new LinkedList<>();
+public class PassengerQueue extends Observable implements Subject, Runnable {
     private List<Observer> registeredObservers = new LinkedList<Observer>();
     private List<Booking> bookingList = new ArrayList<Booking>();
     private Timer timer;
     private Random generator = new Random();
     private Boolean finishedEnqueue = false;
+    private LinkedList<Booking> list = new LinkedList<Booking>();
 
     /** 
     * Constructor.
@@ -53,8 +55,10 @@ public class PassengerQueue extends Thread implements Subject {
      * @see java.util.Queue#add(Object)
      */
     public synchronized void moveToBackOfQueue(){
-        Booking temp = queue.remove();
-        queue.add(temp);
+        Booking temp = list.removeFirst();
+        notifyObservers(false);
+        list.addLast(temp);
+        notifyObservers(true);
     }
 
     /**
@@ -73,9 +77,9 @@ public class PassengerQueue extends Thread implements Subject {
         if(!finishedEnqueue){
             if(bookingList.size()>0){
                 Booking booking = bookingList.remove(generator.nextInt(bookingList.size()));
-                queue.add(booking);
+                list.addLast(booking);
                 logMessage(booking.getFullName()+" joined the queue.");
-                notifyObservers();
+                notifyObservers(true);
             }
             else{
                 finishedEnqueue = true;
@@ -96,9 +100,9 @@ public class PassengerQueue extends Thread implements Subject {
      * @see part2.PassengerQueue#notifyObservers()
      */
     public synchronized void enqueue(Booking booking) {
-        queue.add(booking);
+        list.addLast(booking);
         logMessage(booking.getFullName()+" joined the queue.");
-        notifyObservers();
+        notifyObservers(true);
     }
 
     /**
@@ -111,9 +115,9 @@ public class PassengerQueue extends Thread implements Subject {
      * @see part2.PassengerQueue#notifyObservers()
      */
     public synchronized Booking dequeue() {
-        Booking queueHead = queue.remove();
+        Booking queueHead = list.removeFirst();
         logMessage(queueHead.getFullName()+" left the queue.");
-        notifyObservers();
+        notifyObservers(false);
         return queueHead;
     }
 
@@ -122,7 +126,7 @@ public class PassengerQueue extends Thread implements Subject {
      * @see java.util.Queue#size()
      */
     public int size() {
-        return queue.size();
+        return list.size();
     }
 
     /**
@@ -130,15 +134,19 @@ public class PassengerQueue extends Thread implements Subject {
      * @see java.util.Queue#peek()
      */
     public Booking peek(){
-        return queue.peek();
+        return list.peek();
+    }
+
+    public Booking peekLast(){
+        return list.peekLast();
     }
 
     /**
      * Returns the {@code queue} object of type {@link java.util.Queue}.
      * @return {@code queue}
      */
-    public synchronized Queue<Booking> getQueue() {
-        return this.queue;
+    public synchronized LinkedList<Booking> getQueue() {
+        return this.list;
     }
 
     /**
@@ -170,7 +178,7 @@ public class PassengerQueue extends Thread implements Subject {
         enqueueRandom();
         enqueueRandom();
         synchronized(timer){
-            while (queue.size() > 0){
+            while (list.size() > 0){
                 try {
                     timer.wait();
                 } catch (InterruptedException e) {
@@ -209,9 +217,9 @@ public class PassengerQueue extends Thread implements Subject {
      * @see java.util.Observer 
      * @see java.util.Observer#update(java.util.Observable, Object)
      */
-    @Override
-    public void notifyObservers() {
+
+    public void notifyObservers(Boolean enqueue) {
         for (Observer obs : registeredObservers)
-            obs.update(null, this);
+            obs.update(this, enqueue);
     }
 }
