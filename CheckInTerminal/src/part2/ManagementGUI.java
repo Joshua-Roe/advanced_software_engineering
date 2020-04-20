@@ -350,8 +350,9 @@ public class ManagementGUI implements Observer, ChangeListener {
     if(arg!=null) queueContentPanel.add(new PassengerComponent((Booking) arg));
     else queueContentPanel.remove(0);
     
-    queueContentPanel.setVisible(false);// this forces update of the JPanel and its contents
-    queueContentPanel.setVisible(true);
+    // queueContentPanel.setVisible(false);// this forces update of the JPanel and its contents
+    // queueContentPanel.setVisible(true);
+    queueContentPanel.revalidate();
   }
   /**
    * update Counter component
