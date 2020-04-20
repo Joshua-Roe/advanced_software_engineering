@@ -20,14 +20,17 @@ public enum Log {
         logfile = new StringBuilder();
     }
 /**
-*Stringbuilder is used in this case because of the lenght of characters to simplify the code
+*Stringbuilder is used in this case because of the length of characters to simplify the code
 */
     
     public  void  log (String logstring ) {
         logfile.append(logstring);
         logfile.append(System.lineSeparator());
     }
-
+/**
+*lineSepator is used to read each file on a different line
+*/
+    
     public  void savefile() {
         try {
             FileWriter logonscore =new FileWriter(new File("last_simulation_log.txt"),false);
